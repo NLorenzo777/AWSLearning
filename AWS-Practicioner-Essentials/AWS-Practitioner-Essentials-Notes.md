@@ -12,7 +12,7 @@ device can perform per second.
 
 ## Introduction to Amazon Web Services
 
-### Deployment Models for Cloud Computing
+### `Deployment Models for Cloud Computing`
 When selecting a cloud strategy, a company must consider factors such as required cloud application components, 
 preferred resource management tools, and any legacy IT infrastructure requirements.
 
@@ -36,7 +36,7 @@ that require business to keep certain records on premises.
 
 
 
-### Benefits of Cloud Computing
+### `Benefits of Cloud Computing`
 
 #### Trade upfront expense for variable expense
 `Upfront expense` refers to data centers, physical servers, and other resources that you would need to invest
@@ -66,14 +66,14 @@ Enables to deploy applications to customers around the world quickly, while prov
 
 
 ## Compute in the Cloud
-### Amazon Elastic Compute Cloud (EC2)
+### `Amazon Elastic Compute Cloud (EC2)`
 - Provides resizable compute capacity in the cloud as Amazon EC2 instances.
 - An Amazon EC2 instance enables the use of a virtual server to run applications in the AWS cloud.
 - Provision and launch EC2 instance within minutes.
 - Pay only for the compute time used when an instance is running, not when it is stopped or terminated.
 - Save cost by paying only for server capacity needed or wanted.
 
-### How Amazon EC2 works
+### `How Amazon EC2 works`
 #### 1. Launch
 - Launch an instance by selecting a template with basic configurations for your instance.
 - These configurations include the operating system (OS), application server, or applications.
@@ -87,7 +87,7 @@ Enables to deploy applications to customers around the world quickly, while prov
 - After connecting, the instance can now be used.
 - Run commands to install software, add storage, copy and organize file, and more.
 
-### Amazon EC2 Instance Types
+### A`mazon EC2 Instance Types`
 #### 1. General Purpose
 - Balanced resources (compute, memory, and networking resources)
 - Diverse workloads such as application servers, gaming servers, backend for enterprise apps, small - medium DBs.
