@@ -29,6 +29,7 @@
     - [Other Tools](#4-various-other-tools)
       - `Amazon Elastic Beanstalk`
       - `Amazon CloudFormation`
+- [IV. Networking](#networking-)
 
 ## Terminologies:
 `Cloud Computing`: On-demand delivery of IT resources and applications through the internet with pay-as-you-go pricing.
@@ -416,7 +417,7 @@ Cache a copy locally that is closed to customers/clients.
 - Service that helps provision Amazon EC2 based environments.
 - Takes in information (application code and desired configs) and provides the environment for 
   the user.
-- Provide the code and config settings and it will deploy the resources necessary to perform the 
+- Provide the code and config settings, and it will deploy the resources necessary to perform the 
   following tasks:
   - Adjust capacity
   - Load balancing
@@ -434,7 +435,75 @@ Cache a copy locally that is closed to customers/clients.
 - Provisions resources in a safe, repeatable manner, enabling to frequently build infrastructure 
   and applications without having to perform manual actions.
 
+## Networking [↑](#aws-practitioner-essentials)
+### `Amazon Virtual Private Cloud (Amazon VPC)`
+- Provision a logically isolated section of the AWS cloud.
+- The resources can be public or private facing. Public resources are in a public subnet while 
+  private resources are under a private subnet.
+- A networking service that can be used to establish boundaries around AWS resources.
+
+---
+`Subnet:` Group of IP addresses. A section of a VPC that can contain resources such as EC2 
+instances or Amazon RDBs.
+
+`Public Subnet:` Contains resources that need to be accessible by the public.
+`Private Subnet:` Contains resources that should be accessibly only through private network.
+
+---
+
+### `Components in a VPC`
+#### 1. Internet Gateway (IGW)
+- Allows public traffic from the internet to access resources in the VPC.
+- It is a doorway for the public to use. Without IG, no once can access resources in the VPC.
+
+#### 2. Virtual Private Gateway (VPG)
+- To access private resources in a VPC.
+- Allows protected internet traffic to enter into the VPC.
+- Still prone to traffic since it uses the same path used by the public.
+- VPG establish a virtual private network (VPN) connection between the VPC and a private network.
+- Allows traffic into the VPC only if it is coming from an approved network.
+
+<div align="center">
+  <img src="../img/networking1.png" height="50%" width="80%"/>
+</div>
+
+#### 3. AWS Direct Connect
+- AWS service that lets users establish a dedicated private connection between data center 
+  and a VPC.
+- Helps reduce network costs and increase the amount of bandwidth that can travel through the 
+  network.
+- Network traffic remains in the AWS network and never touches the public path which promotes 
+  more security and prevents bottleneck and sudden increase in latency.
 
 
+### `Network Security Layers`
+- Network Hardening
+- Application Security
+- User Identity
+- Authentication and Authorization
+- Distributed Denial of Service (DDoS) Prevention
+- Data Integrity
+- Encryption
 
+#### Network Access Control List (Network ACLs)
+- A virtual firewall that controls inbound and outbound traffic **at the subnet level**.
+- Checks the packets (message from the internet) permissions if it is allowed to enter or leave the 
+  network. These permissions indicate who sent the packet and how the packet is trying to 
+  communicate with the resources in a subnet.
+- Only evaluates a packet if it crosses a **certain subnet**.
+- Stateless (focuses on the list, it does not check if it originates from its own subnet or not.)
+- By default, ACL allows all inbound and outbound traffic and can be customized by adding 
+  personalized rules.
+- for custom network ACLs, all inbound and outbound traffics are denied by default until rules 
+  to specify is added.
 
+#### Security Groups
+- Does not allow any IP address by default.
+- Instance level type of security.
+- Every newly launch instance is already assigned to a default security group.
+- Can be modified to indicate what type of traffics can be accepted (HTTPS, OS, Admin).
+- Stateful
+
+### `Network Traffics in VPC`
+- When a data is requested from an application hosted in the AWS cloud, the request is sent as a 
+  packet. A **packet** is a unit of data sent over the internet or a network.
