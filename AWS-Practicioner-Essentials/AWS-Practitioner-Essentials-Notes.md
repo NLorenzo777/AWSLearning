@@ -1,5 +1,35 @@
 # AWS Practitioner Essentials
 
+- [I. Introduction](#introduction-to-amazon-web-services)
+  - [Deployment Models for Cloud Computing](#deployment-models-for-cloud-computing)
+  - [Benefits of Cloud Computing](#benefits-of-cloud-computing)
+- [II. Compute](#compute-in-the-cloud)
+  - [Amazon EC2](#amazon-elastic-compute-cloud-ec2)
+  - [EC2 Instance Types](#amazon-ec2-instance-types)
+  - [EC2 Pricing Options](#amazon-ec2-pricing)
+  - [Amazon EC2 Auto Scaling](#scalability-and-elasticity)
+  - [Elastic Load Balancing](#elastic-load-balancer-elb)
+    - [`Amazon SNS`](#amazon-simple-notification-service-amazon-sns)
+    - [`Amazon SQS`](#amazon-simple-queue-services-amazon-sqs)
+  - [Serverless Computing](#additional-compute-services-serverless-computing)
+    - [Lambda](#1-aws-lambda)
+    - [Container](#2-aws-container-service)
+    - [AWS Fargate](#3-aws-fargate)
+- [III. AWS Global Infrastructure and Reliability](#aws-global-infrastructure-and-reliability)
+  - [AWS Regions](#aws-regions)
+  - [Availability Zones (AZs)](#availability-zones-azs)
+  - [Edge Locations](#edge-locations)
+    - [`Amazon CloudFront`](#amazon-cloudfront)
+    - [`Amazon Route 53`](#amazon-route-53)
+    - [`Amazon Outposts`](#amazon-outposts)
+  - [Provisioning Resources](#provisioning-aws-resources)
+    - [AWS Management Console](#1-aws-management-console)
+    - [AWS CLI](#2-aws-command-line-interface-cli)
+    - [AWS SDKs](#3-aws-software-development-kits-sdks)
+    - [Other Tools](#4-various-other-tools)
+      - `Amazon Elastic Beanstalk`
+      - `Amazon CloudFormation`
+
 ## Terminologies:
 `Cloud Computing`: On-demand delivery of IT resources and applications through the internet with pay-as-you-go pricing.
 
@@ -10,9 +40,9 @@
 `Input/Output Operations Per Second (OIPS)`: A metric that indicates how many I/O operations a
 device can perform per second.
 
-## Introduction to Amazon Web Services
+## Introduction to Amazon Web Services [↑](#aws-practitioner-essentials)
 
-### `Deployment Models for Cloud Computing`
+### `Deployment Models for Cloud Computing` [↑](#aws-practitioner-essentials)
 When selecting a cloud strategy, a company must consider factors such as required cloud application components, 
 preferred resource management tools, and any legacy IT infrastructure requirements.
 
@@ -36,7 +66,7 @@ that require business to keep certain records on premises.
 
 
 
-### `Benefits of Cloud Computing`
+### `Benefits of Cloud Computing` [↑](#aws-practitioner-essentials)
 
 #### Trade upfront expense for variable expense
 `Upfront expense` refers to data centers, physical servers, and other resources that you would need to invest
@@ -65,15 +95,15 @@ cloud computing enables to access new resources within minutes.
 Enables to deploy applications to customers around the world quickly, while providing low latency.
 
 
-## Compute in the Cloud
-### `Amazon Elastic Compute Cloud (EC2)`
+## Compute in the Cloud [↑](#aws-practitioner-essentials)
+### `Amazon Elastic Compute Cloud (EC2)` [↑](#aws-practitioner-essentials)
 - Provides resizable compute capacity in the cloud as Amazon EC2 instances.
 - An Amazon EC2 instance enables the use of a virtual server to run applications in the AWS cloud.
 - Provision and launch EC2 instance within minutes.
 - Pay only for the compute time used when an instance is running, not when it is stopped or terminated.
 - Save cost by paying only for server capacity needed or wanted.
 
-### `How Amazon EC2 works`
+### `How Amazon EC2 works` [↑](#aws-practitioner-essentials)
 #### 1. Launch
 - Launch an instance by selecting a template with basic configurations for your instance.
 - These configurations include the operating system (OS), application server, or applications.
@@ -87,7 +117,7 @@ Enables to deploy applications to customers around the world quickly, while prov
 - After connecting, the instance can now be used.
 - Run commands to install software, add storage, copy and organize file, and more.
 
-### `Amazon EC2 Instance Types`
+### `Amazon EC2 Instance Types` [↑](#aws-practitioner-essentials)
 #### 1. General Purpose
 - Balanced resources (compute, memory, and networking resources)
 - Diverse workloads such as application servers, gaming servers, backend for enterprise apps, small - medium DBs.
@@ -123,7 +153,7 @@ and high-frequency online transaction processing (OLTP) systems.
   - Is a metric that measures the performance of a storage device.
   - It indicates how many different input or output operations a device can perform in a second.
 
-### `Amazon EC2 Pricing`
+### `Amazon EC2 Pricing` [↑](#aws-practitioner-essentials)
 #### 1. On-Demand
 - ideal for short-term, irregular workloads that cannot be interrupted.
 - No upfront costs or minimum contracts apply.
@@ -168,7 +198,7 @@ However, On-Demand rates will be charged until one of the following is done.
 - There are existing per-socket, per-core, or per-VM software licenses available to help maintain license compliance.
 - The most expensive pricing.
 
-### `Scalability and Elasticity`
+### `Scalability and Elasticity` [↑](#aws-practitioner-essentials)
 - Involves beginning with only the resources needed and designing the architecture to automatically respond
 to changing demand by scaling out or in. Pay for only the resource used.
 - There is no need to worry about lack of computing capacity.
@@ -194,7 +224,7 @@ desired capacity will be the minimum capacity by default.
 With Amazon EC2 scaling, you pay for only the instances you use, when you use them. This is a cost-effective
 architecture that provides the best customer experience while reducing expenses.
 
-### `Elastic Load Balancer (ELB)`
+### `Elastic Load Balancer (ELB)` [↑](#aws-practitioner-essentials)
 - an application that takes in request and routes to the instances to be processed.
 - ELB is automatically scalable with no change in the hourly cost.
 - Single URL that each front-end uses. Single point of contact for all incoming web traffic to Auto Scaling group.
@@ -204,7 +234,7 @@ architecture that provides the best customer experience while reducing expenses.
 across multiple resources, such as Amazon EC2 instances.
 
 
-### Messaging and Queueing
+### Messaging and Queueing [↑](#aws-practitioner-essentials)
 #### Tightly Coupled Architecture
 - Applications communicating directly without **buffer**.
 - When there is change in a certain component, it affects other components as well or even the whole system.
@@ -304,7 +334,7 @@ no provisioning or managing servers</summary>
 </details>
 </div>
 
-### `Useful Links:`
+### `Useful Links:` 
 <div>
   <ul>
     <li><a href="https://aws.amazon.com/products/compute/#AWS_compute_services">More AWS Compute Services</a></li>
@@ -313,8 +343,8 @@ no provisioning or managing servers</summary>
 </div>
 
 
-## AWS Global Infrastructure and Reliability
-### `AWS Regions`
+## AWS Global Infrastructure and Reliability [↑](#aws-practitioner-essentials)
+### `AWS Regions` [↑](#aws-practitioner-essentials)
 - Areas where a group of data centers is located.
 - Are Geographically isolated areas.
 - Contains multiple isolated and physically separate AZs within a geographic region.
@@ -331,7 +361,7 @@ no provisioning or managing servers</summary>
 
 -----
 
-### `Availability Zones (AZs)`
+### `Availability Zones (AZs)` [↑](#aws-practitioner-essentials)
 - One or more data centers group together with redundant power, network, and connectivity in a region.
 - located tens of miles apart from each other.
 - 
@@ -341,7 +371,7 @@ no provisioning or managing servers</summary>
 
 ---
 
-### `Edge Locations`
+### `Edge Locations` [↑](#aws-practitioner-essentials)
 A site that Amazon CloudFront uses to store cached copies of content closer to customers for faster delivery.
 
 Cache a copy locally that is closed to customers/clients.
@@ -360,7 +390,7 @@ Cache a copy locally that is closed to customers/clients.
 - Install a mini operational region directly in privately owned data center.
 - Owned and operated by AWS but isolated within the building.
 
-### `Provisioning AWS Resources`
+### `Provisioning AWS Resources` [↑](#aws-practitioner-essentials)
 - Every action in AWS is an API call.
 
 #### 1. AWS Management Console
