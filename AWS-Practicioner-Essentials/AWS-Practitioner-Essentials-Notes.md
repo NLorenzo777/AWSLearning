@@ -30,6 +30,16 @@
       - `Amazon Elastic Beanstalk`
       - `Amazon CloudFormation`
 - [IV. Networking](#networking-)
+  - [Amazon Virtual Private Cloud (VPC)](#amazon-virtual-private-cloud-amazon-vpc)
+  - [VPC Components](#components-in-a-vpc-)
+    - [`AWS Direct Connect`](#3-aws-direct-connect-)
+  - [Network Security Layers](#network-security-layers-)
+  - [Network ACLs](#network-access-control-list-network-acls-)
+  - [Security Groups](#security-groups-)
+  - [Global Networking](#global-networking-)
+    - [Domain Name System](#domain-name-system-dns-)
+    - [Amazon Route 53](#amazon-route-53-)
+- [V. Storage and Databases](#storage-and-databases-)
 
 ## Terminologies:
 `Cloud Computing`: On-demand delivery of IT resources and applications through the internet with pay-as-you-go pricing.
@@ -451,7 +461,7 @@ instances or Amazon RDBs.
 
 ---
 
-### `Components in a VPC`
+### `Components in a VPC` [↑](#aws-practitioner-essentials)
 #### 1. Internet Gateway (IGW)
 - Allows public traffic from the internet to access resources in the VPC.
 - It is a doorway for the public to use. Without IG, no once can access resources in the VPC.
@@ -467,7 +477,7 @@ instances or Amazon RDBs.
   <img src="../img/networking1.png" height="50%" width="80%"/>
 </div>
 
-#### 3. AWS Direct Connect
+#### 3. AWS Direct Connect [↑](#aws-practitioner-essentials)
 - AWS service that lets users establish a dedicated private connection between data center 
   and a VPC.
 - Helps reduce network costs and increase the amount of bandwidth that can travel through the 
@@ -476,7 +486,7 @@ instances or Amazon RDBs.
   more security and prevents bottleneck and sudden increase in latency.
 
 
-### `Network Security Layers`
+### `Network Security Layers` [↑](#aws-practitioner-essentials)
 - Network Hardening
 - Application Security
 - User Identity
@@ -485,7 +495,7 @@ instances or Amazon RDBs.
 - Data Integrity
 - Encryption
 
-#### Network Access Control List (Network ACLs)
+#### Network Access Control List (Network ACLs) [↑](#aws-practitioner-essentials)
 - A virtual firewall that controls inbound and outbound traffic **at the subnet level**.
 - Checks the packets (message from the internet) permissions if it is allowed to enter or leave the 
   network. These permissions indicate who sent the packet and how the packet is trying to 
@@ -497,13 +507,64 @@ instances or Amazon RDBs.
 - for custom network ACLs, all inbound and outbound traffics are denied by default until rules 
   to specify is added.
 
-#### Security Groups
+---
+`Stateless packet filtering`
+- ACLs remember nothing and check packets that cross the subnet border inbound and outbound.
+- After a packet has entered a subnet, it must have its permissions evaluated for resources 
+  within the subnet, such as EC2 instances.
+
+---
+
+#### Security Groups [↑](#aws-practitioner-essentials)
+- A virtual firewall that controls inbound and outbound traffic for an EC2 instance.
+- By default, denies all inbound and outbound traffic. Then custom rules are configured to 
+  allow certain traffics.
 - Does not allow any IP address by default.
-- Instance level type of security.
+- **Instance level type of security**.
 - Every newly launch instance is already assigned to a default security group.
 - Can be modified to indicate what type of traffics can be accepted (HTTPS, OS, Admin).
 - Stateful
 
+---
+`Stateful packet filtering`
+- Security groups remember previous decisions made for incoming packets.
+- When a packet response for a request returns to the instance, the security group remembers the 
+  previous request. The security group allows the response to proceed, regardless of inbound 
+  security group roles.
+
+---
+
 ### `Network Traffics in VPC`
 - When a data is requested from an application hosted in the AWS cloud, the request is sent as a 
   packet. A **packet** is a unit of data sent over the internet or a network.
+
+### `Global Networking` [↑](#aws-practitioner-essentials)
+
+#### Domain Name System (DNS) [↑](#aws-practitioner-essentials)
+- Translates website names into IP addresses.
+- Acts as a _phonebook_ of the internet.
+- `DNS resolution:` process of translating a domain name to an IP address 
+
+<div align="center">
+  <img src="../img/dns1.png" width="80%"/>
+</div >
+
+#### Amazon Route 53 [↑](#aws-practitioner-essentials)
+- A DNS web service that gives developers and businesses a reliable way to route end users to 
+  internet applications hosted in AWS.
+- Manages the DNS records for domain names.
+- This is where new domain names are registered.
+- Existing domain names and records managed by other domain registrars can also be transferred.
+
+<div align="center">
+  <img src="../img/dns2.png" width="80%"/>
+</div >
+
+1. A customer requests data from the application by going to AnyCompany's website.
+2. Amazon Route 53 uses DNS resolution to retrieve the IP Address of AnyCompany's website. This 
+   information is sent back to the customer.
+3. The customer's request is sent to the nearest edge location through Amazon CloudFront.
+4. Amazon CloudFront connects to the Application Load Balancer, which sends the incoming packet 
+   to an Amazon EC2 instance.
+
+## Storage and Databases [↑](#aws-practitioner-essentials)
