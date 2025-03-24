@@ -568,3 +568,37 @@ instances or Amazon RDBs.
    to an Amazon EC2 instance.
 
 ## Storage and Databases [↑](#aws-practitioner-essentials)
+### `Instance Stores`
+- Block level storage volumes that behaves like a physical hard drive.
+- Provides **temporary block-level storage** for an EC2 instance.
+- A disk storage that is physically attached to the host computer for an EC2 instance, therefore 
+  has the same life span as the instance.
+- When the instance is stopped/terminated the data is lost as well.
+
+### `Amazon Elastic Block Store (Amazon EBS)`
+- Service that provides **block-level storage** volumes that can be used with EC2 instances.
+- Provides persistence of data even if EC2 is stopped/terminated.
+- Created by defining the configuration (such as volume size and type) and provisioning it.
+- #### EBS Snapshots
+  - A feature of EBS that takes incremental backup for the volume.
+  - The first backup taken of a volume copies all the data. Only the blocks of data that have 
+    been changed since the most recent snapshot are saved _(Incremental backup)_.
+  - _Full backup_ includes that data that has not been changed.
+
+### `Amazon Simple Storage Service (Amazon S3)`
+- Service that provides **object-level storage**.
+
+- Store and retrieve a virtually unlimited amount of data.
+- Store data as version controlled _objects_ (object maximum size of **5TB**).
+- Objects are stored in **buckets**.
+------
+`Object Storage:`
+- Each object consists of **data**, **metadata**, and **key**.
+- The data might be an image, video, text document, or file of any type.
+- Metadata contains information about the data is, how it is used, size, and so on.
+- The key is the unique identifier of the object.
+------
+
+| Header 1    | Header 2                                |
+|-------------|-----------------------------------------|
+| **S3 Standard** | - Designed for frequently accessed data |
