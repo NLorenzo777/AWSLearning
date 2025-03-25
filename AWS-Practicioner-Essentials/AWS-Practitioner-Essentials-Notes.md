@@ -375,7 +375,6 @@ no provisioning or managing servers</summary>
 ### `Availability Zones (AZs)` [↑](#aws-practitioner-essentials)
 - One or more data centers group together with redundant power, network, and connectivity in a region.
 - located tens of miles apart from each other.
-- 
 
 ---
 **Recommended:** A best practice is to run across at least two AZs in a region.
@@ -575,19 +574,21 @@ instances or Amazon RDBs.
   has the same life span as the instance.
 - When the instance is stopped/terminated the data is lost as well.
 
-### `Amazon Elastic Block Store (Amazon EBS)`
+### `Amazon Elastic Block Store (Amazon EBS)` [↑](#aws-practitioner-essentials)
 - Service that provides **block-level storage** volumes that can be used with EC2 instances.
 - Provides persistence of data even if EC2 is stopped/terminated.
 - Created by defining the configuration (such as volume size and type) and provisioning it.
+- Does not automatically resize. It is a hard drive.
+- Stores data in a single AZ. When attaching an EC2 instance, both the instance and the EBS 
+  volume must reside within the same AZ.
 - #### EBS Snapshots
   - A feature of EBS that takes incremental backup for the volume.
   - The first backup taken of a volume copies all the data. Only the blocks of data that have 
     been changed since the most recent snapshot are saved _(Incremental backup)_.
   - _Full backup_ includes that data that has not been changed.
 
-### `Amazon Simple Storage Service (Amazon S3)`
+### `Amazon Simple Storage Service (Amazon S3)` [↑](#aws-practitioner-essentials)
 - Service that provides **object-level storage**.
-
 - Store and retrieve a virtually unlimited amount of data.
 - Store data as version controlled _objects_ (object maximum size of **5TB**).
 - Objects are stored in **buckets**.
@@ -599,6 +600,60 @@ instances or Amazon RDBs.
 - The key is the unique identifier of the object.
 ------
 
-| Header 1    | Header 2                                |
-|-------------|-----------------------------------------|
-| **S3 Standard** | - Designed for frequently accessed data |
+#### Amazon S3 Storage Classes
+
+| Storage Class / Tier                                    | Description                                                                                                                                                                                                                                                                                                           |
+|---------------------------------------------------------|-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
+| **S3 Standard**                                         | - Designed for frequently accessed data<br/> - Stores data in minimum of 3 AZs.<br/> - Provides high availability for objects. - Applicable for websites, content distribution, and data analytics.<br/> - Has a higher cost than other storage classes intended for infrequently accessed data and archival storage. |
+| **S3 Standard-Infrequent Access<br/> (S3 Standard-IA)** | - Similar to S3 Standard but lower storage price but higher retrieval prices.<br/> - Ideal for infrequently accessed data.<br/> - Stores data in minimum of 3 AZs.<br/>                                                                                                                                               |
+| **S3 One Zone-Infrequent Access<br/> (S3 One Zone-IA)** | - Stores data in a single AZ<br/> - Lower storage price than standard-IA<br/>                                                                                                                                                                                                                                         |
+| **S3 Intelligent Tiering**                              | - Ideal for data with unknown or <br/>changing access patterns<br/> - Requires small monthly monitoring and automation fee per object.<br/> - If an object is no accessed for 30 consecutive days, Amazon S3 automatically moves it to S3 Standard-IA tier. Once accessed, automaticall moved to S3 Standard tier.    |
+| **S3 Glacier Instant Retrieval**                        | - For archived data that requires immediate access. Retrieve objects within a few ms.                                                                                                                                                                                                                                 |
+| **S3 Glacier Flexible Retrieval**                       | - Low-cost storage for data archiving.<br/> - Able to retrieve objects within a few minutes to hours (1 minute to 12 hours).                                                                                                                                                                                          |
+| **S3 Glacier Deep Archive**                             | - Lowest-cost object storage class for archiving.<br/> - Retrieve objects within 12 hours.<br/> - Supports long-term retention and digital preservation for data that might be accessed **once or twice a year**.<br/> - All objects are replicated and stored across at least 3 geographically dispersed AZs.        |
+| **S3 Outposts**                                         | - Creates S3 buckets on Amazon S3 Outposts.<br/> - Makes it easier to retrieve, store, and access data on AWS outposts.<br/> - Works well for workloads with local data residency requirements.                                                                                                                       |
+
+#### EBS and S3 comparison
+
+| Elastic Block Storage                             | Amazon S3                                  |
+|---------------------------------------------------|--------------------------------------------|
+| Up to 16 TiB in size                              | Unlimited storage (Maximum 5TB per object) |
+| Persisting                                        | Write once/ Read Many                      |
+| Solid state by default (HDD)                      | Durable (99.999999999%)                    |
+| File is divided into blocks making easy to update | Have to be updated as a whole              |
+| Attached to EC2 instances and AZ level resource   | Web enabled and serverless                 |
+
+### `Amazon Elastic File System (Amazon EFS)`
+- Managed file system. Multiple instances can access the data at the same time.
+- Linux file system.
+- Regional resource, stores data in and across multiple AZs.
+- Automatic scalable file system used with AWS cloud services and on-premise resources.
+- Can scale on demand to petabytes without disrupting applications.
+
+### `Amazon Relational Database Service (Amazon RDS)`
+- Automates tasks such as hardware provisioning, database setup, patching, and backups.
+- Less time spent in completing administrative tasks and more time using data to innovate 
+  applications.
+- Can be integrated with other services such as using AWS Lambda to query the database from a 
+  serverless application.
+- Offers encryption at rest and encryption in transit.
+
+`Lift-and-Shift` - Migration of on-premise database to the cloud.
+
+#### Amazon RDS Database Engines
+- Amazon Aurora
+- PostgreSQL
+- MySQL
+- MariaDB
+- Oracle Database
+- Microsoft SQL Server
+
+### `Amazon Aurora`
+- An enterprise-class relational database.
+- Compatible with MySQL and PostgreSQL.
+- Up to 5x faster than standard MySQL databases and up to 3x faster than standard 
+  PostgreSQL dataabses.
+- Price is 1/10th the cost of commercial databases. Cost is reduced by reducing unnecessary I/O 
+  operations, while ensuring that database resources remain reliable and available.
+- Recommended for workloads that require high availability. It replicates **6 copies** of data 
+  across **3 AZs** and continuously backups data to Amazon S3.
