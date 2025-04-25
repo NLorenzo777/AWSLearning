@@ -74,9 +74,6 @@ preferred resource management tools, and any legacy IT infrastructure requiremen
 that require business to keep certain records on premises.
 
 
-
-
-
 ### `Benefits of Cloud Computing` [↑](#aws-practitioner-essentials)
 
 #### Trade upfront expense for variable expense
