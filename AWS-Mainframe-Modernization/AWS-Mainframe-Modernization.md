@@ -58,7 +58,7 @@ technical complexity slows down development.
 </details>
 </div>
 
-<div style="padding:10px" >
+<div style="padding:10px">
 <details>
   <summary><strong>2. Delivery architects and consultants</strong></summary>
   Works together with client throughout the migration, from scoping a POC to building and 
@@ -105,13 +105,31 @@ modernization projects.
 5. AWS training
 6. AWS investment
 
-#### Three (3) Phases of MAP
-`1. Assess`
+#### 1. Assess Phase
 - Understand the current mainframe environment and what the gaps are that need to be addressed 
   for a successful migration. This is where a case for change is created.
+- During this phase, the migration readiness is considered. A directional business case is 
+  defined and the application portfolio is reviewed.
 - **Primary Outcome:** Statement of Work (SOW) and high-level estimate of the infrastructure and 
   migration costs.
 - **Duration:** 2 to 4 weeks.
+
+##### Key Activities
+1. Approach presentation
+2. Rapid portfolio review
+3. Pattern and tool guidance
+4. POC scoping (source code analysis, candidate identification, and success criteria)
+5. Initial cost estimates (infrastructure cost and migration cost)
+6. SOW proposal for the Mobilize phase.
+
+#### Workload selection criteria
+- Define the business and technical characteristics that are considered when selecting a 
+  workload for migration.
+
+#### Portfolio Analysis
+- After defining the criteria, the characteristics of each workload is collected and compared. 
+  This helps focus on building the portfolio with the dimensions that are important.
+- Time-bound to avoid having it extended for a long periods of time.
 - 
 
 `2. Mobilize`
