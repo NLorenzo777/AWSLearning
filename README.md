@@ -8,5 +8,5 @@ purpose of this repository is to easily access learning progress for review.
 1. AWS Cloud Practitioners Preparatory Course
 
 ## Contents
-1. AWS Cloud Practitioner Notes
-2. AWS Accreditation : Blu Age L1 Notes (Mainframe Modernization)
+1. [AWS Cloud Practitioner Notes](AWS-Practicioner-Essentials/AWS-Practitioner-Essentials-Notes.md#aws-practitioner-essentials)
+2. [AWS Accreditation : Blu Age L1 Notes (Mainframe Modernization)](AWS-Mainframe-Modernization/AWS-Mainframe-Modernization.md#aws-mainframe-modernization)
