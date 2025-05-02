@@ -271,18 +271,131 @@ following:
 - Examples: _Resource Access Control Facility (RACF)_, _Access Control Facility 2 (ACF2)_, Top 
   Secret, or a home-built authentication and authorization system.
 
-#### `Interfaces`
+##### `Interfaces`
 - Interfaces of the workload are identified including the basic mapping support (BMS Maps), the 
   _Simple Object Access Protocol API (SOAP API)_, and Message Format Service Screens (MFS).
 
-#### `Scheduling`
+##### `Scheduling`
 - Scheduling requirement on a workload scheduler is identified.
 - Examples: _Tivoli Workload Scheduler_, _Control-M_, or _CA-7_.
 
+##### `Printing`
+- Printing requirements are identified
+
+##### `Data Sources`
+- Identify the data sources being used by the workload such as DB2 tables and Visual Storage Access Method (VSAM).
+
+##### `Dependencies`
+- Identify the dependencies between the selected application and other corporate applications.
+
+##### `Code`
+- Identify the source codes, copy books, and utilities being used by the application.
+
 ---
 
-### `3. Modernize`
-- Start migrations to the cloud in multiple **_waves_**.
-- Operate the migrated applications on the cloud.
+### `3. Migrate and Modernize`
+- Start migrations to the cloud in multiple **_waves_**. At the end of each wave, the teams capture lessons learned 
+  and what could be done to improve the migration for the next set of application.
+- Operate the migrated applications on the cloud and modernize them as needed for additional benefits.
 - Modernize the application to make the most of what the cloud has to offer, and improve the 
   migration for the next set of applications.
+
+#### Key points
+- **Primary Outcome:** Successful migration and modernization.
+- **Duration:** 6 to 24 months
+- **Cost:** SOW billable to the customer, MAP funding.
+
+#### Key Activities
+1. Environment Build
+2. Mass migration
+3. Integrations
+4. System integration tests
+5. Performance tests
+6. User acceptance tests
+7. Training
+8. Go live
+9. Support
+
+#### Migration and Modernize to AWS
+The activities and duration of the migration project will depend on the pattern and toolset chosen. But the overall 
+activities will include the following.
+
+###### 1. **Capture and automate tests**
+
+Start by capturing the existing tests and automating them for functional equivalence testing and for regression 
+tests after they are in AWS.
+
+###### 2. **Migrate data and application code**
+
+Start migrating application code and data. The activities under this depend on the pattern chosen and can include 
+the following:
+- Converting legacy programming languages into modern ones.
+- Porting and recompiling existing codes.
+- Rewriting applications from scratch or replacing them with commercial off-the-shelf products.
+
+Data is migrated together with the code because the schema should be known by the application code.
+
+##### 3. **Test Functional Equivalence**
+Utilizing the captured and automated tests for functional equivalence after each subnet is modernized to ensure that 
+the application retains the same functionality.
+
+###### 4. Migrate scheduling, printing, security, and other integrated dependencies
+The scheduling, printing, security, and managed file transfer integrated dependencies will also be migrated as a 
+part of the deep-dive discovery.
+
+For example, you can deploy the same job scheduling solution to submit jobs in AWS or migrate from your current job scheduler entirely. 
+Do this by migrating RACF, ACF2, or Top-Secret definitions into AWS Directory Service, LDAP, or Microsoft Active Directory.
+
+##### Implement Integration Patterns
+- In a phased approach, modernized and legacy workloads remain integrated by interfacing with programs that were 
+previously modernized, remain on the mainframe, or by sharing common data.
+- Common patterns are using message queueing, pub/sub, or APIs to interface between the cloud and the mainframe and 
+  change data capture (CDC) for data synchronization.
+
+##### Integration and User Acceptance tests
+Integration testing followed by User Acceptance tests takes place after having the code, data, and integrated 
+dependencies migrated into development and test environment on the cloud.
+
+#### Production cut-over
+After all testing has been done, the production cut-over begins. It can be a switch to the modernized version of the 
+application, or it can follow a blue/green deployment.
+
+#### Scalable Mechanisms
+
+##### Modernization Pipeline
+- Use a modernization pipeline where legacy artifacts such as code and data are fed into the modernization process. 
+  This will output a modernized version of the code and data.
+
+<div align="center">
+  <img src="../img/modernization-pipeline.png" height="60%" width="60%"/>
+</div>
+
+
+#### Integration with Legacy
+Integration with legacy should also use a solution that can be reused throughout the organization for other 
+migrated workloads. For example, CDC synchronization mechanism allows to scale more than including the 
+synchronization capability within the application code itself.
+
+<div align="center">
+  <img src="../img/integration-with-legacy.png" height="60%" width="60%"/>
+</div>
+
+
+#### Optimize and Innovate
+The customer should take advantage of the agility benefits, reduced cost, and mitigation of risks. They can optimize 
+even further and innovate using the available services on AWS.
+
+##### 1. Refactor Remnants from Mainframe
+A short-term migration brings remnants from the mainframe. This can be addressed through the CI/CD pipeline enabling 
+a seamless transition and faster deployment.
+
+#### 2. Break down macro-services into micro-services.
+The tight-coupling from mainframe monolith can be converted into microservices through API or Queueing.
+
+#### 3. Take advantage of fully managed services
+Presence of fully managed services are easier to use.
+
+#### 4. Innovate with AI and ML, IoT, and other services
+
+
+## Large Mainframe Workload-by-Workload Migration
