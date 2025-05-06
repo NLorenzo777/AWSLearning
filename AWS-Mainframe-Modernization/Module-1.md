@@ -1,4 +1,13 @@
 # Module 1: Approach to Mainframe Migration and Modernization (Conceptual Introduction)
+- [1. Introduction](#introduction-)
+- [2. The Migration Accelerated Program (MAP)](#the-migration-acceleration-program-map-)
+  - [2.1. The Assess Phase](#1-assess-phase-)
+  - [2.2. The Mobilize Phase](#2-mobilize-phase-)
+  - [2.3. The Migrate and Modernize Phase](#3-migrate-and-modernize-)
+- [3. Large Mainframe Workload By Workload Migration](#large-mainframe-workload-by-workload-migration)
+
+
+## Introduction [↑](#module-1-approach-to-mainframe-migration-and-modernization-conceptual-introduction)
 Mainframe workloads often lack the agility needed to deploy new business functions, and their 
 technical complexity slows down development.
 
@@ -90,7 +99,7 @@ providing a sizing of the estimated target infrastructure. Commonly engaged duri
 </div>
 
 
-## The Migration Acceleration Program (MAP)
+## The Migration Acceleration Program (MAP) [↑](#module-1-approach-to-mainframe-migration-and-modernization-conceptual-introduction)
 The MAP is a comprehensive and proven cloud migration program that takes a holistic approach to 
 migrations. The purpose of MAP is to reduce the risks and increase velocity for mainframe 
 modernization projects.
@@ -105,7 +114,7 @@ modernization projects.
 
 ---
 
-### `1. Assess Phase`
+### `1. Assess Phase` [↑](#module-1-approach-to-mainframe-migration-and-modernization-conceptual-introduction)
 - Understand the current mainframe environment and what the gaps are that need to be addressed 
   for a successful migration. This is where a case for change is created.
 - During this phase, the migration readiness is considered. A directional business case is 
@@ -233,7 +242,7 @@ following:
 
 ---
 
-### `2. Mobilize`
+### `2. Mobilize Phase` [↑](#module-1-approach-to-mainframe-migration-and-modernization-conceptual-introduction)
 - Start laying the groundwork for the larger-scale migration, preparing the teams, and 
   validating hypothesis. 
 - A POC is delivered, a Cloud Center of Excellence is formed, and a migration plan is prepared.
@@ -293,7 +302,7 @@ following:
 
 ---
 
-### `3. Migrate and Modernize`
+### `3. Migrate and Modernize` [↑](#module-1-approach-to-mainframe-migration-and-modernization-conceptual-introduction)
 - Start migrations to the cloud in multiple **_waves_**. At the end of each wave, the teams capture lessons learned 
   and what could be done to improve the migration for the next set of application.
 - Operate the migrated applications on the cloud and modernize them as needed for additional benefits.
@@ -398,4 +407,32 @@ Presence of fully managed services are easier to use.
 #### 4. Innovate with AI and ML, IoT, and other services
 
 
-## Large Mainframe Workload-by-Workload Migration
+## Large Mainframe Workload-by-Workload Migration [↑](#module-1-approach-to-mainframe-migration-and-modernization-conceptual-introduction)
+A large mainframe is typically composed of many workloads which contain a set of applications, middleware, 
+subsystems, data stores, operating system, and hardware resources performing a cohesive set of business functions.
+
+- A workload often has one data store (DB2 or VSAM) and is supported by one transaction monitor (CICS).
+- Large mainframe run multiple workloads in parallel. Each mainframe workload is migrated separately. This means 
+  that each workload has dedicated resources for computing and data storage on the AWS side.
+- Some workload use AWS EC2 instances, containers, or AWS Lambda. Some workloads can run on AWS Mainframe 
+  Modernization fully managed runtime. 
+
+### Risk Minimization for Large Mainframe Migration
+#### 1. Start Small
+- Break down mainframe into workloads.
+- Migrate workloads in separate projects, not in a big bang.
+- Achieve business benefits for each project.
+- Use agile and lean delivery team for each project.
+- Learn and develop best practices for quick scaling.
+
+#### 2. Migrate Quickly
+- Use proven migration accelerators for short-term value.
+- Automate to minimize technical risks with no manual rewrite.
+- Automate to avoid increasing duration, cost, and human risk.
+
+#### 3. Optimize
+- Incremental transitions with **_Cloud Native Maturity Model_**:
+  - From COBOL to Java or polyglot
+  - From IaaS to cloud-centered
+  - From monolith to microservices
+  - From large database to fit-for-purpose data stores
