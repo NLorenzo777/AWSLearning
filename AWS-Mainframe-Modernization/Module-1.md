@@ -4,7 +4,7 @@
   - [2.1. The Assess Phase](#1-assess-phase-)
   - [2.2. The Mobilize Phase](#2-mobilize-phase-)
   - [2.3. The Migrate and Modernize Phase](#3-migrate-and-modernize-)
-- [3. Large Mainframe Workload By Workload Migration](#large-mainframe-workload-by-workload-migration)
+- [3. Large Mainframe Workload By Workload Migration](#large-mainframe-workload-by-workload-migration-)
 
 
 ## Introduction [↑](#module-1-approach-to-mainframe-migration-and-modernization-conceptual-introduction)
