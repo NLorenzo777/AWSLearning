@@ -48,7 +48,7 @@ infrastructure is upgraded to a modern, cloud-based managed service.
 ### Problems that AWS Mainframe Modernization Solve
 AWS M2 offers a comprehensive suite of features to help migrate and modernize mainframe applications.
 
-- `Asses`: AWS M2 provides application knowledge, insight, and analysis. M2 can be used to evaluate, scope, and plan 
+- `Assess`: AWS M2 provides application knowledge, insight, and analysis. M2 can be used to evaluate, scope, and plan 
   a migration and modernization project. This reveals application dependencies and complexities helping create a 
   modernization strategy with business and technical assessments.
 
@@ -83,3 +83,24 @@ AWS M2 offers a comprehensive suite of features to help migrate and modernize ma
 ## Architecture and Use Cases [↑](#module-2-getting-started-with-aws-mainframe-modernization-service)
 - AWS M2 helps efficiently create and manage the runtime environment on AWS for mainframe applications. It can also 
   **manage** and **monitor** modernized applications.
+
+<div align="center">
+  <img src="../img/use-cases.png" height="70%" width="70%"/>
+</div>
+
+- Users connect to the AWS M2 using a web client or mainframe terminal emulator to access the legacy applications 
+  running in the AWS Cloud.
+- `Analyzer` is used during the assessment and planning phase where application dependencies, complexity, and 
+  missing and unused components are identified. Reports and diagrams can also be generated to understand the 
+  application portfolio.
+- `Converter` is used to convert the legacy application programs to modern programming language (COBOL to Java).
+- `Developer` is used to perform the actual migration of the application source code and data. It can also be used 
+  for testing locally and ongoing development and maintenance.
+- `Compiler` compiles the migrated application programs for deployment.
+- `Runtime` run and manage the migrated application in test or production elastic runtime environments.
+- The `AWS Marketplace` features 200+ AWS services and partner solutions.
+
+### Basic Technical Concepts
+
+
+
