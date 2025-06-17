@@ -10,4 +10,6 @@ purpose of this repository is to easily access learning progress for review.
 
 ## Contents
 1. [AWS Cloud Practitioner Notes](AWS-Practicioner-Essentials/AWS-Practitioner-Essentials-Notes.md#aws-practitioner-essentials)
-2. [AWS Accreditation : Blu Age L1 Notes (Mainframe Modernization)](AWS-Mainframe-Modernization/Module-1.md#module-1-approach-to-mainframe-migration-and-modernization-conceptual-introduction)
+2. [AWS Accreditation : Blu Age L1 Notes (Mainframe Modernization)](AWS-Mainframe-Modernization)
+   1. [Module 1: Approach to Mainframe Migration and Modernization](AWS-Mainframe-Modernization/Module-1.md#module-1-approach-to-mainframe-migration-and-modernization-conceptual-introduction)
+   2. [Module 2: Getting Started with AWS Mainframe Modernization Service](AWS-Mainframe-Modernization/Module-2.md#module-2-getting-started-with-aws-mainframe-modernization-service)
