@@ -683,14 +683,59 @@ instances or Amazon RDBs.
 
 ### `Additional Database Services`
 
-| Purpose-Build Databases                         | Description                                                                                                                                                                         |
-|-------------------------------------------------|-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
-| **Amazon DocumentDB**                           | - Document database service that supports **MongoDB** workloads <br/> - Fully managed native **JSON** document.                                                                     |
-| **Amazon Neptune**                              | - A Graph database service.<br/> - For applications that are build and run with highly connected datasets<br/> - Ex: Recommendation engines, fraud detection, and knowledge graphs. |
-| **Amazon Quantum Ledger Datbase (Amazon QLDB)** | - Review a complete history of all the changes that have been made to application data.                                                                                             |
-| **Amazon Managed Blockchain**                   | - Service to create and manage blockchain networks with open-source frameworks.<br/>                                                                                                |
-| **Amazon ElastiCache**                          | - Service that adds caching layers on top of <br/>databases to help improve the read times of common requests. Supports _Redis_ and _Memcached_ data store types.                   |
-| **Amazon DynamoDB Accelerator**                 | - In-Memory cache for DynamoDB. <br/> - Helps improve response times from single-digit milliseconds to microseconds.                                                                |
+| Purpose-Build Databases                          | Description                                                                                                                                                                         |
+|--------------------------------------------------|-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
+| **Amazon DocumentDB**                            | - Document database service that supports **MongoDB** workloads <br/> - Fully managed native **JSON** document.                                                                     |
+| **Amazon Neptune**                               | - A Graph database service.<br/> - For applications that are build and run with highly connected datasets<br/> - Ex: Recommendation engines, fraud detection, and knowledge graphs. |
+| **Amazon Quantum Ledger Database (Amazon QLDB)** | - Review a complete history of all the changes that have been made to application data.                                                                                             |
+| **Amazon Managed Blockchain**                    | - Service to create and manage blockchain networks with open-source frameworks.<br/>                                                                                                |
+| **Amazon ElastiCache**                           | - Service that adds caching layers on top of <br/>databases to help improve the read times of common requests. Supports _Redis_ and _Memcached_ data store types.                   |
+| **Amazon DynamoDB Accelerator**                  | - In-Memory cache for DynamoDB. <br/> - Helps improve response times from single-digit milliseconds to microseconds.                                                                |
 
 #### Useful Links
 - [Deep Dive - Databases](https://docs.aws.amazon.com/decision-guides/latest/databases-on-aws-how-to-choose/databases-on-aws-how-to-choose.html)
+
+## Security
+### AWS Shared Responsibility Model
+The shared responsibility model divides into customer responsibilities (commonly referred to as “security in the cloud”) 
+and AWS responsibilities (commonly referred to as “security of the cloud”).
+<div align="center">
+  <img src="../img/shared-responsibility-model.png" height="50%" width="75%" alt="shared-responsibility-model"/>
+</div>
+
+### User Permissions and Access
+- Scoping users permissions.
+- `AWS Account Root User`: Owner of the AWS account.
+
+#### Identify and Access Management (IAM)
+- Giving other permissions.
+- No access given by default upon creation.
+- IAM Policy is a JSON document which describes the permissions associated on a specific user.
+
+Below is a sample IAM policy that is attached to users or groups.
+```json
+{
+  "Version": "2012-10-17",
+  "Statemenmt": {
+    "Effect": "Allow",
+    "Action": "s3:ListBucket",
+    "Resource": "arn:aws:s3:::coffee_shop_reports"
+  }
+}
+```
+- Values:
+  - **Effect**: Allow or Deny
+  - **Action**: Any AWS API call
+  - **Resource**: Which AWS resource the API call is for
+
+#### IAM Groups
+- To easily manage permission for users.
+- Access control is done by assigning an IAM policy to the group instead of each user.
+
+#### IAM Roles
+- For users that has changing roles from time-to-time.
+- Have associated permissions that allow or deny certain actions but for aa temporary amount of time.
+- No username or password.
+- Temporarily grant access to users.
+- Once assigned, it supersedes other permissions associated to an identity.
+
