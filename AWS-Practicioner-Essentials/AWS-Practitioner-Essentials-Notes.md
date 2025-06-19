@@ -703,15 +703,36 @@ and AWS responsibilities (commonly referred to as “security of the cloud”).
   <img src="../img/shared-responsibility-model.png" height="50%" width="75%" alt="shared-responsibility-model"/>
 </div>
 
+----------
 ### User Permissions and Access
 - Scoping users permissions.
 - `AWS Account Root User`: Owner of the AWS account.
 
-#### Identify and Access Management (IAM)
-- Giving other permissions.
+#### Root User
+When an AWS account is created, you begin with an identity called the **Root User**.
+
+The root user is accessed by signing in with the email address and password that you used to create the AWS account.
+
+<table>
+  <tr>
+    <th style="text-align:left; background-color:grey; color:black">Best Practice:</th>
+  </tr>
+  <tr>
+    <td>Do not use the root user for everyday tasks. Instead, create an IAM user and assign permissions to create 
+other users.
+    </td>
+  </tr>
+</table>
+
+
+#### Identify and Access Management (IAM) Users
+- Represents the person or application that interacts with AWS services and resources.
+- Consists of name and credentials.
 - No access given by default upon creation.
 - IAM Policy is a JSON document which describes the permissions associated on a specific user.
 
+
+#### IAM Policies
 Below is a sample IAM policy that is attached to users or groups.
 ```json
 {
@@ -727,10 +748,20 @@ Below is a sample IAM policy that is attached to users or groups.
   - **Effect**: Allow or Deny
   - **Action**: Any AWS API call
   - **Resource**: Which AWS resource the API call is for
+  - 
+<table>
+  <tr>
+    <th style="text-align:left; background-color:grey; color:black">Best Practice:</th>
+  </tr>
+  <tr>
+    <td>Follow the security principle of <strong>least privilege</strong> when granting permissions</td>
+  </tr>
+</table>
 
 #### IAM Groups
 - To easily manage permission for users.
 - Access control is done by assigning an IAM policy to the group instead of each user.
+- Makes it easier to adjust permissions when an employee transfers to a different job.
 
 #### IAM Roles
 - For users that has changing roles from time-to-time.
@@ -738,4 +769,25 @@ Below is a sample IAM policy that is attached to users or groups.
 - No username or password.
 - Temporarily grant access to users.
 - Once assigned, it supersedes other permissions associated to an identity.
+- Useful for varying roles from time-to-time. With this, one user can have different roles but not both.
 
+----------
+
+### AWS Organizations
+An AWS services where it is a central location to manage multiple AWS accounts.
+
+When an AWS Organization is created, a root user is automatically created which is the parent container for all the 
+accounts in the organization.
+
+- Centralized management
+- Consolidated billing
+- Implement hierarchical groupings of accounts.
+- AWS service and API actions access control
+
+It is possible to centrally control permissions for the accounts in the organization by using the **Service Control 
+Policies (SCPs)**. SCPs enable to place restrictions on the AWS services, resources, and individual API actions that 
+users and roles in each account can access.
+
+#### Organizational Units
+In AWS Organizations, accounts can be group into an Organizational Unit (OU) to make it easier to manage accounts 
+with similar business or security requirements.
