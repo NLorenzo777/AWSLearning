@@ -102,6 +102,7 @@ cloud computing enables to access new resources within minutes.
 #### Go Global in minutes
 Enables to deploy applications to customers around the world quickly, while providing low latency.
 
+----------
 
 ## Compute in the Cloud [↑](#aws-practitioner-essentials)
 ### `Amazon Elastic Compute Cloud (EC2)` [↑](#aws-practitioner-essentials)
@@ -350,6 +351,7 @@ no provisioning or managing servers</summary>
   </ul>
 </div>
 
+----------
 
 ## AWS Global Infrastructure and Reliability [↑](#aws-practitioner-essentials)
 ### `AWS Regions` [↑](#aws-practitioner-essentials)
@@ -386,7 +388,7 @@ Cache a copy locally that is closed to customers/clients.
 #### Amazon CloudFront
 - Is a Content Delivery Network (CDN) of AWS
 - Uses Edge locations all around the world to help accelerate communications with users.
-- When a customer requests from a certain location, CloudFront retrieves the file from the cache 
+- When a customer requests from a certain location, CloudFront retrieves the file from the cache.
   in the edge location and delivers the file to the customer.
 
 #### Amazon Route 53
@@ -441,6 +443,8 @@ Cache a copy locally that is closed to customers/clients.
 - Provisions resources in a safe, repeatable manner, enabling to frequently build infrastructure 
   and applications without having to perform manual actions.
 
+----------
+
 ## Networking [↑](#aws-practitioner-essentials)
 ### `Amazon Virtual Private Cloud (Amazon VPC)`
 - Provision a logically isolated section of the AWS cloud.
@@ -448,14 +452,14 @@ Cache a copy locally that is closed to customers/clients.
   private resources are under a private subnet.
 - A networking service that can be used to establish boundaries around AWS resources.
 
----
+
 `Subnet:` Group of IP addresses. A section of a VPC that can contain resources such as EC2 
 instances or Amazon RDBs.
 
 `Public Subnet:` Contains resources that need to be accessible by the public.
+
 `Private Subnet:` Contains resources that should be accessibly only through private network.
 
----
 
 ### `Components in a VPC` [↑](#aws-practitioner-essentials)
 #### 1. Internet Gateway (IGW)
@@ -480,7 +484,6 @@ instances or Amazon RDBs.
   network.
 - Network traffic remains in the AWS network and never touches the public path which promotes 
   more security and prevents bottleneck and sudden increase in latency.
-
 
 ### `Network Security Layers` [↑](#aws-practitioner-essentials)
 - Network Hardening
@@ -562,6 +565,8 @@ instances or Amazon RDBs.
 3. The customer's request is sent to the nearest edge location through Amazon CloudFront.
 4. Amazon CloudFront connects to the Application Load Balancer, which sends the incoming packet 
    to an Amazon EC2 instance.
+
+----------
 
 ## Storage and Databases [↑](#aws-practitioner-essentials)
 ### `Instance Stores`
@@ -695,16 +700,17 @@ instances or Amazon RDBs.
 #### Useful Links
 - [Deep Dive - Databases](https://docs.aws.amazon.com/decision-guides/latest/databases-on-aws-how-to-choose/databases-on-aws-how-to-choose.html)
 
+----------
+
 ## Security
-### AWS Shared Responsibility Model
+### `AWS Shared Responsibility Model`
 The shared responsibility model divides into customer responsibilities (commonly referred to as “security in the cloud”) 
 and AWS responsibilities (commonly referred to as “security of the cloud”).
 <div align="center">
   <img src="../img/shared-responsibility-model.png" height="50%" width="75%" alt="shared-responsibility-model"/>
 </div>
 
-----------
-### User Permissions and Access
+### `User Permissions and Access`
 - Scoping users permissions.
 - `AWS Account Root User`: Owner of the AWS account.
 
@@ -771,9 +777,7 @@ Below is a sample IAM policy that is attached to users or groups.
 - Once assigned, it supersedes other permissions associated to an identity.
 - Useful for varying roles from time-to-time. With this, one user can have different roles but not both.
 
-----------
-
-### AWS Organizations
+### `AWS Organizations`
 An AWS services where it is a central location to manage multiple AWS accounts.
 
 When an AWS Organization is created, a root user is automatically created which is the parent container for all the 
@@ -789,5 +793,107 @@ Policies (SCPs)**. SCPs enable to place restrictions on the AWS services, resour
 users and roles in each account can access.
 
 #### Organizational Units
-In AWS Organizations, accounts can be group into an Organizational Unit (OU) to make it easier to manage accounts 
+In AWS Organizations, accounts can be grouped into an Organizational Unit (OU) to make it easier to manage accounts 
 with similar business or security requirements.
+
+
+### `Compliance`
+
+#### AWS Artifacts
+AWS Artifacts is an AWS service that provides on-demand access to AWS security and compliance reports and select 
+online agreements.
+
+AWS Artifacts provide access to AWS security and compliance documents such as **_AWS ISO certifications_**, **_Payment Card 
+Industry (PCI)_** reports, and **_Service Organization Control_** (SOC) reports.
+
+**Two sections of AWS Artifacts**
+- `AWS Artifact Agreements:`
+  - Review, accept, and manage agreements for an individual account and for all accounts in AWS Organizations.
+
+- `AWS Artifact Reports:`
+  - Provide compliance reports from third-party auditors.
+  - Can be provided to auditors or regulators as evidence of AWS security controls.
+
+#### Customer Compliance Center
+The [Customer Compliance Center](#https://aws.amazon.com/compliance/customer-center/) contains resources to help learn more about AWS compliance.
+
+There is also access to compliance whitepapers and documentations on topics such as:
+- AWS answers to key compliance questions
+- An overview of AWS risk and compliance
+- An auditing security checklist
+
+### `Denial-of-Service (DoS) Attacks`
+DoS Attack is a deliberate attempt to make a website or application unavailable to users.
+
+Customers can call the coffee shop to place their orders. After answering each call, a cashier takes the order and gives it to the barista.
+
+However, suppose that a prankster is calling in multiple times to place orders but is never picking up their drinks. 
+This causes the cashier to be unavailable to take other customers’ calls. The coffee shop can attempt to stop the false requests by blocking the phone number that the prankster is using. 
+
+<div align="center">
+  <img src="../img/DoS-Attack.png" height="25%" width="50%"/>
+</div>
+
+#### Distributed Denial-of-Service (DDoS) Attacks
+Multiple sources are used to start an attack that aims to make a website or application unavailable.
+
+<div align="center">
+  <img src="../img/DDos-Attack.png" height="25%" width="25%"/>
+</div>
+
+#### AWS Shield
+An AWS Service that protects applications against DDoS attacks. Provides two levels of protection: **Standard** and 
+**Advanced**.
+
+- **Standard**
+  - Automatically protects all AWS customers at no cost.
+  - Protects AWS resources from most common, frequently occurring types of DDoS attacks.
+  - As network traffic comes into the application, AWS Shield uses a variety of analysis techniques to detect 
+    malicious traffic in real time and automatically mitigates it.
+
+- **Advanced**
+  - A paid service that provides detailed attack diagnostics and the ability to detect and mitigate sophisticated 
+    DDoS attack.
+  - Integrates with other services such as `Amazon CloudFront`, `Amazon Route 53`, and ELB.
+  - This can also be integrated with `AWS WAF` by writing custom ruled to mitigate complex DDoS attacks.
+
+### `Additional Security Services`
+
+1. **AWS Key Management Service**
+   - Enables to perform encryption operations through the cryptographic keys.
+   - A **Cryptographic Keys** is a random string of digits used for encryption and decryption of data.
+   - Used to create, manage, and user cryptographic keys and can also be used to control the use of keys across a wide 
+     range of services and in the application.
+   - Keys in the AWS KMS can be disabled on demand.
+2. **AWS Web Application Firewall (WAF)**
+   - Allows the monitoring of network requests that come into web applications.
+   - Works together with `Amazon CloudFront` and Application ELB.
+   - Just like network ACLs, it blocks/allows traffic using web ACLs.
+3. **Amazon Inspector**
+   - Performs automated security assessments.
+   - Checks applications for security vulnerabilities and deviations from security best practices, such as open 
+     access to Amazon EC2 instances and installations of vulnerable software versions.
+   - After an assessment, Amazon Inspector provides with a list of security findings which is prioritized in 
+     severity levels.
+4. **Amazon GuardDuty**
+   - An AWS Service that provides an intelligent threat detection for AWS infrastructure and resources.
+   - Identifies threat by continuously monitoring the network activity and account behavior within the AWS environment.
+   - If Amazon GuardDuty detects any threats, you can review detailed findings about them from the AWS Management 
+     Console. Findings include recommended steps for remediation.
+   - `AWS Lambda` can also be configured to take remediation steps automatically in response to GuardDuty's security 
+     findings.
+
+<div align="center">
+  <img src="../img/AWS-Guard-Duty.png" height="25%" width="50%"/>
+</div>
+
+### `Additional Resources`
+- [Security Best Practices in IAM](https://docs.aws.amazon.com/IAM/latest/UserGuide/best-practices.html)
+ 
+
+
+
+
+
+
+
