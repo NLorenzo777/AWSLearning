@@ -40,6 +40,33 @@
     - [Domain Name System](#domain-name-system-dns-)
     - [Amazon Route 53](#amazon-route-53-)
 - [V. Storage and Databases](#storage-and-databases-)
+  - [Instance Stores](#instance-stores-)
+  - [Elastic Block Stores (EBS)](#amazon-elastic-block-store-amazon-ebs-)
+  - [Amazon Simple Storage Service (S3)](#amazon-simple-storage-service-amazon-s3-)
+  - [Amazon Elastic File System (EFS)](#amazon-elastic-file-system-amazon-efs-)
+  - [Amazon Relational Database Service (RDS)](#amazon-relational-database-service-amazon-rds-)
+  - [Amazon Aurora](#amazon-aurora-)
+  - [Amazon DynamoDB](#amazon-dynamodb-)
+  - [Amazon Redshift](#amazon-redshift-)
+  - [Amazon Database Migration Service (DMS)](#amazon-database-migration-service-amazon-dms-)
+  - [Other Amazon Database Services](#additional-database-services-)
+- [VI. Security in AWS](#security-)
+  - [Shared Responsibility Model](#aws-shared-responsibility-model-)
+  - [User Permissions and Access](#user-permissions-and-access-)
+    - [Identity and Access Management (IAM)](#identity-and-access-management-iam-users)
+    - [IAM Policies](#iam-policies)
+    - [IAM Groups](#iam-groups)
+    - [IAM Role](#iam-roles)
+  - [AWS Organizations](#aws-organizations-)
+  - [Compliance](#compliance-)
+    - [AWS Artifacts](#aws-artifacts)
+  - [Denial-of-Service (DoS) Attacks](#denial-of-service-dos-attacks-)
+  - [Additional Security Services](#additional-security-services-)
+- [VII. Monitoring and Analytics in AWS](#monitoring-and-analytics-)
+  - [`Amazon CloudWatch`](#amazon-cloudwatch-)
+  - [`AWS CloudTrail`](#aws-cloudtrail-)
+  - [`Trusted Advisor`](#aws-trusted-advisor-)
+- [VIII. Pricing and Support in AWS](#pricing-and-support-)
 
 ## Terminologies:
 `Cloud Computing`: On-demand delivery of IT resources and applications through the internet with pay-as-you-go pricing.
@@ -569,7 +596,7 @@ instances or Amazon RDBs.
 ----------
 
 ## Storage and Databases [↑](#aws-practitioner-essentials)
-### `Instance Stores`
+### `Instance Stores` [↑](#aws-practitioner-essentials)
 - Block level storage volumes that behaves like a physical hard drive.
 - Provides **temporary block-level storage** for an EC2 instance.
 - A disk storage that is physically attached to the host computer for an EC2 instance, therefore 
@@ -625,14 +652,14 @@ instances or Amazon RDBs.
 | File is divided into blocks making easy to update | Have to be updated as a whole              |
 | Attached to EC2 instances and AZ level resource   | Web enabled and serverless                 |
 
-### `Amazon Elastic File System (Amazon EFS)`
+### `Amazon Elastic File System (Amazon EFS)` [↑](#aws-practitioner-essentials)
 - Managed file system. Multiple instances can access the data at the same time.
 - Linux file system.
 - Regional resource, stores data in and across multiple AZs.
 - Automatic scalable file system used with AWS cloud services and on-premise resources.
 - Can scale on demand to petabytes without disrupting applications.
 
-### `Amazon Relational Database Service (Amazon RDS)`
+### `Amazon Relational Database Service (Amazon RDS)` [↑](#aws-practitioner-essentials)
 - Automates tasks such as hardware provisioning, database setup, patching, and backups.
 - Less time spent in completing administrative tasks and more time using data to innovate 
   applications.
@@ -650,7 +677,7 @@ instances or Amazon RDBs.
 - Oracle Database
 - Microsoft SQL Server
 
-### `Amazon Aurora`
+### `Amazon Aurora` [↑](#aws-practitioner-essentials)
 - An enterprise-class relational database.
 - Compatible with MySQL and PostgreSQL.
 - Up to 5x faster than standard MySQL databases and up to 3x faster than standard 
@@ -660,7 +687,7 @@ instances or Amazon RDBs.
 - Recommended for workloads that require high availability. It replicates **6 copies** of data 
   across **3 AZs** and continuously backups data to Amazon S3.
 
-### `Amazon DynamoDB`
+### `Amazon DynamoDB` [↑](#aws-practitioner-essentials)
 - Stores data redundantly across AZs. Mirrors data across multiple drives.
 - Key-value database service that is reliable and high performance (millisecond response time).
 - For Non-Relational Database (NoSQL). Simple flexible schemas
@@ -671,7 +698,7 @@ instances or Amazon RDBs.
 #### Non Relational Database (NoSQL Databases)
 - Uses structures (JSON, key-value pairs) other than rows and columns to organize data.
 
-### `Amazon Redshift`
+### `Amazon Redshift` [↑](#aws-practitioner-essentials)
 - Data warehouse as a service
 - Handles the heavy lifting in provisioning the data warehouse so that users can focus on the 
   data alone.
@@ -680,13 +707,13 @@ instances or Amazon RDBs.
 - Offers ability to collect data from many sources and helps understand relationships and trends 
   across data.
 
-### `AWS Database Migration Service (Amazon DMS)`
+### `Amazon Database Migration Service (Amazon DMS)` [↑](#aws-practitioner-essentials)
 - Enables the migration of RDBs, NRDBs, and other types of data stores.
 - **Homogenous Databases:** Databases that are of the same type.
 - **Heterogeneous Databases:** Databases that are of different source/type. Additional step 
   where an AWS Schema Conversion tool is used.
 
-### `Additional Database Services`
+### `Additional Database Services` [↑](#aws-practitioner-essentials)
 
 | Purpose-Build Databases                          | Description                                                                                                                                                                         |
 |--------------------------------------------------|-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
@@ -702,15 +729,15 @@ instances or Amazon RDBs.
 
 ----------
 
-## Security
-### `AWS Shared Responsibility Model`
+## Security [↑](#aws-practitioner-essentials)
+### `AWS Shared Responsibility Model` [↑](#aws-practitioner-essentials)
 The shared responsibility model divides into customer responsibilities (commonly referred to as “security in the cloud”) 
 and AWS responsibilities (commonly referred to as “security of the cloud”).
 <div align="center">
   <img src="../img/shared-responsibility-model.png" height="50%" width="75%" alt="shared-responsibility-model"/>
 </div>
 
-### `User Permissions and Access`
+### `User Permissions and Access` [↑](#aws-practitioner-essentials)
 - Scoping users permissions.
 - `AWS Account Root User`: Owner of the AWS account.
 
@@ -731,7 +758,7 @@ other users.
 </table>
 
 
-#### Identify and Access Management (IAM) Users
+#### Identity and Access Management (IAM) Users
 - Represents the person or application that interacts with AWS services and resources.
 - Consists of name and credentials.
 - No access given by default upon creation.
@@ -777,7 +804,7 @@ Below is a sample IAM policy that is attached to users or groups.
 - Once assigned, it supersedes other permissions associated to an identity.
 - Useful for varying roles from time-to-time. With this, one user can have different roles but not both.
 
-### `AWS Organizations`
+### `AWS Organizations` [↑](#aws-practitioner-essentials)
 An AWS services where it is a central location to manage multiple AWS accounts.
 
 When an AWS Organization is created, a root user is automatically created which is the parent container for all the 
@@ -797,7 +824,7 @@ In AWS Organizations, accounts can be grouped into an Organizational Unit (OU) t
 with similar business or security requirements.
 
 
-### `Compliance`
+### `Compliance` [↑](#aws-practitioner-essentials)
 
 #### AWS Artifacts
 AWS Artifacts is an AWS service that provides on-demand access to AWS security and compliance reports and select 
@@ -822,7 +849,7 @@ There is also access to compliance whitepapers and documentations on topics such
 - An overview of AWS risk and compliance
 - An auditing security checklist
 
-### `Denial-of-Service (DoS) Attacks`
+### `Denial-of-Service (DoS) Attacks` [↑](#aws-practitioner-essentials)
 DoS Attack is a deliberate attempt to make a website or application unavailable to users.
 
 Customers can call the coffee shop to place their orders. After answering each call, a cashier takes the order and gives it to the barista.
@@ -857,7 +884,7 @@ An AWS Service that protects applications against DDoS attacks. Provides two lev
   - Integrates with other services such as `Amazon CloudFront`, `Amazon Route 53`, and ELB.
   - This can also be integrated with `AWS WAF` by writing custom ruled to mitigate complex DDoS attacks.
 
-### `Additional Security Services`
+### `Additional Security Services` [↑](#aws-practitioner-essentials)
 
 1. **AWS Key Management Service**
    - Enables to perform encryption operations through the cryptographic keys.
@@ -891,7 +918,64 @@ An AWS Service that protects applications against DDoS attacks. Provides two lev
 - [Security Best Practices in IAM](https://docs.aws.amazon.com/IAM/latest/UserGuide/best-practices.html)
  
 
+## Monitoring and Analytics [↑](#aws-practitioner-essentials)
+Observing systems, collecting metrics, and then using data to make decisions.
 
+### `Amazon CloudWatch` [↑](#aws-practitioner-essentials)
+- a web service that enables to monitor and manage various metrics and configure alarm actions based on data from 
+  those metrics.
+- CloudWatch uses [Metrics](#metrics) to represent the data points in an AWS resources. The metrics is sent to the 
+  CloudWatch. The CloudWatch then uses these metrics to create graphs automatically that show how performance has 
+  changed over time.
+
+#### Metrics
+- Metrics are data about the performance of your systems.
+- By default, many services provide free metrics for resources (such as EC2 instance, EBS volumes, RDS DB instances).
+- It is also possible to publish own application metrics and be reflected on Amazon CloudWatch.
+- Amazon CloudWatch can load all metrics in the AWS account.
+- Metric data is kept for **15 months**, enabling to view both up-to-the-minute data and historical data.
+- To graph metrics in the console, the `CloudWatch Metric Insigts` is used. It is a high-performance SQL query 
+  engine that can be used to identify trends and patterns within all metrics in real-time.
+
+#### CloudWatch Alarms
+- **alarms** can be created to automatically perform actions if the value of a metric has gone above or below a 
+  predefined threshold.
+
+### `AWS CloudTrail` [↑](#aws-practitioner-essentials)
+- Records the API call for the account.
+- The recorded information includes the identity of the API caller, the time of the API call, the source IP address 
+  of the API caller, and more.
+- CloudTrail can be think of as a _"breadcrumbs"_ or a log of actions that someone left behind.
+- Events are typically updated in CloudTrail within **15 minutes** after an API call.
+- A filter is enabled by specifying the time and date that an API call occurred, the user who requested the action, 
+  the type of resource that was involved in the API call, and more.
+
+<div align="center">
+  <img src="../img/cloud-trail-sample.png" height="50%" width="75%"/>
+</div>
+
+#### Cloud Trail Insights
+- Optional feature that allows CloudTrail to automatically detect unusual API activities in AWS account.
+
+### `AWS Trusted Advisor` [↑](#aws-practitioner-essentials)
+- Web service that inspects AWS environment and provides real-time recommendations in accordance with AWS best 
+  practices.
+
+#### Five Categories
+Trusted Advisor compares its findings to AWS best practices in five categories:
+
+1. **Cost Optimization**
+2. **Performance**
+3. **Security**
+4. **Fault Tolerance**
+5. **Service Limits**
+
+<div align="center">
+  <img src="../img/trusted-advisor-dashboard.png" height="50%" width="50%"/>
+</div>
+
+
+## Pricing and Support [↑](#aws-practitioner-essentials)
 
 
 
