@@ -65,6 +65,9 @@
 - [VII. Monitoring and Analytics in AWS](#monitoring-and-analytics-)
   - [`Amazon CloudWatch`](#amazon-cloudwatch-)
   - [`AWS CloudTrail`](#aws-cloudtrail-)
+  - [`AWS Config`](#aws-config-)
+  - [`AWS Audit Manager`](#aws-audit-manager-)
+  - [`Governance in AWS`](#governance-in-aws-)
   - [`Trusted Advisor`](#aws-trusted-advisor-)
 - [VIII. Pricing and Support in AWS](#pricing-and-support-)
 
@@ -815,9 +818,16 @@ accounts in the organization.
 - Implement hierarchical groupings of accounts.
 - AWS service and API actions access control
 
+
+#### Service Control Policies (SCPs)
 It is possible to centrally control permissions for the accounts in the organization by using the **Service Control 
 Policies (SCPs)**. SCPs enable to place restrictions on the AWS services, resources, and individual API actions that 
 users and roles in each account can access.
+
+- SCPs can ba applied to the organization root, an individual member account, or an OU.
+- SCPs affects all IAM users, groups, and roles within an account, including the AWS account root user.
+- You can apply IAM policies to IAM users, groups, or roles. You cannot apply an IAM policy to the AWS account root 
+  user.
 
 #### Organizational Units
 In AWS Organizations, accounts can be grouped into an Organizational Unit (OU) to make it easier to manage accounts 
@@ -956,6 +966,29 @@ Observing systems, collecting metrics, and then using data to make decisions.
 
 #### Cloud Trail Insights
 - Optional feature that allows CloudTrail to automatically detect unusual API activities in AWS account.
+
+### `AWS Config` [↑](#aws-practitioner-essentials)
+A service that can be used to assess, audit, and evaluate the configurations of AWS resources.
+
+- **Benefits:** Helps evaluate configurations against a desired state, manage resource configuration changes, and 
+  simplify troubleshooting and remediation.
+- **Use cases:** Continually audit security monitoring and analysis and to streamline operational troubleshooting 
+  and change management.
+
+### `AWS Audit Manager` [↑](#aws-practitioner-essentials)
+A service that continually audits your AWS usage to simplify risk and compliance assessment. It helps collect 
+evidence and manage audit data.
+
+- **Benefits:** Saves time with _automated evidence collection_, streamlines collaboration across teams, and helps 
+  ensure integrity of audits with read-only permissions.
+- **Use Case:** Automate evidence collection, continually audit to assess compliance, and deploy internal risk 
+  assessments.
+
+### `Governance in AWS` [↑](#aws-practitioner-essentials)
+
+[Work in Progress](https://img.shields.io/badge/Work_In_Progress-yellow)
+
+
 
 ### `AWS Trusted Advisor` [↑](#aws-practitioner-essentials)
 - Web service that inspects AWS environment and provides real-time recommendations in accordance with AWS best 
