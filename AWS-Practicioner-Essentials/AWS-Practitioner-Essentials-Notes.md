@@ -730,7 +730,37 @@ instances or Amazon RDBs.
 #### Useful Links
 - [Deep Dive - Databases](https://docs.aws.amazon.com/decision-guides/latest/databases-on-aws-how-to-choose/databases-on-aws-how-to-choose.html)
 
-----------
+
+## AI/ML and Data Analytics
+
+### `Artificial Intelligence (AI) and Machine Learning (ML) on AWS`
+**_Artificial Intelligence_** is a broad field focused on the development of intelligent computer systems capable of 
+performing human-like tasks.
+
+**_Machine Learning_** is a type of AI for training machines to perform complex tasks without explicit instructions. ML 
+training finds the patterns hidden in vast amounts of historical data to produce an **ML model**. This ML model can 
+then be applied to new data to make predictions or decisions based on the patterns it's learned. 
+
+
+#### Common ML Business use cases
+1. Predict trends, such as future stock prices.
+2. Make decisions, like routing callers to the right department.
+3. Detect anomalies, such as bank fraud.
+
+#### AWS AI/ML Solutions
+The AWS AI/ML stack is composed of the following three (3) tiers of solutions:
+
+1. **AI services** - pre-built models that are already trained to perform specific functions.
+2. **ML services** - A more customized approach with `Amazon SageMaker AI` where you build, train, and deploy your 
+   own ML models with fully managed infrastructure.
+3. **ML frameworks and infrastructure** - A completely custom approach to building models using purpose-build chips 
+   that integrate with popular ML frameworks.
+
+
+
+
+
+
 
 ## Security [↑](#aws-practitioner-essentials)
 ### `AWS Shared Responsibility Model` [↑](#aws-practitioner-essentials)
@@ -837,7 +867,7 @@ with similar business or security requirements.
 ### `Compliance` [↑](#aws-practitioner-essentials)
 
 #### AWS Artifacts
-AWS Artifacts is an AWS service that provides on-demand access to AWS security and compliance reports and select 
+AWS Artifacts is a no-cost AWS service that provides on-demand access to AWS security and compliance reports and select 
 online agreements.
 
 AWS Artifacts provide access to AWS security and compliance documents such as **_AWS ISO certifications_**, **_Payment Card 
@@ -984,11 +1014,49 @@ evidence and manage audit data.
 - **Use Case:** Automate evidence collection, continually audit to assess compliance, and deploy internal risk 
   assessments.
 
-### `Governance in AWS` [↑](#aws-practitioner-essentials)
+### Governance in AWS [↑](#aws-practitioner-essentials)
+Governance is a framework to manage IT goals with policies, processes, and structures to ensure adherence.
 
-[Work in Progress](https://img.shields.io/badge/Work_In_Progress-yellow)
+Standardized initial account setup according to best practices.
 
+Detect and remediate non-compliance accounts.
 
+#### AWS Control Tower
+A service that can be used to enforce and manage governance rules for security, operations, and compliance at scale
+across all your organizations and accounts in the AWS cloud.
+
+- **Benefits:** Save time while providing governance. It uses pre-configured controls, which can help to quickly set 
+  up milti-account environments, automation with built-in governance, and integration of third-party software at scale.
+- **Use Cases:** Quickly deploy applications and provision compliant AWS accounts.
+- **Features:**
+  - **Dashboard:** Provide continuous oversight to see provisioned accounts across enterprise. AWS Control Tower 
+    also has controls for policy enforcement and can help detect non-compliant resources.
+  - **Account Factory:** Configurable account template that standardizes the provisioning of new accounts.
+  - **Controls (Guardrails):** High-level rules that provide governance for overall AWS environment.
+  - **Landing Zone:** Well-architected multi-account environment that's based on security and compliance best 
+    practices. It is the enterprise-wide container that holds all the OUs, accounts, users, and resources that 
+    needs to be regulated for compliance.
+
+#### AWS Service Catalog
+Create, share, and organize from a curated catalogs of AWS resources.
+
+Deploy baseline networking resources and security tools for new AWS accounts so it can be governed consistently.
+
+<div align="center">
+  <img src="../img/aws-service-catalog.png" height="50%" width="50%"/>
+</div>
+
+#### AWS License Manager
+The AWS Bring-Your-Own-License model (BYOL) allows companies to use existing license that they have already 
+purchased for a more cost-effective reason instead of buying directly from AWS.
+
+The **AWS License Manager** helps manage software licenses and fine-tune licensing cost.
+
+- **Benefits:** Helps with the visibility and control, tracking and managing licenses, and reduce the risk of 
+  non-compliance with licenses.
+- **Use Cases:** Streamline license management and to simplify the Microsoft License Mobility through Softwarte 
+  Assurance experience. It can also be used to automate the distribution and activation of software entitlements 
+  across AWS accounts for end users. 
 
 ### `AWS Trusted Advisor` [↑](#aws-practitioner-essentials)
 - Web service that inspects AWS environment and provides real-time recommendations in accordance with AWS best 
@@ -1006,6 +1074,10 @@ Trusted Advisor compares its findings to AWS best practices in five categories:
 <div align="center">
   <img src="../img/trusted-advisor-dashboard.png" height="50%" width="50%"/>
 </div>
+
+### `IAM Access Analyzer`
+Provides capabilities to set, verify, and refine permissions by analyzing external access and validating that 
+policies match the corporate security standards.
 
 
 ## Pricing and Support [↑](#aws-practitioner-essentials)
