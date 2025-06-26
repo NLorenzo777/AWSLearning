@@ -50,7 +50,8 @@
   - [Amazon Redshift](#amazon-redshift-)
   - [Amazon Database Migration Service (DMS)](#amazon-database-migration-service-amazon-dms-)
   - [Other Amazon Database Services](#additional-database-services-)
-- [VI. Security in AWS](#security-)
+- [VI. AI/ML and Data Analytics in AWS](#artificial-intelligence-ai-and-machine-learning-ml-on-aws-)
+- [VII. Security in AWS](#security-)
   - [Shared Responsibility Model](#aws-shared-responsibility-model-)
   - [User Permissions and Access](#user-permissions-and-access-)
     - [Identity and Access Management (IAM)](#identity-and-access-management-iam-users)
@@ -62,14 +63,14 @@
     - [AWS Artifacts](#aws-artifacts)
   - [Denial-of-Service (DoS) Attacks](#denial-of-service-dos-attacks-)
   - [Additional Security Services](#additional-security-services-)
-- [VII. Monitoring and Analytics in AWS](#monitoring-and-analytics-)
+- [VIII. Monitoring and Analytics in AWS](#monitoring-and-analytics-)
   - [`Amazon CloudWatch`](#amazon-cloudwatch-)
   - [`AWS CloudTrail`](#aws-cloudtrail-)
   - [`AWS Config`](#aws-config-)
   - [`AWS Audit Manager`](#aws-audit-manager-)
   - [`Governance in AWS`](#governance-in-aws-)
   - [`Trusted Advisor`](#aws-trusted-advisor-)
-- [VIII. Pricing and Support in AWS](#pricing-and-support-)
+- [IX. Pricing and Support in AWS](#pricing-and-support-)
 
 ## Terminologies:
 `Cloud Computing`: On-demand delivery of IT resources and applications through the internet with pay-as-you-go pricing.
@@ -731,9 +732,9 @@ instances or Amazon RDBs.
 - [Deep Dive - Databases](https://docs.aws.amazon.com/decision-guides/latest/databases-on-aws-how-to-choose/databases-on-aws-how-to-choose.html)
 
 
-## AI/ML and Data Analytics
+## AI/ML and Data Analytics [↑](#aws-practitioner-essentials)
 
-### `Artificial Intelligence (AI) and Machine Learning (ML) on AWS`
+### `Artificial Intelligence (AI) and Machine Learning (ML) on AWS` [↑](#aws-practitioner-essentials)
 **_Artificial Intelligence_** is a broad field focused on the development of intelligent computer systems capable of 
 performing human-like tasks.
 
@@ -747,8 +748,49 @@ then be applied to new data to make predictions or decisions based on the patter
 2. Make decisions, like routing callers to the right department.
 3. Detect anomalies, such as bank fraud.
 
-#### AWS AI/ML Solutions
+### `AWS AI/ML Solutions` [↑](#aws-practitioner-essentials)
 The AWS AI/ML stack is composed of the following three (3) tiers of solutions:
+
+#### Tier 1: AWS AI Services
+Pre-built models that are already trained to perform specific functions. These ready-to-use, managed services can 
+help quickly solve for a variety of business use cases.
+
+1. **Language Services**
+
+AWS AI Language Services are great for when there is a need to interpret text or speech and transform it into something meaningful.
+
+| Language Service      | Description                                                                                                                                                                                                                                                 |
+|-----------------------|-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
+| **Amazon Comprehend** | Uses natural language processing to extract key insights from documents. It develop these insights by recognizing key phrases, language, sentiment, and other common elements in the document                                                               |
+| **Amazon Polly**      | Converts text into life-like speech. Supports multiple languages, different genders, and variety of accents. <br/> **Use Cases:** Virtual assistants, e-learning applications, accessibility enhancements for visually impaired users.                      |
+| **Amazon Transcribe** | Converts speech into text. Supports multiple language ans offers speaker identification, custom vocabulary, and real-time transcription. <br/> **Use cases:** Customer call transcription, automated subtitling, and metadata generation for media content. |
+| **Amazon Translate**  | Text translation service. Ideal for global communication because it supports real-time and batch text translation across multiple language. <br/> **Use Cases:** Document translation and muti-language application integration.                            |
+
+
+2. **Computer Vision and Search Services**
+
+These services are ideal for answering questions and gathering insights from various types of content sources such as documents, images, videos, and more.
+
+| Computer Vision and Search Services | Description                                                                                                                                                                                                                                                                                                                           |
+|-------------------------------------|---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
+| **Amazon Kendra**                   | Uses natural language processing to search for answers within large amounts of enterprise content. Understands the context of a query so it can return more precise and relevant answers than just a list of documents with matching keywords. <br/> **Use Cases:** Intelligent search, chatbots, and application search integration. |
+| **Amazon Rekognition**              | Video analysis service. Identify objects, people, text, scenes, and activities within images and videos stored in Amazon S3. <br/> **Use cases:** Content moderation, identity verification, media analysis, and hone automation experiences.                                                                                         |
+| **Amazon Textract**                 | Detects and extracts typed and handwritten text found in documents, forms, and even tables within documents. <br/> **Use cases:** Financial, healthcare, and government form text extraction for quick processing.                                                                                                                    |
+
+
+3. **Conversational AI and personalization services**
+
+Users can interact with applications through text and voice conversations. It is also possible to present customers with produce recommendations personalized just for them.
+
+| Conversational AI Services | Description                                                                                                                                                                                       |
+|----------------------------|---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
+| **Amazon Lex**             | Add voice and text conversational interfaces to applications. This service use both Natural Language Understanding (NLU) and Automatic Speech Recognition (ASR) to create lifelike conversations. |
+| **Amazon Personalize**     | Use historical data to build intelligent applications with personalized recommendations for customers.                                                                                            |
+
+
+#### Tier 2: ML Services
+[WORK IN PROGRESS]
+
 
 1. **AI services** - pre-built models that are already trained to perform specific functions.
 2. **ML services** - A more customized approach with `Amazon SageMaker AI` where you build, train, and deploy your 
