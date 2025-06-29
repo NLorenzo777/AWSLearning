@@ -1,4 +1,4 @@
-# Module 2: Getting Started with AWS Mainframe Modernization Service
+# Module 2: Getting Started with AWS Mainframe Modernization Service [↑](../README.md)
 
 - [Introduction to AWS Mainframe Modernization](#introduction-to-aws-mainframe-modernization-)
 - [Architecture and Use Cases](#architecture-and-use-cases-)
@@ -8,7 +8,7 @@
 - [AWS M2 Benefits](https://aws.amazon.com/mainframe/)
 - [AWS Costing/Pricing](https://aws.amazon.com/mainframe-modernization/pricing/?did=ap_card&trk=ap_card)
 
-## Introduction to AWS Mainframe Modernization [↑](#module-2-getting-started-with-aws-mainframe-modernization-service)
+## Introduction to AWS Mainframe Modernization [↑](#module-2-getting-started-with-aws-mainframe-modernization-service-)
 AWS Mainframe Modernization helps migrate and modernize mainframe applications to AWS managed runtime environments.
 
 - The service offers tools and resources to help with planning and performing migration and modernization.
@@ -100,7 +100,6 @@ AWS M2 offers a comprehensive suite of features to help migrate and modernize ma
 - `Runtime` run and manage the migrated application in test or production elastic runtime environments.
 - The `AWS Marketplace` features 200+ AWS services and partner solutions.
 
-### Basic Technical Concepts
+--------
 
-
-
+## NEXT MODULE: [Mainframe Modernization Patterns and Best Practices](Module-3.md)
