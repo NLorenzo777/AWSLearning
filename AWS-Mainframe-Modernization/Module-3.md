@@ -108,9 +108,11 @@ to be available in case the data becomes useful in the future.
 ## Short-term Mainframe Migration and Modernization Patterns [↑](#module-3-mainframe-modernization-patterns-and-best-practices-)
 The diagram below compares the impact for each of the four (4) migration and modernization patterns.
 
+
 <div align="center">
   <img src="../img/short-term-migration-patterns.png" height="60%" width="60%"/>
 </div>
+
 
 - **Hardware Emulator Rehosting**
   - The mainframe operating system and the applications stay the same.
@@ -168,6 +170,64 @@ It is a valid pattern for migrating development and test environments to AWS, or
 (CI/CD) pipeline on AWS with deployment back onto the mainframe.
 
 ### Mainframe Compatible Replatforming
+The mainframe-compatible runtime provides middleware and operating system APIs compatible with the ones available in the mainframe, which is necessary for the application code.
+
+This allows the porting and recompiling the source application for native x86 execution. Because there is no on-the-fly instruction translation, there is no related performance impact.
+
+#### `Areas Supported by Mainframe Compatible Replatforming`
+
+1. Indexed-file access
+2. Transaction Management
+3. Mainframe screens
+4. Legacy protocols
+5. Temporary Storage
+6. Batch support
+
+Mainframe data formats like Virtual Storage Access Method (VSAM) or Queued Sequentital Access Method (QSAM) are retained or mapped to a relational data store such as Amazon Aurora or Amazon RDS.
+
+The illustration below is a pattern where complete code recompilation is necessary because of the changed in platform, middleware, dependencies, and data formats. This is a replatforming project
+where the programs and business functions are incrementally migrated and thoroughly tested. It is not a lift-and-shift.
+
+
+<div align="center">
+  <img src="../img/mainframe-compatible-replatforming-sample.png" height="80%" width="80%"/>
+</div>
+
+
+This process can last between months and years depending on the number of lines of codes and complexity.
+
+The Mainframe-compatible runtime can run on EC2 instances or on Amazon ECS, AWS EKS, or other containers.
+
+Dependencies for security, scheduling, printing, orm essage queueing can be provided as managed services, in their own EC2 instances or containers.
+
+
+### Mainframe Automated Refactoring
+Guarantees a transformation result in an object-oriented and service-oriented modern application. Since the process is automated, it is quick and greatly reduces risk.
+
+#### `Automation Process`
+1. **Automated reverse engineering**
+   - The source code is ingested and an application model showing program and data dependencies is created.
+   - This helps to outline a detailed strategy with different components, data mapping, conversion rules, and ways to decompose work packages.
+2. **Incremental automated conversions**
+   - No manual code rewrite is needed. This is followed by extensive testing.
+   - This process can take months to years depending on the number of lines of code and complexity.
+
+
+<div align="center">
+  <img src="../img/automated-refactoring-sample.png" height="80%" width="80%"/>
+</div>
+
+- An elastic web architecture is typically generated.
+- There is flexibility to tune the transformation rules for other target components.
+- The service-enabled stack allows exposing services through Amazon API Gateway or integrating with Alexa for Business.
+
+### Modern Middleware Replatforming
+- This pattern applies to middleware or runtimes that are available on both the mainframe and x86 operating systems. 
+- This type of modern middleware often shares the same code base across systems. For example: _IBM WebSphere Application Server_, _PHP or Perl runtimes_, or _Java virtual machines_.
+- In this type of project, the middleware remains the same, but is hosted on a different OS. Since the middleware is availableacross operating systems, the application code and data are moved
+to the cloud with minimal to no changes.
+
+
 
 
 ## Mainframe Augmentation Pattern Deep Dive
