@@ -17,6 +17,6 @@ purpose of this repository is to easily access learning progress for review.
 3. [AWS Accreditation: Blu Age L2 Notes (Mainframe Modernization)](AWS-Mainframe-Modernization/L2-Blu-Age-Certification/)
    1. [Course 1: ]
    2. [Course 2: ]
-   3. [Course 3: ]
-   4. [Course 4: ]
-   5. [Course 5: Reviewing te Customer's Codebase with AWS Blu Insights Advanced Features]
+   3. [Course 3: ](AWS-Mainframe-Modernization/L2-Blu-Age-Certification/Course-3.md)
+   4. [Course 4: ](AWS-Mainframe-Modernization/L2-Blu-Age-Certification/Course-4.md)
+   5. [Course 5: Reviewing te Customer's Codebase with AWS Blu Insights Advanced Features](AWS-Mainframe-Modernization/L2-Blu-Age-Certification/Course-5.md)

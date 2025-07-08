@@ -104,3 +104,19 @@ Things to look for:
     - For example, `cyclomatic complexity > 120`
   - Select all the filtered files.
   - Edit properties and add label.
+
+### `AWS Blu Insights Workpackages`
+- Allow to group files together, just like labels.
+- Correspond to artefacts transformation (e.g. POC, Sprint 1, etc.)
+- Has a lot more information than label
+
+### `POC Scoping in AWS Blu Insights`
+- The main graph is Read-only, the sub-graph that is created can be modified.
+- When creating a POC, ensure that the CSD file is not included (or hidden) when getting the child dependencies. If this happens, it will include all the files.
+
+#### Creating a Screen POC
+- the entry point for a Screen is a COB file.
+- Select one COB file from the main graph and extract it.
+- From the extracted sub-graph create get all of its child.
+
+
