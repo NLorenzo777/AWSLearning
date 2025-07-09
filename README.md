@@ -20,3 +20,4 @@ purpose of this repository is to easily access learning progress for review.
    3. [Course 3: ](AWS-Mainframe-Modernization/L2-Blu-Age-Certification/Course-3.md)
    4. [Course 4: ](AWS-Mainframe-Modernization/L2-Blu-Age-Certification/Course-4.md)
    5. [Course 5: Reviewing te Customer's Codebase with AWS Blu Insights Advanced Features](AWS-Mainframe-Modernization/L2-Blu-Age-Certification/Course-5.md)
+   6. [Course 6: Modernizing Legacy Code with AWS Blu Insights Transformation Center](AWS-Mainframe-Modernization/L2-Blu-Age-Certification/Course-6.md)
