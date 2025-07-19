@@ -9,6 +9,7 @@
   - [EC2 Pricing Options](#amazon-ec2-pricing-)
   - [Amazon EC2 Auto Scaling](#scalability-and-elasticity-)
   - [Elastic Load Balancing](#elastic-load-balancer-elb-)
+    - [`Amazon EventBridge`](#amazon-eventbridge)
     - [`Amazon SNS`](#amazon-simple-notification-service-amazon-sns)
     - [`Amazon SQS`](#amazon-simple-queue-services-amazon-sqs)
   - [Serverless Computing](#additional-compute-services-serverless-computing)
@@ -165,12 +166,12 @@ Enables to deploy applications to customers around the world quickly, while prov
 
 #### 2. Compute Optimized
 - For compute intensive tasks like gaming servers, High Performance Computing (HPC), Scientific modeling.
-- The difference is, compute optimized applications are ideal for high-performance web servers, compute-intensive
+- Compute optimized applications are ideal for high-performance web servers, compute-intensive
 application servers, and dedicated gaming servers.
 
 #### 3. Memory Optimized
 - Utilizes hardware accelerators.
-- Designed to deliver fast performance for workloads that process large datasets in memory.
+- Designed to deliver fast performance for workloads that process **large datasets** in memory.
 - `Memory`
   - In computing memory is a temporary storage area.
   - It holds all the data and instructions that a CPU needs to be able to complete actions.
@@ -193,6 +194,20 @@ and high-frequency online transaction processing (OLTP) systems.
   - Is a metric that measures the performance of a storage device.
   - It indicates how many different input or output operations a device can perform in a second.
 
+### `Amazon Machine Image (AMI)`
+AMIs are pre-built virtual machine images that have the basic components for what is needed to start an instance.
+
+#### AMI Components
+- An AMI includes operating system, storage setup, architecture type, permissions for launching, and an extra software that is already installed.
+- You can use AMI to launch several EC2 instance that all have the same setup.
+- AMIs provide repeatability through a consistent environment for every new instance.
+- Development and testing are consistent because configurations are identical and deployments are automated which helps scaling, reduces errors, and streamlines managing large-scale environments.
+
+#### Three ways to use AMIs
+1. Create specific AMI by building a custom AMI with specific configurations and software tailored according to needs.
+2. Use pre-configured AWS AMIs which are set up for common OS and software.
+3. Purchase AMIs from the AWS marketplace, where third-party vendors offer specialized software designed for specific use cases.
+
 ### `Amazon EC2 Pricing` [↑](#aws-practitioner-essentials)
 #### 1. On-Demand
 - ideal for short-term, irregular workloads that cannot be interrupted.
@@ -206,7 +221,6 @@ and high-frequency online transaction processing (OLTP) systems.
 However, On-Demand rates will be charged until one of the following is done.
   1. Terminate the Instance
   2. Purchase a new reserved instance that matches the instance attributes. 
-  
 
 `Standard Reserved Instances:`
 - Good fit if the EC2 instance type and size is known for steady-state applications.
@@ -289,6 +303,17 @@ through a **microservices** approach.
   <img src="../img/microservices1.png" height="300px" width="300px"/>
 </div>
 
+#### Amazon EventBridge
+- a serverless service that helps connect different parts of an application using events, helping to build scalable event-driven systems.
+- Events are routed from sources like custom apps, AWS services, and third-party software to other applications.
+- Simplifies the process of receiving, filtering, transforming, and delivering events, so you can quickly build reliable applications.
+- Example:
+  - Customers use an online food delivery service to order meals from local restaurants through a mobile app. When a customer places an order, several steps need to happen simultaneously.
+    1. The payment service must verify and process the customer's payment.
+    2. Notify the restaurant to start preparing the meal.
+    3. Inventory management where the system checks if the ingredients for the order are available.
+    4. Delivery driver is notified to pick up and deliver the meal.
+
 #### Amazon Simple Notification Service (Amazon SNS)
 - a publish/subscribe (pub/sub) service.
 - Using _Amazon SNS topics_, a publisher publishes messages to subscribers.
@@ -310,6 +335,19 @@ provisioning, scaling, high availability is handled by the cloud provider (AWS).
 Another benefit of serverless computing is the flexibility to scale serverless applications automatically.
 Severless computing can adjust the applications' capacity by modifying the units of consumption, such as throughput and memory.
 
+#### Unmanaged, Managed, Fully-managed Services
+
+1. **Unmanaged Services**
+   - Like **Amazon EC2**, AWS takes care of the underlying physical infrastructure but customer is responsible for setting up, securing, and maintaining the OS, network, and applications.
+2. **Managed Services**
+   - Reduce the amount of infrastructure need to manage.
+3. **Fully-managed Services**
+   - Like **serverless ones**, abstraction is taken further.
+   - Eliminating the need to provision or manage any servers.
+   - The underlying infrastructure is fully managed by AWS, so customer can focus entirely on writing and deploying the code.
+
+
+
 #### 1. AWS Lambda
 - Upload a code into a Lambda Function that is invoked through a configured **Trigger**.
 - This function is run in an environment that is not to be taken care of by the user.
@@ -325,6 +363,7 @@ is when a new image is uploaded.
 
 #### 2. AWS Container Service
 - There is access in underlying environment but there is still efficiency and portability.
+- Automatically scale containers, handle health checks, and manage their lifecycle based on traffic demand.
 - The container is a `Docker` container. (Widely known platforms that uses OS level virtualization to deliver software)
 - `Container`: is a package or object for a code and dependencies. Runs on top of an EC2 instances and are isolated from one another.
 
