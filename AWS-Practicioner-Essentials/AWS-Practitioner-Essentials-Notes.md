@@ -34,6 +34,8 @@
   - [Amazon Virtual Private Cloud (VPC)](#amazon-virtual-private-cloud-amazon-vpc)
   - [VPC Components](#components-in-a-vpc-)
     - [`AWS Direct Connect`](#3-aws-direct-connect-)
+  - [More Ways to Connect to the AWS Cloud](#more-ways-to-connect-to-the-aws-cloud-)
+  - [Gateway Services](#gateway-services-)
   - [Network Security Layers](#network-security-layers-)
   - [Network ACLs](#network-access-control-list-network-acls-)
   - [Security Groups](#security-groups-)
@@ -530,6 +532,9 @@ instances or Amazon RDBs.
 
 `Private Subnet:` Contains resources that should be accessibly only through private network.
 
+<div align="center">
+  <img src="../img/networking-diagram.png" height="50%" width="80%"/>
+</div>
 
 ### `Components in a VPC` [↑](#aws-practitioner-essentials)
 #### 1. Internet Gateway (IGW)
@@ -543,10 +548,6 @@ instances or Amazon RDBs.
 - VPG establish a virtual private network (VPN) connection between the VPC and a private network.
 - Allows traffic into the VPC only if it is coming from an approved network.
 
-<div align="center">
-  <img src="../img/networking1.png" height="50%" width="80%"/>
-</div>
-
 #### 3. AWS Direct Connect [↑](#aws-practitioner-essentials)
 - AWS service that lets users establish a dedicated private connection between data center 
   and a VPC.
@@ -554,6 +555,43 @@ instances or Amazon RDBs.
   network.
 - Network traffic remains in the AWS network and never touches the public path which promotes 
   more security and prevents bottleneck and sudden increase in latency.
+
+<div align="center">
+  <img src="../img/networking1.png" height="50%" width="80%"/>
+</div>
+
+### `More ways to connect to the AWS Cloud` [↑](#aws-practitioner-essentials)
+
+#### 1. AWS Client VPN
+- Connect remote workers and on-premises networks to the cloud.
+- Fully managed, elastic VPN service that automatically scales up or down based on user demand.
+- It is a cloud VPN solution where there is no need to install and manage hardware.
+- **Use Case:** Quickly scale remote user access.
+
+#### 2. AWS Site-to-Site VPN
+- Some companies might want to establish secure, encrypted connections between their on-premises networks like data centers or branch offices and their resources in their Amazon VPC.
+- Creates a secure connection between your data center or branch offices and AWS Cloud resources.
+- **Use Case:** Application migration and secure communication between remote locations.
+
+#### 3. AWS PrivateLink
+- Highly available, scalable technology that can be used to privately connect your VPC to services and resources as if they were in your VPC.
+- There is no need to use an IG, NAT device, public IP address, Direct Connect connection, or AWS Site-to-Site VPN connection to allow communication with AWS services or resources from your private subnets.
+- The specific API endpoints, sites, services, and resources that are reachable from the VPC are controlled instead.
+
+### `Gateway Services` [↑](#aws-practitioner-essentials)
+There are several different types of gateways to connect to AWS resources.
+
+#### 1. AWS Transit Gateway
+- Connect Amazon VPCs and on-premises networks through a central hub.
+- **QUICK LINK:** [AWS Transit Gateway](https://aws.amazon.com/transit-gateway/)
+
+#### 2. Network Address Translation (NAT) Gateway
+- Used so that instance in a private subnet can connect to services outside of VPC but external services cannot initiate a connection with those instance.
+- **QUICK LINK:** [NAT Gateway](https://docs.aws.amazon.com/vpc/latest/userguide/vpc-nat-gateway.html)
+
+#### 3. Amazon API Gateway
+- AWS Service for creating, publishing, maintaining, monitoring, and securing APIs at any scale.
+- **QUICK LINK:** [Amazon API Gateway](https://aws.amazon.com/api-gateway/)
 
 ### `Network Security Layers` [↑](#aws-practitioner-essentials)
 - Network Hardening
@@ -571,9 +609,9 @@ instances or Amazon RDBs.
   communicate with the resources in a subnet.
 - Only evaluates a packet if it crosses a **certain subnet**.
 - Stateless (focuses on the list, it does not check if it originates from its own subnet or not.)
-- By default, ACL allows all inbound and outbound traffic and can be customized by adding 
+- **By default**, ACL **allows** all inbound and outbound traffic and can be customized by adding 
   personalized rules.
-- for custom network ACLs, all inbound and outbound traffics are denied by default until rules 
+- **for custom network ACLs**, all inbound and outbound traffics are **denied** by default until rules 
   to specify is added.
 
 ---
@@ -581,11 +619,10 @@ instances or Amazon RDBs.
 - ACLs remember nothing and check packets that cross the subnet border inbound and outbound.
 - After a packet has entered a subnet, it must have its permissions evaluated for resources 
   within the subnet, such as EC2 instances.
-
 ---
 
 #### Security Groups [↑](#aws-practitioner-essentials)
-- A virtual firewall that controls inbound and outbound traffic for an EC2 instance.
+- A virtual firewall that controls inbound and outbound traffic for an EC2 instance (**instance level**).
 - By default, denies all inbound and outbound traffic. Then custom rules are configured to 
   allow certain traffics.
 - Does not allow any IP address by default.
@@ -600,7 +637,6 @@ instances or Amazon RDBs.
 - When a packet response for a request returns to the instance, the security group remembers the 
   previous request. The security group allows the response to proceed, regardless of inbound 
   security group roles.
-
 ---
 
 ### `Network Traffics in VPC`
@@ -608,6 +644,10 @@ instances or Amazon RDBs.
   packet. A **packet** is a unit of data sent over the internet or a network.
 
 ### `Global Networking` [↑](#aws-practitioner-essentials)
+A website hosted in AWS Cloud is accessed through **DNS resolution**.
+
+**DNS Resolution** involves a customer DNS resolver communicating with a company DNS server.
+It is the process of translating domain name to an IP address.
 
 #### Domain Name System (DNS) [↑](#aws-practitioner-essentials)
 - Translates website names into IP addresses.
@@ -636,11 +676,10 @@ instances or Amazon RDBs.
 4. Amazon CloudFront connects to the Application Load Balancer, which sends the incoming packet 
    to an Amazon EC2 instance.
 
-----------
-
 ## Storage and Databases [↑](#aws-practitioner-essentials)
 ### `Instance Stores` [↑](#aws-practitioner-essentials)
 - Block level storage volumes that behaves like a physical hard drive.
+- Unmanaged non-persistent, high-performance block storage.
 - Provides **temporary block-level storage** for an EC2 instance.
 - A disk storage that is physically attached to the host computer for an EC2 instance, therefore 
   has the same life span as the instance.
@@ -650,40 +689,60 @@ instances or Amazon RDBs.
 - Service that provides **block-level storage** volumes that can be used with EC2 instances.
 - Provides persistence of data even if EC2 is stopped/terminated.
 - Created by defining the configuration (such as volume size and type) and provisioning it.
-- Does not automatically resize. It is a hard drive.
+- **Does not automatically resize**. It is a hard drive.
 - Stores data in a single AZ. When attaching an EC2 instance, both the instance and the EBS 
   volume must reside within the same AZ.
 - #### EBS Snapshots
   - A feature of EBS that takes incremental backup for the volume.
+  - Enable rapid creation of new volumes from existing data to quickly deploy for identical test environments that mirror production.
   - The first backup taken of a volume copies all the data. Only the blocks of data that have 
     been changed since the most recent snapshot are saved _(Incremental backup)_.
   - _Full backup_ includes that data that has not been changed.
 
-### `Amazon Simple Storage Service (Amazon S3)` [↑](#aws-practitioner-essentials)
-- Service that provides **object-level storage**.
-- Store and retrieve a virtually unlimited amount of data.
-- Store data as version controlled _objects_ (object maximum size of **5TB**).
-- Objects are stored in **buckets**.
+#### Amazon Data Lifecycle Manager
+- Automate the creation, retention, and deletion of EBS snapshots.
+- Schedule snapshots during off-peak hours to minimize performance impact and automatically delete outdated backups to control storage costs.
+- Particularly valuable for large-scale deployments where manual snapshot management would be time-consuming and error-prone.
+- Reduce manual effort and establish consistent backup policies to maintain compliance requirement.
+- **Create an EBS Snapshot Policy:** Using Amazon EC2 Console, API calls, AWS CLI, SDKs, or CloudFormation.
+- **Exclude Volumes:** Narrow down the data to be included in the snapshot by choosing options to exclude either the root or data volume.
+- **Set Custome Schedule:** Schedule when EBS Snapshots will happen.
+
 ------
 `Object Storage:`
+- Data storage architecture that managed data as objects in a flat address space.
+- Offers unlimited scalability so it can store vast amounts of unstructured data without worrying about capacity constraints.
 - Each object consists of **data**, **metadata**, and **key**.
 - The data might be an image, video, text document, or file of any type.
 - Metadata contains information about the data is, how it is used, size, and so on.
 - The key is the unique identifier of the object.
 ------
 
+### `Amazon Simple Storage Service (Amazon S3)` [↑](#aws-practitioner-essentials)
+- Service that provides **object-level storage**.
+- Store and retrieve a virtually unlimited amount of data.
+- An object in Amazon S3 is the fundamental unit of data storage. When a file is uploaded, it becomes an object and is **stored durably across multiple facilities within the region**.
+- Each object typically includes the data itself, metadatam and a unique identifier (key).
+- Store data as version controlled _objects_ (object maximum size of **5TB**).
+- Everything that is stored in S3 is _private_ by default.
+
+#### S3 Buckets
+- Container for storing objects in Amazon S3.
+- Basic unit for access control and can hold virtually unlimited number of objects.
+- Crucial role in data management by making it possible to group related objects and apply policies at the bucket level.
+
 #### Amazon S3 Storage Classes
 
-| Storage Class / Tier                                    | Description                                                                                                                                                                                                                                                                                                           |
-|---------------------------------------------------------|-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
-| **S3 Standard**                                         | - Designed for frequently accessed data<br/> - Stores data in minimum of 3 AZs.<br/> - Provides high availability for objects. - Applicable for websites, content distribution, and data analytics.<br/> - Has a higher cost than other storage classes intended for infrequently accessed data and archival storage. |
-| **S3 Standard-Infrequent Access<br/> (S3 Standard-IA)** | - Similar to S3 Standard but lower storage price but higher retrieval prices.<br/> - Ideal for infrequently accessed data.<br/> - Stores data in minimum of 3 AZs.<br/>                                                                                                                                               |
-| **S3 One Zone-Infrequent Access<br/> (S3 One Zone-IA)** | - Stores data in a single AZ<br/> - Lower storage price than standard-IA<br/>                                                                                                                                                                                                                                         |
-| **S3 Intelligent Tiering**                              | - Ideal for data with unknown or <br/>changing access patterns<br/> - Requires small monthly monitoring and automation fee per object.<br/> - If an object is no accessed for 30 consecutive days, Amazon S3 automatically moves it to S3 Standard-IA tier. Once accessed, automaticall moved to S3 Standard tier.    |
-| **S3 Glacier Instant Retrieval**                        | - For archived data that requires immediate access. Retrieve objects within a few ms.                                                                                                                                                                                                                                 |
-| **S3 Glacier Flexible Retrieval**                       | - Low-cost storage for data archiving.<br/> - Able to retrieve objects within a few minutes to hours (1 minute to 12 hours).                                                                                                                                                                                          |
-| **S3 Glacier Deep Archive**                             | - Lowest-cost object storage class for archiving.<br/> - Retrieve objects within 12 hours.<br/> - Supports long-term retention and digital preservation for data that might be accessed **once or twice a year**.<br/> - All objects are replicated and stored across at least 3 geographically dispersed AZs.        |
-| **S3 Outposts**                                         | - Creates S3 buckets on Amazon S3 Outposts.<br/> - Makes it easier to retrieve, store, and access data on AWS outposts.<br/> - Works well for workloads with local data residency requirements.                                                                                                                       |
+| Storage Class / Tier                                    | Description                                                                                                                                                                                                                                                                                                                |
+|---------------------------------------------------------|----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
+| **S3 Standard**                                         | - Designed for frequently accessed data<br/> - Stores data in minimum of 3 AZs.<br/> - Provides high availability for objects.<br/> - Applicable for websites, content distribution, and data analytics.<br/> - Has a higher cost than other storage classes intended for infrequently accessed data and archival storage. |
+| **S3 Standard-Infrequent Access<br/> (S3 Standard-IA)** | - Similar to S3 Standard but lower storage price but higher retrieval prices.<br/> - Ideal for infrequently accessed data.<br/> - Stores data in minimum of 3 AZs.<br/>                                                                                                                                                    |
+| **S3 One Zone-Infrequent Access<br/> (S3 One Zone-IA)** | - Stores data in a single AZ<br/> - Lower storage price than standard-IA<br/>                                                                                                                                                                                                                                              |
+| **S3 Intelligent Tiering**                              | - Ideal for data with unknown or changing access patterns<br/> - Requires small monthly monitoring and automation fee per object.<br/> - If an object is no accessed for 30 consecutive days, Amazon S3 automatically moves it to S3 Standard-IA tier. Once accessed, automaticall moved to S3 Standard tier.              |
+| **S3 Glacier Instant Retrieval**                        | - For archived data that requires immediate access. Retrieve objects within a few ms.                                                                                                                                                                                                                                      |
+| **S3 Glacier Flexible Retrieval**                       | - Low-cost storage for data archiving.<br/> - Able to retrieve objects within a few minutes to hours (1 minute to 12 hours).                                                                                                                                                                                               |
+| **S3 Glacier Deep Archive**                             | - Lowest-cost object storage class for archiving.<br/> - Retrieve objects within 12 hours.<br/> - Supports long-term retention and digital preservation for data that might be accessed **once or twice a year**.<br/> - All objects are replicated and stored across at least 3 geographically dispersed AZs.             |
+| **S3 Outposts**                                         | - Creates S3 buckets on Amazon S3 Outposts.<br/> - Makes it easier to retrieve, store, and access data on AWS outposts.<br/> - Works well for workloads with local data residency requirements.                                                                                                                            |
 
 #### EBS and S3 comparison
 
@@ -695,12 +754,35 @@ instances or Amazon RDBs.
 | File is divided into blocks making easy to update | Have to be updated as a whole              |
 | Attached to EC2 instances and AZ level resource   | Web enabled and serverless                 |
 
+#### Amazon S3 Storage Lifecycle
+
+------
+`File Storage:`
+- Provide shared file systems accessible over networks so multiple users and application can access the same data simultaneously.
+- Offer scalability and flexibility to expand storage capacity as needs grow without managing physical infrastructure.
+------
+
 ### `Amazon Elastic File System (Amazon EFS)` [↑](#aws-practitioner-essentials)
-- Managed file system. Multiple instances can access the data at the same time.
+- Fully-managed file system. Multiple instances can access the data at the same time.
 - Linux file system.
 - Regional resource, stores data in and across multiple AZs.
 - Automatic scalable file system used with AWS cloud services and on-premise resources.
 - Can scale on demand to petabytes without disrupting applications.
+
+### `Amazon FSx`
+- Fully-managed file storage services for popular file systems like Windows, Lustre, and NetApp ONTAP.
+
+
+### `Additional Storage Services`
+
+#### 1. AWS Storage Gateway
+A fully-managed, hybrid-cloud storage service that provides on-premises access to virtually unlimited cloud storage.
+
+#### 2. AWS Elastic Disaster Recovery
+A fully-managed service that streamlines recovery of physical, virtual, and cloud-based servers into AWS.
+
+
+
 
 ### `Amazon Relational Database Service (Amazon RDS)` [↑](#aws-practitioner-essentials)
 - Automates tasks such as hardware provisioning, database setup, patching, and backups.

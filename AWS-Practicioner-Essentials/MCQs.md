@@ -54,4 +54,25 @@ D. Managing server availability.
 C. Managing data access permissions.
 </details>
 
+---
+
+#### Q4:
+**AnyCompany Marketing has created an Amazon S3 bucket to host images for their new website. 
+The images need to be accessible to anyone visiting the website without authentication. 
+After uploading the images to the bucket, users report they cannot access them, even though the bucket policy is set to allow public access.
+What is the most likely cause of this access issue?**
+
+A. The images are not properly tagged with public read permissions.
+
+B. Block public access settings are enabled at the account or bucket level.
+
+C. They need to enable the website hosting feature to make any Amazon S3 content public.
+
+D. The S3 bucket must be in the same AWS Region as the users trying to access the content.
+
+<details>
+  <summary>Reveal Answer</summary>
+B. Block public access settings are enabled at the account or bucket level.
+</details>
+
 
