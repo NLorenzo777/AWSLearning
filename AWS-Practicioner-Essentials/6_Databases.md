@@ -1,5 +1,4 @@
-# Databases in AWS [↑](AWS-Practitioner-Essentials-Notes.md)
-- [RDBS Introduction](#relational-database-services-)
+# Module 6: Databases in AWS [↑](AWS-Practitioner-Essentials-Notes.md)
 - [Amazon Relational Database Service (Amazon RDS)](#amazon-relational-database-service-amazon-rds-)
   - [Supported Database Engines](#amazon-rds-supported-database-engines)
 - [Amazon Aurora](#amazon-aurora-)
@@ -8,11 +7,13 @@
 - [Amazon Database Migration Service (DMS)](#amazon-database-migration-service-amazon-dms-)
 - [Other Amazon Database Services](#additional-database-services-)
 
-## Relational Database Services [↑](#databases-in-aws-)
+-----------
+`Relational Database Services`
 - RDBs store data in a way that relates it to other pieces of data, and they use structures query language (SQL) to manage and query data.
 - Stores data in an easily understandable, consistent, and scalable way that **works great for applications requiring structured data management**.
+-----------
 
-## `Amazon Relational Database Service (Amazon RDS)` [↑](#databases-in-aws-)
+## `Amazon Relational Database Service (Amazon RDS)` [↑](#module-6-databases-in-aws-)
 - Managed relational database service that handles routine database tasks such as backups, patching, and hardware provisioning.
 - Supports multiple database instance class types that optimize for memory, performance, or I/O.
 - Offers Multi-AZ deployment and automated backups to improve data resilience. There is also an option to manually create backups using **RDS Snapshots**.
@@ -28,17 +29,65 @@
 - Oracle Database
 - Microsoft SQL Server
 
-## `Amazon Aurora` [↑](#databases-in-aws-)
-- An enterprise-class relational database.
-- Compatible with MySQL and PostgreSQL.
-- Up to 5x faster than standard MySQL databases and up to 3x faster than standard
-  PostgreSQL databases.
+### Use Cases
+- Web applications
+- Enterprise workloads
+- Product inventories for e-commerce platforms
+
+### Benefits
+#### Cost Optimization
+- Amazon RDS eliminates high upfront costs of purchasing and maintaining database hardware infrastructure.
+- It also reduces operational expenses by automating time-consuming admin tasks like backups, patching, and monitoring.
+
+#### Multi-AZ Deployment
+- Improves database reliability through multi-AZ deployments.
+- Automatically replicates data to a standby instance in a different AZ.
+- During system failures, maintenance, or zone disruptions, Amazon RDS automatically fails over to the standby instance without manual intervention.
+- Ensures continuous database operations with minimal downtime.
+
+#### Performance Optimization
+- Enhances database performance through automated management of resource allocation, monitoring, optimization tasks.
+- Includes features like automated backups and read replicas that can help offload read traffic from the primary instance.
+- `Amazon RDS performance insights` provide real-time monitoring and analysis of database load, to help identify and resolve performance bottlenecks quickly.
+
+#### Security Protocols
+- Enhances database security through multiple layers of protection, including **VPC isolation** as well as **encryption at rest** and **in-transit**.
+
+## `Amazon Aurora` [↑](#module-6-databases-in-aws-)
+- An enterprise-class managed relational database to help reduce unnecessary **I/O operations**.
+- Compatible with **MySQL** and **PostgreSQL**.
+- Provides high performance, availability, and automatically scales alongside workloads.
 - Price is 1/10th the cost of commercial databases. Cost is reduced by reducing unnecessary I/O
   operations, while ensuring that database resources remain reliable and available.
-- Recommended for workloads that require high availability. It replicates **6 copies** of data
-  across **3 AZs** and continuously backups data to Amazon S3.
 
-## `Amazon DynamoDB` [↑](#databases-in-aws-)
+### Use Cases
+- Gaming applications
+- Media and content management
+- Real-time analytics
+
+### Benefits
+#### High performance and availability
+- Up to 5x faster than standard MySQL databases and up to 3x faster than standard PostgreSQL databases.
+- Uses distributed storage system across multiple nodes to provide high performance and availability.
+
+#### Automated Storage and Backup Management
+- Automatically grows storage from 10GB to 128TB based on actual data usage, which eliminates guesswork and capacity planning.
+- It also continuously backs up database to Amazon S3.
+
+#### Advanced Replication and Fault Tolerance
+- It replicates **6 copies** of data across **3 AZs**.
+- Provides 99.99% availability.
+- Automatically detects database failures and redirects traffic to healthy replicas without data loss.
+
+
+----------
+`NoSQL Databases`
+- Sometimes referred to as _Non-Relational Databases_ because their structures are different than RDBS like Amazon RDS.
+- Instead of row-column relationships, data are structured using key-value pairs instead.
+- 
+
+
+## `Amazon DynamoDB` [↑](#module-6-databases-in-aws-)
 - Stores data redundantly across AZs. Mirrors data across multiple drives.
 - Key-value database service that is reliable and high performance (millisecond response time).
 - For Non-Relational Database (NoSQL). Simple flexible schemas
@@ -49,7 +98,7 @@
 ### Non Relational Database (NoSQL Databases)
 - Uses structures (JSON, key-value pairs) other than rows and columns to organize data.
 
-## `Amazon Redshift` [↑](#databases-in-aws-)
+## `Amazon Redshift` [↑](#module-6-databases-in-aws-)
 - Data warehouse as a service
 - Handles the heavy lifting in provisioning the data warehouse so that users can focus on the
   data alone.
@@ -58,13 +107,13 @@
 - Offers ability to collect data from many sources and helps understand relationships and trends
   across data.
 
-## `Amazon Database Migration Service (Amazon DMS)` [↑](#databases-in-aws-)
+## `Amazon Database Migration Service (Amazon DMS)` [↑](#module-6-databases-in-aws-)
 - Enables the migration of RDBs, NRDBs, and other types of data stores.
 - **Homogenous Databases:** Databases that are of the same type.
 - **Heterogeneous Databases:** Databases that are of different source/type. Additional step
   where an AWS Schema Conversion tool is used.
 
-## `Additional Database Services` [↑](#databases-in-aws-)
+## `Additional Database Services` [↑](#module-6-databases-in-aws-)
 
 | Purpose-Build Databases                          | Description                                                                                                                                                                         |
 |--------------------------------------------------|-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
