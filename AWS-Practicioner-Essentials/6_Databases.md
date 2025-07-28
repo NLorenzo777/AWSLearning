@@ -6,6 +6,7 @@
 - [Amazon Redshift](#amazon-redshift-)
 - [Amazon Database Migration Service (DMS)](#amazon-database-migration-service-amazon-dms-)
 - [Other Amazon Database Services](#additional-database-services-)
+- [In-Memory Caching Services](#in-memory-caching-services-)
 
 -----------
 `Relational Database Services`
@@ -82,47 +83,66 @@
 
 ----------
 `NoSQL Databases`
-- Sometimes referred to as _Non-Relational Databases_ because their structures are different than RDBS like Amazon RDS.
-- Instead of row-column relationships, data are structured using key-value pairs instead.
-- 
-
+- Sometimes referred to as _Non-Relational Databases_ because their structures are different from RDBS like Amazon RDS.
+- Instead of row-column relationships, data are structured using **key-value** pairs instead.
+- Uses structures (JSON, key-value pairs) other than rows and columns to organize data.
+- Example:
+  - Key 1 | Name: John Doe, Address: 123 Any Street, Favorite Drink: Medium Latte
+  - Key 2 | Name: Mary Major, Address: 100 Main Street, Birthday: July 5, 1994
 
 ## `Amazon DynamoDB` [↑](#module-6-databases-in-aws-)
+- Fully managed NoSQL database service that provides fast and predictable performance for both document and key-value data structures.
 - Stores data redundantly across AZs. Mirrors data across multiple drives.
 - Key-value database service that is reliable and high performance (millisecond response time).
 - For Non-Relational Database (NoSQL). Simple flexible schemas
 - Adding and removing of attributes can be done at any time.
-- Automatically Scales while maintaining consistent performance. Mekase it a suitable choice for
+- **Automatically Scales** while maintaining consistent performance. Makes it a suitable choice for
   use cases that require high performance while scaling.
-
-### Non Relational Database (NoSQL Databases)
-- Uses structures (JSON, key-value pairs) other than rows and columns to organize data.
 
 ## `Amazon Redshift` [↑](#module-6-databases-in-aws-)
 - Data warehouse as a service
-- Handles the heavy lifting in provisioning the data warehouse so that users can focus on the
-  data alone.
-- Applicable for Big BI data solutions (Big Data Analytics) which is a concept of looking at
-  historical data.
-- Offers ability to collect data from many sources and helps understand relationships and trends
-  across data.
+- Handles the heavy lifting in provisioning the data warehouse so that users can focus on the data alone.
+- Applicable for Big BI data solutions (Big Data Analytics) which is a concept of looking at historical data.
+- Offers ability to **collect data from many sources** and helps **understand relationships and trends across data**.
 
 ## `Amazon Database Migration Service (Amazon DMS)` [↑](#module-6-databases-in-aws-)
 - Enables the migration of RDBs, NRDBs, and other types of data stores.
 - **Homogenous Databases:** Databases that are of the same type.
-- **Heterogeneous Databases:** Databases that are of different source/type. Additional step
-  where an AWS Schema Conversion tool is used.
+- **Heterogeneous Databases:** Databases that are of different source/type. Additional step where an **AWS Schema Conversion tool** is used.
 
 ## `Additional Database Services` [↑](#module-6-databases-in-aws-)
 
 | Purpose-Build Databases                          | Description                                                                                                                                                                         |
 |--------------------------------------------------|-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
-| **Amazon DocumentDB**                            | - Document database service that supports **MongoDB** workloads <br/> - Fully managed native **JSON** document.                                                                     |
+| **Amazon DocumentDB**                            | - Document database service that supports **MongoDB** workloads <br/> - Fully managed native **JSON** document. <br/> - MongoDB compatibility                                       |
+| **AWS Backup**                                   | - Streamlines data protection across various AWS resources and on-premises deployments by providing a single dashboard for monitoring and managing backups.                         |
 | **Amazon Neptune**                               | - A Graph database service.<br/> - For applications that are build and run with highly connected datasets<br/> - Ex: Recommendation engines, fraud detection, and knowledge graphs. |
 | **Amazon Quantum Ledger Database (Amazon QLDB)** | - Review a complete history of all the changes that have been made to application data.                                                                                             |
 | **Amazon Managed Blockchain**                    | - Service to create and manage blockchain networks with open-source frameworks.<br/>                                                                                                |
-| **Amazon ElastiCache**                           | - Service that adds caching layers on top of <br/>databases to help improve the read times of common requests. Supports _Redis_ and _Memcached_ data store types.                   |
 | **Amazon DynamoDB Accelerator**                  | - In-Memory cache for DynamoDB. <br/> - Helps improve response times from single-digit milliseconds to microseconds.                                                                |
+
+
+## `In-Memory Caching Services` [↑](#module-6-databases-in-aws-)
+- An **in-memory cache** is a high-speed storage layer that **temporarily stores frequently accessed data** in a computer's main memory, or RAM.
+- When application needs specific information, they first check the cache before requesting it from the original data source. Which reduces load on primary databases and speed up response time for end users.
+- Ideal for storing session data, API responses, database query results, and other information that application require repeatedly.
+
+### Amazon ElastiCache
+- Fully managed in-memory caching service that was built to help reduce the complexity of administering in-memory caching systems.
+- Continue using the same Redis, Valkey, or Memcached tools and configurations to scale workloads.
+- Automatically detects and replaces failed nodes, which makes it ideal for applications that need consistent high performance.
+
+#### Use Cases:
+- Session data management
+- Database query enhancement
+- Gaming leaderboards
+
+#### Benefits
+1. **High performance for Redis, Valkey, or Memcached instances:** Automatically handling hardware provisioning, software patching, and monitoring.
+2. **High Availability:** Constantly monitoring primary nodes for potential failures. Maintains application availability by promoting a replica node to become the primary node automatically.
+3. **Replication across multiple AZs**
+4. **Data Encryption:** Employs TLS for encrypted connections.
+
 
 ### Useful Links
 - [Deep Dive - Databases](https://docs.aws.amazon.com/decision-guides/latest/databases-on-aws-how-to-choose/databases-on-aws-how-to-choose.html)
