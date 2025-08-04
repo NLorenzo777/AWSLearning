@@ -1,1 +1,1 @@
-## Pricing and Support [↑](AWS-Practitioner-Essentials-Notes.md/#aws-practitioner-essentials)
+## Pricing and Support [↑](AWS-Practitioner-Essentials-Notes.md)
