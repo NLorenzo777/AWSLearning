@@ -1,3 +1,7 @@
+#### `PREVIOUS MODULE:` [Monitoring and Analytics](9_Monitoring-and-Analytics.md)
+
+-----------
+
 # Pricing and Support [↑](AWS-Practitioner-Essentials-Notes.md)
 
 - [AWS Pricing Concepts](#aws-pricing-concepts-)
@@ -7,6 +11,14 @@
   - [AWS Budgets](#aws-budgets)
   - [AWS Cost Explorer](#aws-cost-explorer)
   - [AWS Pricing Calculator](#aws-pricing-calculator)
+- [AWS Support](#aws-support-)
+  - [Basic Support](#1-basic-support)
+  - [Developer Support](#2-developer-support)
+  - [Business Support](#3-business-support)
+  - [Enterprise On-Ramp Support](#4-enterprise-on-ramp-support)
+  - [Enterprise Support](#5-enterprise-support)
+- [Additional Support Resources](#additional-resources-)
+- [AWS Marketplace](#aws-marketplace-and-aws-partner-network-)
 
 ## `AWS Pricing Concepts` [↑](#pricing-and-support-)
 
@@ -126,7 +138,7 @@ utilization or coverage exceed defined thresholds.
 - For example, when building an app using multiple AWS services, the TAM can advise on the best integration approach.
 
 
-### Additional Resources
+### Additional Resources [↑](#pricing-and-support-)
 
 #### AWS re:Post
 - Community driven QnA platform where users can seek help, share knowledge, and find solutions related to AWS services and technologies.
@@ -149,9 +161,9 @@ utilization or coverage exceed defined thresholds.
 - Extensive documentation and self-support resources that can be used to research, answer a question, or troubleshoot an issue.
 - Includes user guides for AWS services, SDK guides, blog posts, and white papers for specific solutions.
 
-## `AWS Marketplace and AWS Partner Network`
+## `AWS Marketplace and AWS Partner Network` [↑](#pricing-and-support-)
 
-### AWS Marketplace
+### AWS Marketplace 
 - a digital catalog that includes thousands of software listings from independent software vendors.
 - Find, test, and buy software that runs on AWS.
 - Includes the following:
@@ -166,5 +178,11 @@ utilization or coverage exceed defined thresholds.
   - **Funding Benefits:** Unlock various funding benefits to help build, market, and sell with AWS.
   - **AWS Partner Events:** Webinars, virtual workshops, and in-person learning opportunities.
   - **AWS Partner Training and Certification**
+
+-----
+
+`NEXT MODULE:` [Migrating to the AWS Cloud](11_Migrating-to-the-AWS-Cloud.md)
+
+----
 
 
