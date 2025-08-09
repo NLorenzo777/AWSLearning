@@ -1,3 +1,7 @@
+#### `PREVIOUS MODULE:` [Security](8_Security.md)
+
+-----------
+
 # Monitoring and Analytics [↑](../README.md#1-aws-cloud-practitioner-notes)
 - [`Amazon CloudWatch`](#amazon-cloudwatch-)
 - [`AWS CloudTrail`](#aws-cloudtrail-)
@@ -125,3 +129,9 @@ Trusted Advisor compares its findings to AWS best practices in five categories:
 ## `IAM Access Analyzer`
 Provides capabilities to set, verify, and refine permissions by analyzing external access and validating that
 policies match the corporate security standards.
+
+-----
+
+#### `NEXT MODULE:` [Pricing and Support](10_Pricing-and-Support.md)
+
+----

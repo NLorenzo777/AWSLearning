@@ -181,8 +181,6 @@ utilization or coverage exceed defined thresholds.
 
 -----
 
-`NEXT MODULE:` [Migrating to the AWS Cloud](11_Migrating-to-the-AWS-Cloud.md)
+#### `NEXT MODULE:` [Migrating to the AWS Cloud](11_Migrating-to-the-AWS-Cloud.md)
 
 ----
-
-

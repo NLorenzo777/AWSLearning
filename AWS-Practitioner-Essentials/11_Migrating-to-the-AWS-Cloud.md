@@ -1,4 +1,5 @@
-`PREVIOUS MODULE:` [Pricing and Support](10_Pricing-and-Support.md)
+#### `PREVIOUS MODULE:` [Pricing and Support](10_Pricing-and-Support.md)
+
 ----
 
 # Migrating to the AWS Cloud [↑](../README.md#1-aws-cloud-practitioner-notes)
@@ -13,6 +14,9 @@
   - [AWS Migration Hub](#2-aws-migration-hub)
   - [AWS Application Migration Service](#1-aws-application-migration-service)
 - [Database Migrations](#database-migrations-)
+  - [AWS Database Migration Service (DMS)](#aws-database-migration-service-aws-dms)
+  - [AWS Schema Conversion Tool (SCT)](#aws-schema-conversion-tool-aws-sct)
+- [Migrating Data to the AWS Cloud](#migrating-data-to-the-aws-cloud-)
 
 ## `Three Phases of the Migration Process`
 
@@ -30,7 +34,7 @@
 
 #### 3. Migrate and Modernize
 - Use the strategy, plan, and the best practices to migrate and modernize.
-- Tools to support include `AWS Application Migration Service` and `AWS Database Migration Service (AWS DMS)`.
+- Tools to support include [`AWS Application Migration Service`](#1-aws-application-migration-service) and [`AWS Database Migration Service (AWS DMS)`](#aws-database-migration-service).
 - If transferring data, might use `AWS DataSync`, `AWS Transfer Family`, and `AWS Snow Family`.
 
 
@@ -137,7 +141,7 @@ In the assess phase, it is important to have the right tools to build the busine
 
 #### 2. `AWS Migration Hub`
 - Centralized hub to take users from discovery, assessment, planning, and execution of migration.
-- It provides tools , guidance, and automated recommendations to collaborate with team and track the migration.
+- It provides tools, guidance, and automated recommendations to collaborate with team and track the migration.
 - **Benefits:**
   - With the Migration Hub, you can have one location to go for your migration and, expert guidance in the form of prescriptive journey templates.
   - Cost savings because there is no charge to use the Migration Hub.
@@ -161,4 +165,69 @@ Start moving the resources to the cloud. Migration Hub can be used to track prog
 Migrating your database to the cloud can provide an opportunity to redesign and improve your database architecture. 
 Because legacy systems and requirements change over time, you might also consider whether to migrate to an AWS managed database service or an open source database to reduce licensing costs.
 
+### AWS Database Migration Service (AWS DMS)
+- AWS DMS makes it possible to quickly and securely migrate databases and perform ongoing data replication tasks for live databases and warehouses.
+- Provides way to plan, assess, convert, and migrate databases even with data warehouses in one central tool.
+- **Benefits:**
+  - Maintain high availability and low downtime during the migration process.
+  - Supports homogenous and heterogeneous migrations.
+  - Migrate TB sized databases at low cost.
+- **Use  Cases:**
+  - Move to managed databases
+  - Remove licensing costs
+  - Replicate ongoing changes in database and improve integration with Data Lakes.
 
+#### Schema
+A schema defines the structure and organization of data inside the database and acts like a blueprint for things like data structures,  
+field types, and relationship between items.
+
+### AWS Schema Conversion Tool (AWS SCT)
+- Makes it possible to convert database schemas and code objects (like stored procedures, views, and functions) from one database engine to another.
+- AWS SCT can give estimates of how big of an effort a conversion is, which helps with the planning.
+- **Benefits:**
+  - Simplify database migrations by automating schema analysis, recommendations, and conversion at scale.
+  - Compatible with popular databases and analytics services as source and target engines.
+  - Save weeks or months of manual time and resources, which are typically required in conversions.
+- **Use Cases:**
+  - Move from commercial databases to open source databases.
+  - Migrating large data warehouse workloads and  modernizing or updating database schemas in place.
+
+## `Migrating Data to the AWS Cloud` [↑](#migrating-to-the-aws-cloud-)
+
+### 1. AWS DataSync 
+When migrating data to the AWS cloud, it is needed to ensure security (will the data get there safely?), data validation (will it get there in one piece?), and
+scheduling (when is the best time?).
+
+- AWS DataSync is specifically designed for automating and accelerating data transfer.
+- Simplifies and accelerates moving large amount of data between on-premises storage and AWS storage services like Amazon S3.
+- It automates many aspects of the transfer process, including running instances, encryption, and network optimization.
+- **Benefits:**
+  - Streamlining and accelerating secure data migrations.
+  - Manage data movement workloads with bandwidth throttling, migration scheduling, task filtering, and task reporting.
+  - Provides rapid data replication.
+- **Use Cases:**
+  - Archive cold data
+  - Manage hybrid data workflows.
+
+### 2. AWS Transfer Family
+- Provides fully managed support for file transfers into and out of Amazon S3.
+- Provides fully managed support for secure file transfer over FTP, Secure File Transfer Protocol (SFTP), File Transfer Protocol Secure (FTPS), and other protocols.
+  - **QUICK LINK:**[SFTP vs FTPS](../Quick-Links/FTP.md)
+- Helps transfer files directly into and out of AWS storage services like Amazon S3 and Amazon EFS.
+
+
+### 3. AWS Direct Connect
+- Makes it possible to establish a dedicated private connection between network and VPC in the AWS Cloud.
+- Since it is a dedicated connection, it is a fast, reliable, and secure way to transfer data or files.
+
+### AWS Snowball Edge Storage Optimized Devices
+- Great solution for offline data migration when connecting to the internet might not be an option.
+- Deliver high performance Non-Volatile Memory Express (NVMe) storage, making it possible to simplify multi-petabyte data migrations from on-premises locations to AWS.
+- Used when offline migration is required.
+- Can also be used for edge computing when a secure, rugged device is needed.
+
+-----
+
+#### `NEXT MODULE:` [Well-Architected Solutions](12_Well-Architected-Solutions.md)
+
+----
