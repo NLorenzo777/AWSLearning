@@ -1,4 +1,4 @@
-# Module 6: Databases in AWS [↑](AWS-Practitioner-Essentials-Notes.md)
+# Module 6: Databases in AWS [↑](../README.md#1-aws-cloud-practitioner-notes)
 - [Amazon Relational Database Service (Amazon RDS)](#amazon-relational-database-service-amazon-rds-)
   - [Supported Database Engines](#amazon-rds-supported-database-engines)
 - [Amazon Aurora](#amazon-aurora-)

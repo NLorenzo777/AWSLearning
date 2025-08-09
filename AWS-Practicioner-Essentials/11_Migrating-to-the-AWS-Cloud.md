@@ -1,7 +1,7 @@
 `PREVIOUS MODULE:` [Pricing and Support](10_Pricing-and-Support.md)
 ----
 
-# Migrating to the AWS Cloud [↑](AWS-Practitioner-Essentials-Notes.md)
+# Migrating to the AWS Cloud [↑](../README.md#1-aws-cloud-practitioner-notes)
 
 - [Three Phases of Migration](#three-phases-of-the-migration-process)
 - [AWS CAF](#aws-cloud-adoption-framework-aws-caf-)

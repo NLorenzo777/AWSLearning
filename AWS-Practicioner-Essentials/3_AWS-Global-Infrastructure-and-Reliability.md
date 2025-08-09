@@ -1,4 +1,4 @@
-# AWS Global Infrastructure and Reliability [↑](AWS-Practitioner-Essentials-Notes.md)
+# AWS Global Infrastructure and Reliability [↑](../README.md#1-aws-cloud-practitioner-notes)
 
 - [AWS Regions](#aws-regions-)
 - [Availability Zones (AZs)](#availability-zones-azs-)

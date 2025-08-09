@@ -1,4 +1,4 @@
-# Networking [↑](AWS-Practitioner-Essentials-Notes.md)
+# Networking [↑](../README.md#1-aws-cloud-practitioner-notes)
 - [Amazon Virtual Private Cloud (VPC)](#amazon-virtual-private-cloud-amazon-vpc)
 - [VPC Components](#components-in-a-vpc-)
     - [`AWS Direct Connect`](#3-aws-direct-connect-)

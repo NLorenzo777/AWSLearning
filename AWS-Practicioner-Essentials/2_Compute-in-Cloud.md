@@ -1,5 +1,6 @@
-# Compute in the Cloud [↑](AWS-Practitioner-Essentials-Notes.md)
+# Compute in the Cloud [↑](../README.md#1-aws-cloud-practitioner-notes)
 
+[↑](../README.md#1-aws-cloud-practitioner-notes)
 - [Amazon EC2](#amazon-elastic-compute-cloud-ec2-)
 - [EC2 Instance Types](#amazon-ec2-instance-types-)
 - [EC2 Pricing Options](#amazon-ec2-pricing-)

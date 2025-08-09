@@ -1,4 +1,4 @@
-# Monitoring and Analytics [↑](AWS-Practitioner-Essentials-Notes.md/#aws-practitioner-essentials)
+# Monitoring and Analytics [↑](../README.md#1-aws-cloud-practitioner-notes)
 - [`Amazon CloudWatch`](#amazon-cloudwatch-)
 - [`AWS CloudTrail`](#aws-cloudtrail-)
 - [`AWS Config`](#aws-config-)

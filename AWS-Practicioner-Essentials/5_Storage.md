@@ -1,4 +1,4 @@
-# Storages in AWS [↑](AWS-Practitioner-Essentials-Notes.md)
+# Storages in AWS [↑](../README.md#1-aws-cloud-practitioner-notes)
 
 - [Instance Stores](#instance-stores-)
 - [Elastic Block Stores (EBS)](#amazon-elastic-block-store-amazon-ebs-)

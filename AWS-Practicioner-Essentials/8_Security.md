@@ -1,4 +1,4 @@
-# Security in AWS [↑](AWS-Practitioner-Essentials-Notes.md)
+# Security in AWS [↑](../README.md#1-aws-cloud-practitioner-notes)
 
 - [Shared Responsibility Model](#aws-shared-responsibility-model-)
 - [User Permissions and Access](#user-permissions-and-access-)

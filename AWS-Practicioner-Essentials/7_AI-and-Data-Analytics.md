@@ -1,4 +1,4 @@
-# AI/ML and Data Analytics [↑](AWS-Practitioner-Essentials-Notes.md)
+# AI/ML and Data Analytics [↑](../README.md#1-aws-cloud-practitioner-notes)
 
 - [AI and ML on AWS](#artificial-intelligence-ai-and-machine-learning-ml-on-aws-)
 - [AWS AI/ML Solutions](#aws-aiml-solutions-)

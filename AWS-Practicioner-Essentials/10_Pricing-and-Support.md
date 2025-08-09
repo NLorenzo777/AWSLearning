@@ -2,7 +2,7 @@
 
 -----------
 
-# Pricing and Support [↑](AWS-Practitioner-Essentials-Notes.md)
+# Pricing and Support [↑](../README.md#1-aws-cloud-practitioner-notes)
 
 - [AWS Pricing Concepts](#aws-pricing-concepts-)
 - [AWS Pricing and Billing Services](#aws-pricing-and-billing-services-)

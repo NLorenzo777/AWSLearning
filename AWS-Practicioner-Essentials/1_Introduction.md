@@ -1,17 +1,4 @@
-# AWS Practitioner Essentials
-
-- [I. Introduction](#introduction-to-amazon-web-services-)
-  - [Deployment Models for Cloud Computing](#deployment-models-for-cloud-computing-)
-  - [Benefits of Cloud Computing](#benefits-of-cloud-computing-)
-- [II. Compute](2_Compute-in-Cloud.md)
-- [III. AWS Global Infrastructure and Reliability](3_AWS-Global-Infrastructure-and-Reliability.md)
-- [IV. Networking](4_Networking.md)
-- [V. Storages](5_Storage.md)
-- [VI. Databases](6_Databases.md)
-- [VI. AI/ML and Data Analytics in AWS](7_AI-and-Data-Analytics.md)
-- [VII. Security in AWS](8_Security.md)
-- [VIII. Monitoring and Analytics in AWS](9_Monitoring-and-Analytics.md/#monitoring-and-analytics-)
-- [IX. Pricing and Support in AWS](#pricing-and-support-)
+# AWS Practitioner Essentials [↑](../README.md#1-aws-cloud-practitioner-notes)
 
 ## Terminologies:
 `Cloud Computing`: On-demand delivery of IT resources and applications through the internet with pay-as-you-go pricing.
@@ -23,9 +10,9 @@
 `Input/Output Operations Per Second (OIPS)`: A metric that indicates how many I/O operations a
 device can perform per second.
 
-## Introduction to Amazon Web Services [↑](#aws-practitioner-essentials)
+## Introduction to Amazon Web Services [↑](#aws-practitioner-essentials-)
 
-### `Deployment Models for Cloud Computing` [↑](#aws-practitioner-essentials)
+### `Deployment Models for Cloud Computing` [↑](#aws-practitioner-essentials-)
 When selecting a cloud strategy, a company must consider factors such as required cloud application components, 
 preferred resource management tools, and any legacy IT infrastructure requirements.
 
@@ -46,7 +33,7 @@ preferred resource management tools, and any legacy IT infrastructure requiremen
 that require business to keep certain records on premises.
 
 
-### `Benefits of Cloud Computing` [↑](#aws-practitioner-essentials)
+### `Benefits of Cloud Computing` [↑](#aws-practitioner-essentials-)
 
 #### Trade upfront expense for variable expense
 `Upfront expense` refers to data centers, physical servers, and other resources that you would need to invest
