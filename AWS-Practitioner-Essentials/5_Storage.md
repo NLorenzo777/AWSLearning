@@ -1,3 +1,6 @@
+#### `PREVIOUS MODULE:` [Networking](4_Networking.md)
+
+-----------
 # Storages in AWS [↑](../README.md#1-aws-cloud-practitioner-notes)
 
 - [Instance Stores](#instance-stores-)
@@ -171,3 +174,9 @@ Configure file systems quickly without any minimum fee or setup cost. Pay only f
 
 ### 2. AWS Elastic Disaster Recovery
 A fully-managed service that streamlines recovery of physical, virtual, and cloud-based servers into AWS.
+
+-----------
+
+#### `NEXT MODULE:` [Databases](6_Databases.md)
+
+-----------

@@ -1,3 +1,6 @@
+#### `PREVIOUS MODULE:` [Databases](6_Databases.md)
+
+-----------
 # AI/ML and Data Analytics [↑](../README.md#1-aws-cloud-practitioner-notes)
 
 - [AI and ML on AWS](#artificial-intelligence-ai-and-machine-learning-ml-on-aws-)
@@ -238,10 +241,8 @@ Queries and visualization tools to help to develop important insights about data
 
 ![img_1.png](../img/data-analytics-and-aiml-architecture-diagram.png)
 
+-----------
 
+#### `NEXT MODULE:` [Security](8_Security.md)
 
-
-
-
-
-  
+-----------

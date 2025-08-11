@@ -1,3 +1,6 @@
+#### `PREVIOUS MODULE:` [AI/ML and Data Analytics](7_AI-and-Data-Analytics.md)
+
+-----------
 # Security in AWS [↑](../README.md#1-aws-cloud-practitioner-notes)
 
 - [Shared Responsibility Model](#aws-shared-responsibility-model-)
@@ -252,3 +255,9 @@ An AWS Service that protects applications against DDoS attacks. Provides two lev
 
 ## `Additional Resources`
 - [Security Best Practices in IAM](https://docs.aws.amazon.com/IAM/latest/UserGuide/best-practices.html)
+
+-----------
+
+#### `NEXT MODULE:` [Monitoring and Analytics](9_Monitoring-and-Analytics.md)
+
+-----------

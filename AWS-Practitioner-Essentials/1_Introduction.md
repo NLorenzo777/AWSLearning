@@ -61,15 +61,8 @@ cloud computing enables to access new resources within minutes.
 #### Go Global in minutes
 Enables to deploy applications to customers around the world quickly, while providing low latency.
 
+-----
 
+#### `NEXT MODULE:` [Compute in the Cloud](2_Compute-in-Cloud.md)
 
- 
-
-
-
-
-
-
-
-
-
+----

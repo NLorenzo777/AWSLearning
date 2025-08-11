@@ -1,3 +1,7 @@
+#### `PREVIOUS MODULE:` [AWS Global Infrastructure and Reliability](3_AWS-Global-Infrastructure-and-Reliability.md)
+
+-----------
+
 # Networking [↑](../README.md#1-aws-cloud-practitioner-notes)
 - [Amazon Virtual Private Cloud (VPC)](#amazon-virtual-private-cloud-amazon-vpc)
 - [VPC Components](#components-in-a-vpc-)
@@ -168,6 +172,8 @@ It is the process of translating domain name to an IP address.
 4. Amazon CloudFront connects to the Application Load Balancer, which sends the incoming packet
    to an Amazon EC2 instance.
 
-   
+-----------
 
+#### `NEXT MODULE:` [Storage](5_Storage.md)
 
+-----------

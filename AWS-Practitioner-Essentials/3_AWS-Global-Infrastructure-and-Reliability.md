@@ -1,3 +1,7 @@
+#### `PREVIOUS MODULE:` [Compute in the Cloud](2_Compute-in-Cloud.md)
+
+-----------
+
 # AWS Global Infrastructure and Reliability [↑](../README.md#1-aws-cloud-practitioner-notes)
 
 - [AWS Regions](#aws-regions-)
@@ -102,3 +106,9 @@ Cache a copy locally that is closed to customers/clients.
   the user in parallel.
 - Provisions resources in a safe, repeatable manner, enabling to frequently build infrastructure
   and applications without having to perform manual actions.
+
+-----
+
+#### `NEXT MODULE:` [Networking](4_Networking.md)
+
+-----------

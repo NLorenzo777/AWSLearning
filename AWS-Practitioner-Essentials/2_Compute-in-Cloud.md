@@ -1,6 +1,9 @@
+#### `PREVIOUS MODULE:` [Introduction](1_Introduction.md)
+
+-----------
+
 # Compute in the Cloud [↑](../README.md#1-aws-cloud-practitioner-notes)
 
-[↑](../README.md#1-aws-cloud-practitioner-notes)
 - [Amazon EC2](#amazon-elastic-compute-cloud-ec2-)
 - [EC2 Instance Types](#amazon-ec2-instance-types-)
 - [EC2 Pricing Options](#amazon-ec2-pricing-)
@@ -298,3 +301,8 @@ no provisioning or managing servers</summary>
   </ul>
 </div>
 
+-----
+
+#### `NEXT MODULE:` [AWS Global Infrastructure and Reliability](3_AWS-Global-Infrastructure-and-Reliability.md)
+
+----

@@ -1,3 +1,6 @@
+#### `PREVIOUS MODULE:` [Storage](5_Storage.md)
+
+-----------
 # Module 6: Databases in AWS [↑](../README.md#1-aws-cloud-practitioner-notes)
 - [Amazon Relational Database Service (Amazon RDS)](#amazon-relational-database-service-amazon-rds-)
   - [Supported Database Engines](#amazon-rds-supported-database-engines)
@@ -146,3 +149,9 @@
 
 ### Useful Links
 - [Deep Dive - Databases](https://docs.aws.amazon.com/decision-guides/latest/databases-on-aws-how-to-choose/databases-on-aws-how-to-choose.html)
+
+-----------
+
+#### `NEXT MODULE:` [AI/ML and Data Analytics](7_AI-and-Data-Analytics.md)
+
+-----------
