@@ -119,7 +119,7 @@ There are several different types of gateways to connect to AWS resources.
 
 ### `Security Groups` [↑](#networking-)
 - A virtual firewall that controls inbound and outbound traffic for an EC2 instance (**instance level**).
-- By default, denies all inbound and outbound traffic. Then custom rules are configured to
+- **By default,** it blocks inbound traffic and allows outbound traffic.
   allow certain traffics.
 - Does not allow any IP address by default.
 - **Instance level type of security**.

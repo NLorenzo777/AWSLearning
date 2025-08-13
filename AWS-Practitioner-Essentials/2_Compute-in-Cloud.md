@@ -163,9 +163,36 @@ architecture that provides the best customer experience while reducing expenses.
 - ELB is automatically scalable with no change in the hourly cost.
 - Single URL that each front-end uses. Single point of contact for all incoming web traffic to Auto Scaling group.
 - Promotes de-coupled architecture.
+- **Components of an ELB:**
+  - `Rules:` Used by listeners to route requests to target groups.
+  - `Listeners:` Listeners will contain rules.
+  - `Target Groups:` 
 
 `Elastic Load Balancing:` is a major AWS service that automatically distributes incoming application traffic
 across multiple resources, such as Amazon EC2 instances.
+
+### Type of Load Balancers
+
+#### 1. Application Load Balancer
+- Functions at Layer 7 of the OSI model.
+- Ideal for load balancing HTTP and HTTPS traffic.
+- After the load balancer received a request, it evaluates the listener rules in priority order to determine which rule to apply. It then routes traffic to targets based on request content.
+- **Features:**
+  - **Routes traffic based on request data:** Makes routing decision based on HTTP and HTTPS protocol
+  - **Sends responses directly to the client:** Replies directly to the client with a fixed response (such as custom HTML page).
+  - **Uses TLS offloading:** An SSL certificate is provided to pass HTTPS traffic.
+  - **Authenticates Users**
+  - **Secures Traffic**
+  - **Supports Sticky Sessions**
+
+#### 2. Network Load Balancer
+- Ideal for load balancing TCP and UDP traffic.
+- Functions at the Layer 4 of the OSI model, routing connections from a target in the target group based on IP protocol data.
+
+
+#### 3. Gateway Load Balancing
+- Helps deploy, scale, and manage third-party appliances, such as firewalls, intrusion detection and prevention systems, and deep packet inspection systems.
+- Provides a gateway for distributing traffic across multiple virtual appliances while scaling them up and down based on demand.
 
 
 ## Messaging and Queueing [↑](#compute-in-the-cloud-)
@@ -226,14 +253,13 @@ Severless computing can adjust the applications' capacity by modifying the units
     - Eliminating the need to provision or manage any servers.
     - The underlying infrastructure is fully managed by AWS, so customer can focus entirely on writing and deploying the code.
 
-
-
+    
 ### 1. AWS Lambda
 - Upload a code into a Lambda Function that is invoked through a configured **Trigger**.
 - This function is run in an environment that is not to be taken care of by the user.
 - Lambda automatically scales the function to meet demand.
 - Not for longer running processes since it is designed to run for less than **15 minutes**
-- Pay only for the compute time.
+- Pay only for the compute time (per milli-second pricing).
 - For example, a Lambda function might involve automatically resizing uploaded images to the AWS Cloud. Whereas the trigger
   is when a new image is uploaded.
 

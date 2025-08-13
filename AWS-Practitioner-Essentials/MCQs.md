@@ -75,4 +75,57 @@ D. The S3 bucket must be in the same AWS Region as the users trying to access th
 B. Block public access settings are enabled at the account or bucket level.
 </details>
 
+---
+
+#### Q5:
+**Which of the following storage services is recommended if a customer needs a storage layer for a high-transaction relational database on an Amazon EC2 instance?**
+
+A. Amazon S3
+
+B. Amazon EFS
+
+C. Amazon EBS
+
+D. Amazon S3 Glacier Deep Archive
+
+<details>
+  <summary>Reveal Answer</summary>
+C. Amazon EBS
+</details>
+
+---
+
+#### Q6:
+**An organization needs a fully managed database service to build an application that requires high concurrency and connections for millions of users and millions of requests per second. Which AWS database service should the organization use?**
+
+A. Amazon Redshift
+
+B. Amazon RDS
+
+C. Amazon DynamoDB
+
+D. Amazon Aurora
+
+<details>
+  <summary>Reveal Answer</summary>
+C. Amazon DynamoDB
+</details>
+
+---
+
+#### Q7:
+**Users in a company are authenticated in the corporate network, and they want to use AWS services without signing in again. Which AWS authentication option should the company use?**
+
+A. IAM Role
+
+B. AWS Root User
+
+C. IAM User
+
+D. IAM Group
+
+<details>
+  <summary>Reveal Answer</summary>
+C. IAM Roles
+</details>
 
