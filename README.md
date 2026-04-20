@@ -22,11 +22,13 @@ purpose of this repository is to easily access learning progress for review.
    - [X. Pricing and Support in AWS](AWS-Practitioner-Essentials/10_Pricing-and-Support.md)
    - [XI. Migrating to the AWS Cloud](AWS-Practitioner-Essentials/11_Migrating-to-the-AWS-Cloud.md)
    - [XII. Well-Architected Solutions](AWS-Practitioner-Essentials/12_Well-Architected-Solutions.md)
-#### 2. [AWS Accreditation : Blu Age L1 Notes (Mainframe Modernization)](AWS-Mainframe-Modernization)
+### 2. AWS Certified CloudOps Associate
+   1. [Domain 1 - Monitoring, Logging, Analysis, Remediation, and Performance Optimization](AWS-Certified-CloudOps-Notes/Domain-1.md)
+#### 3. [AWS Accreditation : Blu Age L1 Notes (Mainframe Modernization)](AWS-Mainframe-Modernization)
    1. [Module 1: Approach to Mainframe Migration and Modernization](AWS-Mainframe-Modernization/Module-1.md#module-1-approach-to-mainframe-migration-and-modernization-conceptual-introduction-)
    2. [Module 2: Getting Started with AWS Mainframe Modernization Service](AWS-Mainframe-Modernization/Module-2.md#module-2-getting-started-with-aws-mainframe-modernization-service-)
-   3. [Module 3: Mainframe Modernization Patterns and Best Practices](AWS-Mainframe-Modernization/Module-3.md#module-3-mainframe-modernization-patterns-and-best-practices-)
-#### 3. [AWS Accreditation: Blu Age L2 Notes (Mainframe Modernization)](AWS-Mainframe-Modernization/L2-Blu-Age-Certification)
+   3. [Module 3: Mainframe Modernization Pa[]()tterns and Best Practices](AWS-Mainframe-Modernization/Module-3.md#module-3-mainframe-modernization-patterns-and-best-practices-)
+#### 4. [AWS Accreditation: Blu Age L2 Notes (Mainframe Modernization)](AWS-Mainframe-Modernization/L2-Blu-Age-Certification)
    1. [Course 1: ]
    2. [Course 2: ]
    3. [Course 3: ](AWS-Mainframe-Modernization/L2-Blu-Age-Certification/Course-3.md)
