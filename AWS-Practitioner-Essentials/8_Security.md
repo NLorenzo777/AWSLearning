@@ -13,8 +13,7 @@
 - [AWS Organizations](#aws-organizations-)
 - [Compliance](#compliance-)
   - [AWS Artifacts](#aws-artifacts)
-- [Denial-of-Service (DoS) Attacks](#denial-of-service-dos-attacks-)
-  - [Additional Security Services](#additional-security-services-)
+- [Additional Security Services](#additional-security-services-)
 
 
 ## `AWS Shared Responsibility Model` [↑](#security-in-aws-)
