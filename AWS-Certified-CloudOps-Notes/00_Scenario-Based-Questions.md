@@ -1,0 +1,75 @@
+# Scenario Based Questions
+
+## Scenario - Centralized Logs
+You are managing and monitoring a web application hosted on an EC2 instance. 
+To meet compliance requirements for logging and storing all API calls to your AWS resources, 
+you need to implement centralized logging for API calls using AWS services.
+
+What is your solution?
+
+### 1. Enable CloudTrail
+When CloudTrail is enabled, all API calls made to AWS services are recorded from the AWS Management Console and the AWS SDKs.
+
+### 2. Enable CloudWatch Logs integration
+Enable CloudWatch Logs integration with CloudTrail
+
+- **Create a log group in CloudWatch Logs:** The `create-log-group` command creates a log group in CloudWatch Logs to store logs.
+- **Create a trail in CloudTrail:** The `create-trail` command creates a trail in CloudTrail, specifying an S3 bucket for storing logs.
+- **Integrate CloudTrail with CloudWatch Logs:** Specify the log group ARN and a role with the necessary permissions for CloudTrail to publish logs to CloudWatch Logs.
+- **Start logging:** The `start-logging` command begins logging API events.
+
+Ensure that the IAM role associated with CloudTrail has the correct permissions to publish logs to CloudWatch Logs.
+
+The IAM role must have the following permissions:
+- `logs:PutLogEvents`
+- `logs:CreateLogStream`
+- `logs:DescribeLogStreams`
+
+### 3. Enable DynamoDB Streams
+To track changes happening in Amazon DynamoDB tables, enable **DynamoDB Streams** which captures detailed logs of each
+item that is inserted, updated, or deleted from a DynamoDB table.
+
+Configure a stream to capture data and send it to a Lambda function, or store the stream data in Amazon Kinesis or CloudWatch Logs for further analysis.
+
+### 4. Enable Amazon S3 access logging
+For compliance, enable access logging on S3 buckets by configuring an S3 bucket where logs will be stored.
+
+### 5. Setup IAM roles and policies for logging
+Ensure that EC2 instance and other resources such as DynamoDB have the necessary IAM roles and permissions to interact with CloudTrail, CloudWatch, and Amazon D3 for logging
+
+### 6. Ensure Compliance with AWS Config
+Track changes to resources and enable AWS Config to continuously record configuration changes to track compliance over time.
+
+## Scenario - Monitoring and Logging for Auto-Scaled ELB EC2 Instance
+If you have an application running on EC2 instances with an Auto Scaling group behind a load balancer, 
+how can you configure monitoring and logging for this design?
+
+### 1. Enable Amazon CloudWatch for metrics and alerts
+Enable detailed monitoring and track CloudWatch metrics:
+- `CPUUtilization`
+- `NetworkIn` and `NetworkOut`
+- `DiskReadOps` and `DiskWriteOps`
+- `StatusCheckFailed`
+
+Then, configure CloudWatch alarms to trigger alerts using Amazon SNS when thresholds are exceeded
+Subscribe the CloudOps team to CloudWatch alarms using SNS topics for instant notifications
+
+### 2. Enable logging for troubleshooting and compliance
+Configure CloudWatch Logs agent to collect EC2 instance logs, including application and system logs.
+- /var/log/messages
+- /var/log/httpd/access.log
+- /var/log/httpd/error.log
+
+### 3. Auto Scaling Group Monitoring
+Enable Scaling group metrics and track auto-scaling such as:
+- `GroupDesiredCapacity`
+- `GroupInServiceInstances`
+- `GroupPendingInstances`
+- `GroupTerminatingInstances`
+
+Configure alarms for scale up and scale down actions based on the CPU, memory, or requests per instance.
+
+You can also monitor Auto Scaling group lifecycle events in CloudTrail to track instance launches, terminations, and scaling activities. 
+This adds additional logs to troubleshoot unexpected scale down events.
+
+### 4. Elastic Load Balancer Monitoring
