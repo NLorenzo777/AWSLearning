@@ -73,3 +73,24 @@ You can also monitor Auto Scaling group lifecycle events in CloudTrail to track 
 This adds additional logs to troubleshoot unexpected scale down events.
 
 ### 4. Elastic Load Balancer Monitoring
+Enable ELB CloudWatch metrics such as:
+- RequestCount
+- HTTPCode_ELB_4XX_Count
+- HTTPCode_ELB_5XX_Count
+- TargetResponseTime
+- UnHealthyHostCount
+
+Then you can configure CloudWatch alarms with notifications if the following conditions occur:
+- Response time is too high (latency spikes)
+- There are too many 4XX/5XX errors (indicating application issues)
+- Instances become unhealthy
+
+### 5. VPC Logs for security analysis
+Add detection for suspicious traffic patterns or denied connections by enabling network traffic logging to and from instances.
+
+### 6. Automate log and metric analysis
+Use CloudWatch Logs Insights to query logs, analyze error patterns, and identify application issues.
+
+Configure Lambda for automated actions such as 
+- auto-restart unhealthy instances detected by CloudWatch
+- moving old logs to Amazon S3 Glacier for cost savings
