@@ -13,6 +13,13 @@
   - [1. Metric Identification](#metric-identification-)
   - [2. Logging, Monitoring, and Observability](#logging--monitoring-and-observability-)
   - [3. Log Management](#log-management-)
+  - [4. CloudWatch Agents](#cloudwatch-agents-)
+  - [5. CloudWatch Alarms](#cloudwatch-alarms-)
+  - [6. CloudWatch Dashboards](#cloudwatch-dashboards-)
+  - [7. Integration](#integration-)
+  - [8. Troubleshooting](#troubleshooting-)
+  - [9. AWS Incident Response Checklist](#aws-incident-response-checklist-for-cloudops-engineers-)
+  - [10. Hybrid Cloud Management](#hybrid-cloud-management-)
 
 # AWS Services Review
 
@@ -295,7 +302,6 @@ The following are best practices for log management
 - Automate responses with EventBridge, Lambda, and Systems Manager
 - Maintain compliance and audits with CloudTrail and Amazon S3.
 
-
 ## CloudWatch Agents [↑](#aws-services-review)
 - Collects logs and system-level metrics from EC2 instances and on-premises servers. Centralizing this data in CloudWatch for monitoring and analysis.
 - The agent can be configured to gather custom metrics, giving deeper insights into your applications and infrastructure.
@@ -391,7 +397,6 @@ CloudWatch alarms can invoke the following:
 5. **Use metric math** to troubleshoot complex thresholds such as average of EC2s
 6. **Update threshold or actions** `aws cloudwatch put-metric-alarm --alarm-name "High-CPU" --threshold 85`
 
-
 ## CloudWatch Dashboards [↑](#aws-services-review)
 CloudOps engineers use CloudWatch dashboards for observability, monitoring, centralized tracking, resource and cost management,
 and proactive incident response.
@@ -461,7 +466,7 @@ Review pricing: Dashboards are charged per month per dashboard
 - Use AWS tracing tools to analyze service dependencies and performance
 - Add annotations and variables such as account, Region, and time-series data for dynamic and scalable monitoring
 
-## Integration
+## Integration [↑](#aws-services-review)
 CloudOps engineers must enable and configure comprehensive logging across critical AWS services to maintain operational visibility and security compliance.
 
 By implementing logging for ELB, ECS, CloudFront, and WAF, engineers can track network traffic patterns, monitor container deployments,
@@ -508,17 +513,140 @@ The goal is to collect the needed logs to monitor the following:
 - Security and compliance to detect unauthorized access, attacks, and anomalies
 - Cost and service usage based on log insights
 
-## Scenario Questions
+### Scenario Questions
 
-### Scenario - Centralized Logs
+#### Scenario - Centralized Logs
 You are managing and monitoring a web application hosted on an EC2 instance. 
 To meet compliance requirements for logging and storing all API calls to your AWS resources, you need to implement 
 centralized logging for API calls using AWS services.
 
 What is your solution?
+
 [Solution](00_Scenario-Based-Questions.md#scenario---centralized-logs)
 
-### Scenario - Monitoring and Logging
+#### Scenario - Monitoring and Logging
+If you have an application running on EC2 instances with an Auto Scaling group behind a load balancer, 
+how can you configure monitoring and logging for this design?
+
 - [Solution](00_Scenario-Based-Questions.md#scenario---monitoring-and-logging-for-auto-scaled-elb-ec2-instance)
 
+### Amazon SNS Integration
+Configure AWS services and alarms to send notifications to Amazon SNS for incident response and automation
 
+#### Create SNS topic
+- Using the AWS CLI, enter `aws sns create-topic --name OpsAlerts`.
+- You will get back the topic Amazon Resource Name (ARN)
+- For example: `arn:aws:sns:us-east-1:123456789012:OpsAlerts`
+
+#### Subscribe endpoints
+
+```bash
+aws sns subscribe \
+ --topic-arn arn:aws:sns:us-east-1:123456789012:MyOpsAlerts \
+ --protocol email \
+ --notification-endpoint elkins@example.com
+``` 
+
+#### Attach SNS to a CloudWatch Alarm
+When creating or editing CloudWatch alarm, specify the SNS ARN under --alarm-actions
+
+```bash
+aws cloudwatch put-metric-alarm \
+ --alarm-name HighCPU \
+ --metric-name CPUUtilization \
+ --namespace AWS/EC2 \
+ --statistic Average \
+ --period 300 \
+ --threshold 80 \
+ --comparison-operator GreaterThanThreshold \
+ --evaluation-periods 2 \
+ --dimensions Name=InstanceId,Value=i-0123456789abcdef0 \
+ --alarm-actions arn:aws:sns:us-east-1:123456789012:OpsAlerts
+```
+
+The following can also be added:
+- `--ok-actions` when alarm returns OK
+- `--insufficient-data-actions` optional
+
+#### Configure AWS services to send notifications with Amazon SNS
+Some AWS services can directly notify Amazon SNS when events occur (beyond alarms):
+- CloudWatch alarms are directly integrated
+- AWS Auto-scaling:
+  - Can send scaling activity alerts to Amazon SNS
+  - Set up notification in Auto Scaling group config
+  - AWS Backup sends job status notifications to Amazon SNS using its backup vault settings
+  - AWS Health Dashboard use an EventBridge rule to send to Amazon SNS when new events such as outages or degradation occur
+
+#### Monitor Amazon SNS delivery
+- Enable Amazon SNS delivery logging to CloudWatch Logs or use CloudTrail to trace notifications
+- Consider adding DLQs if Lambda or Amazon SQS endpoints are involved.
+
+#### Best practices
+- Use separate topics per environment
+- Tag topics for easier cost management and auditing
+- Combine SNS and EventBridge for custom automation and routing
+- Use SMS sparingly to avoid unexpected charges
+
+## Troubleshooting [↑](#aws-services-review)
+
+#### Scenario - Incorrect Alarm Threshold
+As a CloudOps engineer, you must troubleshoot a false-positive alert from a CloudWatch alarm monitoring Amazon EC2 CPU utilization.
+
+The alarm threshold is manually set at 80 percent, but because of the workload fluctuations, it frequently triggers even when the system is healthy.
+
+[Solution](00_Scenario-Based-Questions.md#scenario---incorrect-alarm-threshold)
+
+#### Scenario - Troubleshooting Performance
+A CloudOps engineer begins a troubleshooting process to investigate a performance issue where an application running on 
+EC2 instances within an Auto Scaling group is experiencing intermittent slow response times.
+
+## AWS Incident Response Checklist for CloudOps Engineers [↑](#aws-services-review)
+
+### 1. Incident identification and classification
+- Identify the issue severity as _minor_, _major_, _critical_.
+- Categorize the incident
+  - **Compute** (Amazon EC2, Lambda, Auto-scaling policies)
+  - **Storage** (Amazon S3, Amazon EBS, Amazon EFS, S3 Glacier)
+  - **Networking** (Amazon VPC, Route 53, CloudFront, AWS Global Accelerator)
+  - **Database** (Amazon RDS, DynamoDB, Amazon ElastiCache)
+  - **Security** (IAM, GuardDuty, Security Hub, AWS WAF, AWS Shield)
+
+### 2. Incident Diagnosis and RCA
+- Check CloudWatch metrics and logs for anomalies
+- Analyze CloudTrail logs for unauthorized actions
+- Run Systems Manager Run Command for instance-level diagnostics
+- Use AWS Trusted Advisor to detect misconfiguration
+- Correlate logs from AWS services such as VPC Flow Logs, Elastic Load Balancing logs, and more.
+
+### 3. Containment and Immediate mitigation
+- Apply security patches or updates for security incidents
+- Scale up resources such as increase EC2 instance sizes, create an Auto Scaling group, adjust auto-scaling thresholds, and more.
+- Revert to the last known working configuration using AWS Backup or snapshots
+- Fail to another AWS Region
+- Terminate compromised instances and rotate IAM credential if security is breached.
+
+### 4. Remediate and Resolution
+- Apply long-term fixes
+- Update AWS WAF rules to block malicious traffic
+- Modify IAM policies to enforce the least privilege access
+- Implement additional monitoring and logging for early detection
+- Automate responses using Lambda and EventBridge for future incidents
+
+### 5. Communication and Escalation
+
+### 6. Post-incident review and documentation
+
+## Hybrid Cloud Management [↑](#aws-services-review)
+
+### Collect Logs from on-premise servers
+1. Install the CloudWatch Logs agent on the on-premises server.
+2. Create a configuration file for the system metrics and logs
+3. Apply and start the agent
+4. Verify lgos and metrics in CloudWatch
+
+### Manage on-premise servers
+To manage on-premises servers, use Systems Manager to:
+1. Download and install the SSM Agent on the on-premises server.
+2. Verify the installation
+3. Attach the necessary IAM roles and permissions
+4. Register and verify the server in Systems Manager.

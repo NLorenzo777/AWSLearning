@@ -94,3 +94,32 @@ Use CloudWatch Logs Insights to query logs, analyze error patterns, and identify
 Configure Lambda for automated actions such as 
 - auto-restart unhealthy instances detected by CloudWatch
 - moving old logs to Amazon S3 Glacier for cost savings
+
+## Scenario - Incorrect Alarm Threshold
+As a CloudOps engineer, you must troubleshoot a false-positive alert from a CloudWatch alarm monitoring Amazon EC2 CPU utilization.
+
+The alarm threshold is manually set at 80 percent, but because of the workload fluctuations, it frequently triggers even when the system is healthy.
+
+### Implement CloudWatch Anomaly detection
+- Use CloudWatch anomaly detection and create dynamic thresholds based on machine learning models that analyze past data.
+  1. Navigate to **CloudWatch metrics**.
+  2. Select **EC2 CPU Utilization**
+  3. Select **Anomaly detection** to enable for the metric to adjust the sensitivity
+  4. Update the alarm to trigger when utilization is outside the anomaly band
+
+Once CloudWatch anomaly detection is enabled, the alarm triggers only if CPU usage is abnormal compared to historical trends.
+
+## Scenario - Troubleshooting Performance
+A CloudOps engineer begins a troubleshooting process to investigate a performance issue where an application running on
+EC2 instances within an Auto Scaling group is experiencing intermittent slow response times.
+
+### Hypothesize root causes
+- **EC2 CPU Utilization (%)** - High CPU usage might indicate overloaded instances
+- **Application LB Target Response Time** - A high response time suggests latency at the backend
+- **Auto Scaling Group Desired Capacity compared to Actual Capacity** - If instances are not scaling, it might be an issue with the auto-scaling policies
+
+### Validate Data collection from services
+- **EC2 Instances:** Ensure the CloudWatch agent is running
+- **Auto Scaling Groups:** Confirm group metrics collection is enabled
+- **ELB Access Logs:** Ensure ELB is publishing metrics to CloudWatch
+- **VPC Flow Logs:** Verify logs are being collected in the CloudWatch log group
