@@ -18,3 +18,4 @@
 
 ## Domain Content
 - [Task 1.1 - Implement metrics, alarms, and filters by using AWS monitoring and logging services](Domain-1-1.md)
+- [Task 1.2 - Identify and remediate issues by using monitoring and availability metrics](Domain-1-2.md)
