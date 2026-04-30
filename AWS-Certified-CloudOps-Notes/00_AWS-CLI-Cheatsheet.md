@@ -36,3 +36,30 @@ aws sns subscribe \
 ```bash
 sudo systemctl enable amazon-cloudwatch-agent
 ```
+
+#### Modify volume type and IOPS
+```bash
+aws ec2 modify-volume \
+-- volume-id vol-1234567890abcdef0 \
+-- volumetype io2 \
+-- iops 10000
+```
+
+#### Enable Multi-attach for supported volumes
+```bash
+aws ec2 modify-volume \
+--volume-id vol-1234567890abcdef0 \
+--multi-attach-enabled
+```
+
+#### Create AMI with instance store
+```bash
+aws ec2 register-image \
+--name "app-with-instance-store" \
+--block-device-mappings '[
+  {
+    "DeviceName": "/dev/xvdb"
+    "VirtualName": "ephemeral0"
+  }
+]'
+```

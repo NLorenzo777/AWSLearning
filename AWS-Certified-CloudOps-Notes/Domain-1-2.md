@@ -9,7 +9,7 @@
   - [Amazon X-Ray](#amazon-x-ray)
   - [Remediation](#remediation-)
   - [Event-Driven Workflows](#event-driven-workflows-)
-  - [Notifications](#notifications)
+  - [Notifications](#notifications-)
 
 # Review AWS Services
 
@@ -299,7 +299,7 @@ If an EC2 instance stops unexpectedly (event), then the Lambda function (target)
 8. Configure permissions in the target region
 9. Verify cross-region event delivery.
 
-## Notifications
+## Notifications [↑](#Review-aws-services)
 
 ### Scenario - Event-driven workflows and notifications
 How can you send AWS event data to an external monitoring tool such as Datadog, Slack, or PagerDuty?

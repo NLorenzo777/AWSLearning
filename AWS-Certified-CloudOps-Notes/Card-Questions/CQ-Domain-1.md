@@ -1,5 +1,5 @@
 ## Question - CloudFormation 
-![img_1.png](img_1.png)
+![img_1.png](resource/img_1.png)
 <details>
     <summary>Reveal answer</summary>
     <ul>
@@ -10,7 +10,7 @@
 
 
 ## Question - VPN
-![img_2.png](img_2.png)
+![img_2.png](resource/img_2.png)
 <details>
     <summary>Reveal answer</summary>
 
