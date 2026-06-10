@@ -63,3 +63,37 @@ aws ec2 register-image \
   }
 ]'
 ```
+
+#### Creating a S3 Bucket
+```bash
+aws s3api create-bucket \
+-- bucket <name of the bucket> \
+-- region <name of the region>
+```
+
+#### Running an EC2 Instance
+```bash
+aws ec2 run-instances \
+--image-id ami-xxxxxxxx \
+--count 1 \
+--instance-type t2.micro
+```
+
+#### List of IAM Users
+```bash
+aws iam list-users --profile <optional>
+```
+
+```json
+{
+"Users": [
+    {
+        "Path": "/",
+        "UserName": "Admin",
+        "UserId": "XXXXXXXXXXXXXXXXXXXXX",
+        "Arn": "arn:aws:iam::388752792305:user/Admin",
+        "CreateDate": "2021-01-28T13:44:15+00:00"
+    }
+]
+}
+```
