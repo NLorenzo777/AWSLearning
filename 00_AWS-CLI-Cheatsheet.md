@@ -1,5 +1,11 @@
 # AWS CLI Cheatsheet
 
+- [CloudWatch Commands](#cloudwatch-commands-)
+- [EC2 Commands](#ec2-commands-)
+- [S3 Commands](#s3-commands-)
+- [IAM Commands](#iam-commands-)
+
+## CloudWatch Commands [^](#aws-cli-cheatsheet)
 #### Check alarm history
 ```bash
 aws cloudwatch describe-alarm-history --alarm-name "High-CPU"
@@ -36,7 +42,9 @@ aws sns subscribe \
 ```bash
 sudo systemctl enable amazon-cloudwatch-agent
 ```
+----------------------------------------------------------
 
+## EC2 Commands [^](#aws-cli-cheatsheet)
 #### Modify volume type and IOPS
 ```bash
 aws ec2 modify-volume \
@@ -64,13 +72,6 @@ aws ec2 register-image \
 ]'
 ```
 
-#### Creating a S3 Bucket
-```bash
-aws s3api create-bucket \
--- bucket <name of the bucket> \
--- region <name of the region>
-```
-
 #### Running an EC2 Instance
 ```bash
 aws ec2 run-instances \
@@ -78,6 +79,9 @@ aws ec2 run-instances \
 --count 1 \
 --instance-type t2.micro
 ```
+
+----------------------------------------------------------------------
+## IAM Commands [^](#aws-cli-cheatsheet)
 
 #### List of IAM Users
 ```bash
@@ -96,4 +100,15 @@ aws iam list-users --profile <optional>
     }
 ]
 }
+```
+
+----------------------------------------------------------------------
+
+## S3 Commands [^](#aws-cli-cheatsheet)
+
+#### Creating a S3 Bucket
+```bash
+aws s3api create-bucket \
+-- bucket <name of the bucket> \
+-- region <name of the region>
 ```
