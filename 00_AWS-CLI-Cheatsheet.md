@@ -1,10 +1,15 @@
 # AWS CLI Cheatsheet
 
+- [Configuration Commands]
 - [CloudWatch Commands](#cloudwatch-commands-)
 - [EC2 Commands](#ec2-commands-)
 - [S3 Commands](#s3-commands-)
 - [IAM Commands](#iam-commands-)
 
+## Configuration Commands [^](#aws-cli-cheatsheet)
+- `aws config get region`: returns the region currently in.
+
+----------------------------------------------------------------------
 ## CloudWatch Commands [^](#aws-cli-cheatsheet)
 #### Check alarm history
 ```bash
@@ -79,6 +84,18 @@ aws ec2 run-instances \
 --count 1 \
 --instance-type t2.micro
 ```
+
+#### Getting the Available Volumes in a region
+```bash
+aws ec2 describe-volumes --region us-east-1 --query 'Volumes[*].[VolumeId,State,AvailabilityZone]' --output table 
+```
+- `--output` can be table, json, or xml
+
+#### Deleting a Volume in a region
+```bash
+aws ec2 delete-volume --volume-id 'vol-xxxxxxxxxxxxxxxxx' --region us-east-1
+```
+- **Deletion is irreversible, ensure that data are backed-up using snapshots**
 
 ----------------------------------------------------------------------
 ## IAM Commands [^](#aws-cli-cheatsheet)

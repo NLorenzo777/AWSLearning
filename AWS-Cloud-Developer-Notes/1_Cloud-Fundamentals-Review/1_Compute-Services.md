@@ -1,6 +1,9 @@
-# Servers in the Cloud and Compute Services
+# Servers in the Cloud and Compute Services [^](../../README.md#3-aws-certified-developer-associate)
 
-## EC2 Dashboard
+1. [EC2 Dashboard](#ec2-dashboard-)
+2. [AWS Command Line Interface](#aws-command-line-interface-aws-cli-)
+
+## EC2 Dashboard [^](#servers-in-the-cloud-and-compute-services-)
 
 ### Instances
 * **Launch Templates:**
@@ -38,7 +41,7 @@ A load balancer distributes traffic across multiple targets.
 - [Application Load Balancers](https://docs.aws.amazon.com/elasticloadbalancing/latest/application/introduction.html)
 - [Network Load Balancers](https://docs.aws.amazon.com/elasticloadbalancing/latest/network/introduction.html)
 
-## AWS Command Line Interface (AWS CLI)
+## AWS Command Line Interface (AWS CLI) [^](#servers-in-the-cloud-and-compute-services-)
 Below are the steps to configure the AWS CLI on a machine.
 
 #### 1. Create an IAM for the CLI to use
@@ -75,6 +78,13 @@ setx AWS_DEFAULT_REGION us-east-1
 ```bash
 aws configure set default.region us-east-1
 ```
+
+## Elastic Block Store (EBS)
+AWS allows to create a volume from either of the following three commands:
+1. Create and attach EBS volumes while creating an EC2 instance using the **Launch Instance** wizard.
+2. Create an empty EBS volume, and later attach to a running instance.
+3. Create an EBS volume from a previously created snapshot and later attach to a running instance.
+
 
 
 
