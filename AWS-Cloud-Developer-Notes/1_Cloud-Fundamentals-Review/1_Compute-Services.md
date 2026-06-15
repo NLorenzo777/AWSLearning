@@ -2,6 +2,7 @@
 
 1. [EC2 Dashboard](#ec2-dashboard-)
 2. [AWS Command Line Interface](#aws-command-line-interface-aws-cli-)
+3. [Elastic Block Stores](#elastic-block-store-ebs-)
 
 ## EC2 Dashboard [^](#servers-in-the-cloud-and-compute-services-)
 
@@ -79,15 +80,52 @@ setx AWS_DEFAULT_REGION us-east-1
 aws configure set default.region us-east-1
 ```
 
-## Elastic Block Store (EBS)
+## Elastic Block Store (EBS) [^](#servers-in-the-cloud-and-compute-services-)
 AWS allows to create a volume from either of the following three commands:
 1. Create and attach EBS volumes while creating an EC2 instance using the **Launch Instance** wizard.
 2. Create an empty EBS volume, and later attach to a running instance.
 3. Create an EBS volume from a previously created snapshot and later attach to a running instance.
 
+## Virtual Private Cloud (VPC) [^](#servers-in-the-cloud-and-compute-services-)
+- A VPC spans all the AZ in the region.
+- Control virtual networking environment, which includes:
+  - **IP address ranges**
+  - **subnets**
+  - **route tables**
+  - **network gateways**
+- VPC is found under **Networking & Content Delivery** section of the AWS Management Console.
+- The default limit is **5 VPCs** per region. Increase of these limits can be requested.
+- AWS resources are automatically provisioned in a default VPC.
+- There are no additional charges in creating and using a VPC.
+- Store data in S3 and restrict access to that it's only accessible from instances in the VPC.
 
 
+### Network ACLs
+- A given Network ACL can be associated with multiple subnets
+- The default network ACL allows all inbound/outbound IPv4 traffic. This can be modified.
+- Inbound/Outbound rules are numbered and ordered. The lowest numbered rule is evaluated first.
+- The incoming/outgoing traffic to/from a given subnet follows the rules mentioned in the associated network ACL.
 
 
+## Lambda [^](#servers-in-the-cloud-and-compute-services-)
+- Lambdas have a time limit of 15 minutes.
+- The code run on AWS Lambda is called a "Lambda function"
+- Can be triggered by other AWS services.
+- Supports **Java**, **Go**, **PowerShell**, **Node.js**, **C#/.NET**, **Python**, and **Ruby**.
+- There is a runtime API that allows to use other programming language to author functions.
+- Lambda code can be authored via the console.
 
+### Creating a Lambda
+AWS provides three (3) options to get the template code for the function:
+- **Author from scratch**: Start in a simple Hello World example.
+- **Use a blueprint**: Build a Lambda application from a sample code and configuration presets for common use cases.
+- **Browse Serverless app repository**: Deploy a sample Lambda application from the AWS Serverless Application Repository.
+
+### Deleting a Lambda
+Deleting a function permanently removes the function code. However, the related IAM roles are retained in the account.
+
+## Elastic Beanstalk
+- Orchestration service to deploy a web application easily. Spins up all the services needed for the application.
+- Found under the compute section of the AWS management console.
+- **Pricing:** There is no additional charge. The resources that are created are the ones being billed.
 
