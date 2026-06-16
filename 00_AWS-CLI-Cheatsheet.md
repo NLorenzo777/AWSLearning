@@ -211,8 +211,7 @@ aws ec2 delete-vpc --vpc-id <vpc id>
 ```
 </details>
 
-
-
+--------------------------------------------------------
 ## Lambda Commands [^](#aws-cli-cheatsheet)
 
 <details>
@@ -227,4 +226,37 @@ aws lambda create-function \
 --role arn:aws:iam::xxxxxxxxxxxx:role/service-role/MyFunction-role-tges6bf4
 ```
 
+</details>
+
+--------------------------------------------------------
+
+## S3 Commands [^](#aws-cli-cheatsheet)
+
+<details>
+
+<summary>Creating an S3 bucket</summary>
+
+```bash
+aws s3api create-bucket \
+--bucket my-unique-bucket-name \
+-- region us-east-1 #or other region
+```
+
+If successful, this will return a JSON response.
+```text
+{
+    "Location": "/my-unq-bckt-789",
+    "BucketArn": "arn:aws:s3:::my-unq-bckt-789"
+}
+
+```
+</details>
+
+<details>
+
+<summary>Upload a file in S3 Bucket</summary>
+
+```bash
+aws s3 cp <source> <target>
+```
 </details>

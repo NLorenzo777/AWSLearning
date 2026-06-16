@@ -3,6 +3,9 @@
 1. [EC2 Dashboard](#ec2-dashboard-)
 2. [AWS Command Line Interface](#aws-command-line-interface-aws-cli-)
 3. [Elastic Block Stores](#elastic-block-store-ebs-)
+4. [Virtual Private Cloud (VPC)](#virtual-private-cloud-vpc-)
+5. [Lambda](#lambda-)
+6. [Elastic Beanstalk](#elastic-beanstalk)
 
 ## EC2 Dashboard [^](#servers-in-the-cloud-and-compute-services-)
 
