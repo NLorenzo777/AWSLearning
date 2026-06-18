@@ -7,6 +7,7 @@
 - [IAM Commands](#iam-commands-)
 - [VPC Commands](#vpc-commands-)
 - [Lambda Commands](#lambda-commands-)
+- [DynamoDB Commands](#dynamodb-commands-)
 
 ## Configuration Commands [^](#aws-cli-cheatsheet)
 - `aws config get region`: returns the region currently in.
@@ -180,6 +181,35 @@ aws s3api create-bucket \
 
 </details>
 
+<details>
+
+<summary>Creating an S3 bucket - example</summary>
+
+```bash
+aws s3api create-bucket \
+--bucket my-unique-bucket-name \
+-- region us-east-1 #or other region
+```
+
+If successful, this will return a JSON response.
+```text
+{
+    "Location": "/my-unq-bckt-789",
+    "BucketArn": "arn:aws:s3:::my-unq-bckt-789"
+}
+
+```
+</details>
+
+<details>
+
+<summary>Upload a file in S3 Bucket</summary>
+
+```bash
+aws s3 cp <source> <target>
+```
+</details>
+
 ## VPC Commands [^](#aws-cli-cheatsheet)
 
 <details>
@@ -230,33 +260,17 @@ aws lambda create-function \
 
 --------------------------------------------------------
 
-## S3 Commands [^](#aws-cli-cheatsheet)
+## DynamoDB Commands [^](#aws-cli-cheatsheet)
 
-<details>
-
-<summary>Creating an S3 bucket</summary>
-
-```bash
-aws s3api create-bucket \
---bucket my-unique-bucket-name \
--- region us-east-1 #or other region
-```
-
-If successful, this will return a JSON response.
-```text
-{
-    "Location": "/my-unq-bckt-789",
-    "BucketArn": "arn:aws:s3:::my-unq-bckt-789"
-}
-
-```
-</details>
-
-<details>
-
-<summary>Upload a file in S3 Bucket</summary>
+<summary>
+<details>Create a DynamoDB Table</details>
 
 ```bash
-aws s3 cp <source> <target>
+aws dynamodb create-table \
+--table-name MyTableName \
+--attribute-definition AttributeName=MyPrimaryKey,AttributeType=S \
+--key-schema AttributeName=MyPrimaryKey,KeyType=HASH \
+--provisioned-throughput ReadCapacityUnits=5,WriteCapacityUnits=5
 ```
-</details>
+
+</summary>
