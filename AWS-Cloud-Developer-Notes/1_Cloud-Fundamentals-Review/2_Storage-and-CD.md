@@ -1,3 +1,5 @@
+`PREVIOUS CONTENT:` [I. Compute Services](1_Compute-Services.md)
+-----------------------------
 # Storage and Content Delivery [^](../../README.md#3-aws-certified-developer-associate)
 
 - [Amazon S3](#amazon-s3-bucket-)
@@ -63,3 +65,11 @@ View the metrics for usage, request, and data transfer activity within the bucke
 - CloudFront works with non-AWS origin sources.
 - Cache control headers determine how frequently CloudFront needs to check the origin for an updated version of user's file.
 - The maximum size of a single file that can be delivered through Amazon CloudFront is 20GB.
+
+### Important Notes - CloudFront
+- As soon as CloudFront distribution is deployed, it attaches to its origin (e.g. S3) and starts caching its private content.
+- Ones caching is complete, the CloudFront domain name URL will stop redirecting to the original URL.
+
+-------------------------
+`NEXT CONTENT:` [III. Security](3_Security.md)
+------------------------

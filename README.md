@@ -31,6 +31,7 @@ purpose of this repository is to easily access learning progress for review.
 ### 3. AWS Certified Developer Associate
 1. [Cloud Fundamentals - Compute Services](AWS-Cloud-Developer-Notes/1_Cloud-Fundamentals-Review/1_Compute-Services.md)
 2. [Cloud Fundamentals - Storage & Content Delivery](AWS-Cloud-Developer-Notes/1_Cloud-Fundamentals-Review/2_Storage-and-CD.md)
+3. [Cloud Fundamentals - Security](AWS-Cloud-Developer-Notes/1_Cloud-Fundamentals-Review/3_Security.md)
 
 ### 4. [AWS Accreditation : Blu Age L1 Notes (Mainframe Modernization)](AWS-Mainframe-Modernization)
    1. [Module 1: Approach to Mainframe Migration and Modernization](AWS-Mainframe-Modernization/Module-1.md#module-1-approach-to-mainframe-migration-and-modernization-conceptual-introduction-)

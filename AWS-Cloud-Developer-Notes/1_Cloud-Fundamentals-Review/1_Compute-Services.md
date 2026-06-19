@@ -132,3 +132,6 @@ Deleting a function permanently removes the function code. However, the related 
 - Found under the compute section of the AWS management console.
 - **Pricing:** There is no additional charge. The resources that are created are the ones being billed.
 
+---------------------------
+`NEXT TOPIC:` [II. Storage and Content Delivery](2_Storage-and-CD.md)
+---------------------------
