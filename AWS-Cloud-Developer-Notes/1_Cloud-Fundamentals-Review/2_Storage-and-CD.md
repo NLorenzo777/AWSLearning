@@ -1,9 +1,12 @@
 # Storage and Content Delivery [^](../../README.md#3-aws-certified-developer-associate)
 
-- [Amazon S3](#amazon-s3-bucket)
+- [Amazon S3](#amazon-s3-bucket-)
+- [DynamoDB](#dynamodb--)
+- [Amazon RDS](#amazon-rds-)
+- [Amazon Redshift](#amazon-redshift-)
 
 
-## Amazon S3 Bucket
+## Amazon S3 Bucket [^](#storage-and-content-delivery-)
 - The bucket name must be unique worldwide, and must not contain spaces or uppercase letters.
 
 #### Bucket versioning and encryption
@@ -36,11 +39,27 @@ View the metrics for usage, request, and data transfer activity within the bucke
 - Create access endpoints for sharing the bucket at scale.
 - Using an endpoint, you can perform all regular operations on the bucket.
 
-## DynamoDB
+## DynamoDB [^](#storage-and-content-delivery-) 
 - Serverless NoSQL document database
 - Can handle more than 10 trillion requests per day.
 - Supports key-value and document data models.
 - Synchronously replicates data across three (3) AZs in an AWS Region
-- 
 
+## Amazon RDS [^](#storage-and-content-delivery-)
+- When creating a database, there are two (2) options:
+  - **Standard create**: Set all the configuration options, including ones for availability, security, backups, and maintenance.
+  - **Easy create:** Use industry best-practice configurations. All config options, except the encryption and VPC details, can be changed after the database is created.
 
+## Amazon Redshift [^](#storage-and-content-delivery-)
+- Redshift delivers great performance by using machine learning.
+- **Redshift Spectrum** is a feature that enables to run queries against data in Amazon S3.
+- Redshift encrypts and keeps data secure in transit and at rest.
+- Redshift clusters can be isolated using VPC.
+- Redshift is NOT be used for processing day-to-day transactions.
+
+## Amazon CloudFront [^](#storage-and-content-delivery-)
+- Amazon continuously add Edge Locations.
+- CloudFront ensures that end-user requests are served from the closes edge location.
+- CloudFront works with non-AWS origin sources.
+- Cache control headers determine how frequently CloudFront needs to check the origin for an updated version of user's file.
+- The maximum size of a single file that can be delivered through Amazon CloudFront is 20GB.

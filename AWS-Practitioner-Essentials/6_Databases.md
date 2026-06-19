@@ -103,10 +103,11 @@
   use cases that require high performance while scaling.
 
 ## `Amazon Redshift` [↑](#module-6-databases-in-aws-)
-- Data warehouse as a service
+- Data warehouse as a service. It is a cloud data warehousing service to help companies manage big data.
 - Handles the heavy lifting in provisioning the data warehouse so that users can focus on the data alone.
 - Applicable for Big BI data solutions (Big Data Analytics) which is a concept of looking at historical data.
 - Offers ability to **collect data from many sources** and helps **understand relationships and trends across data**.
+- Stores data in a column format to aid in fast querying.
 
 ## `Amazon Database Migration Service (Amazon DMS)` [↑](#module-6-databases-in-aws-)
 - Enables the migration of RDBs, NRDBs, and other types of data stores.

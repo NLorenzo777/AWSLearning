@@ -7,7 +7,7 @@
 - [IAM Commands](#iam-commands-)
 - [VPC Commands](#vpc-commands-)
 - [Lambda Commands](#lambda-commands-)
-- [DynamoDB Commands](#dynamodb-commands-)
+- [Database Commands](#database-commands-)
 
 ## Configuration Commands [^](#aws-cli-cheatsheet)
 - `aws config get region`: returns the region currently in.
@@ -260,7 +260,7 @@ aws lambda create-function \
 
 --------------------------------------------------------
 
-## DynamoDB Commands [^](#aws-cli-cheatsheet)
+## Database Commands [^](#aws-cli-cheatsheet)
 
 <summary>
 <details>Create a DynamoDB Table</details>
@@ -271,6 +271,21 @@ aws dynamodb create-table \
 --attribute-definition AttributeName=MyPrimaryKey,AttributeType=S \
 --key-schema AttributeName=MyPrimaryKey,KeyType=HASH \
 --provisioned-throughput ReadCapacityUnits=5,WriteCapacityUnits=5
+```
+
+</summary>
+
+<summary>
+<details>Create a Database (RDS)</details>
+
+```bash
+aws rds create-db-instance \
+--db-instance-identifier <name of db instance> \
+--db-instance-class db.t3.micro \
+--engine postgresql \
+--master-username postgres \
+--master-user-password postgres \
+--allocated-storage <number>
 ```
 
 </summary>
