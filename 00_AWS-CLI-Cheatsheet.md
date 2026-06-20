@@ -1,6 +1,6 @@
 # AWS CLI Cheatsheet
 
-- [Configuration Commands]
+- [Configuration Commands](#configuration-commands-)
 - [CloudWatch Commands](#cloudwatch-commands-)
 - [EC2 Commands](#ec2-commands-)
 - [S3 Commands](#s3-commands-)
@@ -11,6 +11,7 @@
 
 ## Configuration Commands [^](#aws-cli-cheatsheet)
 - `aws config get region`: returns the region currently in.
+- `aws configure`: will set up the current user credential.
 
 ----------------------------------------------------------------------
 ## CloudWatch Commands [^](#aws-cli-cheatsheet)
@@ -163,6 +164,27 @@ aws iam list-users --profile <optional>
     }
 ]
 }
+```
+
+</details>
+
+<details>
+<summary>Create a Policy</summary>
+
+```bash
+aws iam create-policy \
+--policy-name <name goes here> \
+--policy-document file://<file name goes here>
+```
+</details>
+
+<details>
+<summary>Attaching a Policy to a User</summary>
+
+```bash
+aws iam attach-user-policy \
+--policy-arn arn:aws:iam::aws:policy/AdministratorAccess \
+--user-name MyUserName
 ```
 
 </details>
