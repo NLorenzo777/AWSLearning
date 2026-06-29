@@ -41,6 +41,46 @@ View the metrics for usage, request, and data transfer activity within the bucke
 - Create access endpoints for sharing the bucket at scale.
 - Using an endpoint, you can perform all regular operations on the bucket.
 
+## Database Services
+
+### Data Source Types
+
+#### Structured Data
+- organized to support transactional and analytical applications.
+- can also be stored in non-relational databases.
+- valuable because user can gain insight into overarching trends by efficiently running powerful data queries and analysis.
+
+#### Semistructured Data
+- Flexible and can be updated without the requirement to change the schema for every single record in the table.
+- Allows a user to capture any data in any structure as data evolves and changes over time.
+- often stored in Non-RDBS.
+- Example of semistructured data include XML, email, JSON.
+
+#### Unstructured Data
+- not organized in any distinguishable and predefined manner.
+- Commonly stored in non-relational key-value databases.
+- Examples are word processing documents, videos, photos, other images.
+- Not organized other than being placed into a file system, object store, or another repository such as data lakes.
+
+### Relational Databases
+
+#### Data Indexing
+- Tables should be indexed to allow a query to quickly find the data needed to produce a result.
+- Indexes can also help control the way data is physically stored on a disk.
+- Indexing plays a huge part in the speed and efficiency of queries.
+
+
+#### Online Transaction Processing (OLTP)
+- Databases focus on recording Update, Insertion, and Deletion data transactions.
+- OLTP queries are simple and short, which requires less time and space to process.
+- e.g. ATM Banks
+
+#### Online Analytical Processing (OLAP)
+- Databases store historical data that has been input by OLTP.
+- OLAP DBs allow users to view different summaries of multidimensional data.
+- Using OLAP, extract information from a large database and analyze it for decision-making.
+- e.g. BI tool
+
 ## DynamoDB [^](#storage-and-content-delivery-) 
 - Serverless NoSQL document database
 - Can handle more than 10 trillion requests per day.
@@ -51,6 +91,11 @@ View the metrics for usage, request, and data transfer activity within the bucke
 - When creating a database, there are two (2) options:
   - **Standard create**: Set all the configuration options, including ones for availability, security, backups, and maintenance.
   - **Easy create:** Use industry best-practice configurations. All config options, except the encryption and VPC details, can be changed after the database is created.
+
+### Technical Overview
+- Security Groups are used to control access to databases
+- Amazon RDS uses AES-256 bit encryption algorithm for data at rest.
+- Securing communications to/from the database (data in-transit) is accomplished through HTTPS connections. These connections are encrypted using Secure Sockets Layer (SSL).
 
 ## Amazon Redshift [^](#storage-and-content-delivery-)
 - Redshift delivers great performance by using machine learning.

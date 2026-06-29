@@ -243,7 +243,7 @@ Another benefit of serverless computing is the flexibility to scale serverless a
 Severless computing can adjust the applications' capacity by modifying the units of consumption, such as throughput and memory.
 
 ### Unmanaged, Managed, Fully-managed Services
-
+ 
 1. **Unmanaged Services**
     - Like **Amazon EC2**, AWS takes care of the underlying physical infrastructure but customer is responsible for setting up, securing, and maintaining the OS, network, and applications.
 2. **Managed Services**
@@ -295,6 +295,30 @@ differences in computing environments.
 - Serverless compute platform for ECS and EKS.
 - focus more on innovating and developing your applications, and you pay only for the resources that are required
 - to run your containers.
+
+### 4. AWS Step Functions
+- fully-managed service used to coordinate the components of distributed applications and microservices using visual workflows.
+- Build small applications that each perform discrete functions (step functions) in the workflow. Enables to scale and change applications quickly.
+- A function runs first, which involves another function, which invokes two more functions to complete a series of steps in the workflow.
+- Provides graphical console to arrange and visualize the components of the application as a series of steps, making the application straightforward to build and run multistep applications.
+- Automatically invokes and tracks each step and retries when error occur.
+
+### 5. AWS Batch
+- a set of batch management capabilities that can be used to efficiently run hundreds of thousands of batch computing jobs.
+- Dynamically provisions the optimal quantity and type of compute resources such as CPU- or memory-optimized compute resources based on the volume and specific resource requirements of the batch jobs submitted.
+- Plans, schedules, and runs batch computing workloads using Amazon EC2 and AWS compute resources with Fargate or Fargate Spot.
+
+#### Batch Computing
+- The running of a program without manual intervention.
+- The program's input parameters are predefined through scripts, command-line arguments, control files, or job control language (JCL).
+- A given batch job might depend on the completion of preceding jobs or on the availability of certain inputs.
+- This makes the sequencing and scheduling of multiple jobs critical.
+
+### 6. Amazon Lightsail
+- a VPS provider and is a useful way to get started with AWS for users who need a solution to build and host their application on AWS cloud.
+- Provides developers with compute, storage, and networking capacity and capabilities to deploy and manage websites and web applications in the cloud.
+- Includes VMs, containers, databases, CDN, LB, DNS management to launch project quickly for a low, predictable monthly price.
+- Provides low-cost, pre-configured cloud resources for simple workloads just starting on AWS.
 
 ### Summary
 <div>
