@@ -3,9 +3,11 @@
 # Storage and Content Delivery [^](../../README.md#3-aws-certified-developer-associate)
 
 - [Amazon S3](#amazon-s3-bucket-)
+- [Database Services](#database-services-)
 - [DynamoDB](#dynamodb--)
 - [Amazon RDS](#amazon-rds-)
 - [Amazon Redshift](#amazon-redshift-)
+- [Amazon Database Migration Service](#amazon-database-migration-service-amazon-dms-)
 
 
 ## Amazon S3 Bucket [^](#storage-and-content-delivery-)
@@ -41,7 +43,7 @@ View the metrics for usage, request, and data transfer activity within the bucke
 - Create access endpoints for sharing the bucket at scale.
 - Using an endpoint, you can perform all regular operations on the bucket.
 
-## Database Services
+## Database Services [^](../../README.md#3-aws-certified-developer-associate)
 
 ### Data Source Types
 
@@ -83,9 +85,29 @@ View the metrics for usage, request, and data transfer activity within the bucke
 
 ## DynamoDB [^](#storage-and-content-delivery-) 
 - Serverless NoSQL document database
-- Can handle more than 10 trillion requests per day.
+- Can handle more than 10 trillion requests per day. Support peaks of more than 20 million requests per second
 - Supports key-value and document data models.
 - Synchronously replicates data across three (3) AZs in an AWS Region
+- Automatically scales up and down to adjust for the capacity and maintain system performance.
+- Two Capacity modes: **provisioned** and **on-demand**
+  - **on-demand**: Billed for every read and write that application performs.
+  - **provisioned**: Specify the number of reads and writes per second.
+
+### Technical Overview
+- Uses **partition key** to find each item in the database
+- Uses **sort key** to store related attributes in a sorted order. This allows multiple items to be queried as a collection.
+- The **primary key** is a combination of the partition and sort key (called composite primary key). If there is no sort key, the primary key and partition key are the same.
+
+#### Secondary indexes
+These indexes improve the application's ability to access data quickly and efficiently
+
+- **Local secondary index** - uses the table's partition key with a unique sort key. (allowed five per table)
+- **Global secondary index** - uses a partition key and sort key that can be different from those on the table to model very complex data access patterns that differ from the original tble. (allowed 20 per table)
+
+#### DynamoDB Security
+- Uses IAM to create and manage credentials. DynamoDB requires both authentication and permission to access tables and data.
+- Access are controlled at the table and item level.
+- Tables have encryption at rest by default.
 
 ## Amazon RDS [^](#storage-and-content-delivery-)
 - When creating a database, there are two (2) options:
@@ -103,6 +125,53 @@ View the metrics for usage, request, and data transfer activity within the bucke
 - Redshift encrypts and keeps data secure in transit and at rest.
 - Redshift clusters can be isolated using VPC.
 - Redshift is NOT be used for processing day-to-day transactions.
+
+## Amazon Database Migration Service (Amazon DMS) [^](#storage-and-content-delivery-)
+- The service needs the source database endpoint and target database endpoint
+- An EC2 instance must be created manually. AWS DMS will automatically configure the replication software and use this instance for replication.
+
+
+## Amazon ElastiCache [^](#storage-and-content-delivery-)
+- Provides high performance, resizable, and cost-effective in-memory cache.
+- Supports two open-source in-memory caching engines: **Redis** and **Memcached**
+- For real-time use cases that require ultrafast performance and high throughput.
+- Primary data store for use cases that does not require durability (session stores, gaming leaderboards, streaming, API rate limiting).
+- The default port for ElastiCache is 6379
+
+### Pricing Options
+1. **On-Demand Nodes** - Billed hourly (from the time a node launched until terminated) for memory capacity. Partial node hour is considered as a full hour
+2. **Reserved Nodes** - 1-year or 3-year term. Pay one-time with lower hourly charged
+3. **Backup Storage** - ElastiCache provides storage space for one snapshot free of charge for each active ElastiCache for Redis cluster
+4. **Data Transfer** - No charge for data transfer between EC2 and ElastiCache inside the same AZ.
+
+### ElastiCache for Redis (non-cluster mode) Characteristics
+- Only one primary instance support is available for up to 5 read replicas per primary node
+- Supported automatic failover. If primary node fails, one of the replicas is promoted to the primary role.
+- All write activity takes place in the primary node. Read activity may happen from any nodes.
+- Supported multi-AZ configuration
+- AWS managed DNS services are automatically updated to point to the read/write primary node and read-only node.
+
+### ElastiCache for Redis (cluster mode) Characteristics
+- Supports up to 5 read replicas per primary node and supports multiple primary nodes (shards) up to total of 500 nodes (with no replica)
+- Uses automatic node promotion
+- Supports sharding as a means to distribute the load. Cluster mode is used when deploying a number of smaller nodes.
+
+> ElastiCache for MemCached is much simpler and user-friendly
+
+### ElastiCache for Redis Use Cases
+1. **Caching** - Store copies of lookup tables and replies to costly queries from RDBMS
+2. **Session stores** - Quickly create session stores
+3. **Leaderboards**
+4. **Geospatial**
+5. **Message Queues**
+6. **IoT Streaming**
+7. **Machine Learning**
+
+### ElastiCache for Memcached Use Cases
+1. **Caching**
+2. **Session Stores**
+3. **Multithreaded Applications**
+4. **API Counters**
 
 ## Amazon CloudFront [^](#storage-and-content-delivery-)
 - Amazon continuously add Edge Locations.

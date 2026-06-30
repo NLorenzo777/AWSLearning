@@ -10,6 +10,7 @@ purpose of this repository is to easily access learning progress for review.
 
 ## Quick Links:
 - [AWS CLI Cheatsheets](00_AWS-CLI-Cheatsheet.md)
+- [Architectures and Solutions](01_Architecture-Solutions.md)
 
 ## Contents
 ### 1. AWS Cloud Practitioner Notes

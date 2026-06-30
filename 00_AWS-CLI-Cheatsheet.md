@@ -8,6 +8,7 @@
 - [VPC Commands](#vpc-commands-)
 - [Lambda Commands](#lambda-commands-)
 - [Database Commands](#database-commands-)
+- [ElastiCache Commands](#elasticache-commands-)
 
 ## Configuration Commands [^](#aws-cli-cheatsheet)
 - `aws config get region`: returns the region currently in.
@@ -284,8 +285,8 @@ aws lambda create-function \
 
 ## Database Commands [^](#aws-cli-cheatsheet)
 
-<summary>
-<details>Create a DynamoDB Table</details>
+<details>
+<summary>Create a DynamoDB Table</summary>
 
 ```bash
 aws dynamodb create-table \
@@ -295,10 +296,54 @@ aws dynamodb create-table \
 --provisioned-throughput ReadCapacityUnits=5,WriteCapacityUnits=5
 ```
 
-</summary>
+</details>
 
-<summary>
-<details>Create a Database (RDS)</details>
+<details>
+    <summary>Put an Item in a DynamoDB table</summary>
+
+```bash
+aws dynamodb put-item \
+--table-name my_table_name \
+--item '{
+"country_code": {"S": "US"},
+"country_name": {"S": "United States"} }' \
+--region us-east-2 \
+--return-consumed-capacity TOTAL
+```
+</details>
+
+<details>
+<summary>Updating an Item in a DynamoDB table</summary>
+
+```bash
+aws dynamodb update-item \
+--table-name my_table_name \
+--key '{
+"country_code": {"S": "US"},
+"country_name": {"S": "United States"}}' \
+--update-expression "SET primary_language = :newval" \
+--expression-attribute-values '{":newval":{"S":"english"}}' \
+--region us-east-2 \
+--return-values ALL_NEW
+```
+</details>
+
+<details>
+    <summary>Query a DynamoDB table</summary>
+
+```bash
+aws dynamodb query \
+--table-name my_table_name \
+--key-condition-expression "country_code" = ":code" \
+--expression-attribute-values '{":code": {"S": "US"}}' \
+--region us-east-2 --output text
+```
+</details>
+
+
+<details>
+
+<summary>Create a Database (RDS)</summary>
 
 ```bash
 aws rds create-db-instance \
@@ -310,4 +355,56 @@ aws rds create-db-instance \
 --allocated-storage <number>
 ```
 
-</summary>
+</details>
+
+------
+## ElastiCache Commands [^](#aws-cli-cheatsheet)
+
+<details>
+    <summary>Create a Cache Subnet Group</summary>
+
+```bash
+aws elasticache create-cache-subnet-group \
+  --cache-subnet-group-name "subnet-group-redis-cluster-mode-enabled" \
+  --cache-subnet-group-description "Subnet group for Amazon ElastiCache for Redis with Cluster Mode Enabled" \
+  --subnet-ids <subnet01> <subnet02> <subnet03>
+```
+
+#### Running this command generates a JSON response
+
+```json
+{
+  "CacheSubnetGroup": {
+    "CacheSubnetGroupName": "subnet-group-redis-cluster-mode-enabled",
+    "CacheSubnetGroupDescription": "Subnet group for Amazon ElastiCache for Redis with Cluster Mode Enabled",
+    "VpcId": "vpc-abcd1234",
+    "Subnets": [
+      {
+        "SubnetIdentifier": "subnet-012345678abcdefghi",
+        "SubnetAvailabilityZone": {
+          "Name": "us-east-1a"
+        }
+      },
+      {
+        "SubnetIdentifier": "subnet-123456789abcdefghi",
+        "SubnetAvailabilityZone": {
+          "Name": "us-east-1b"
+        }
+      },
+      {
+        "SubnetIdentifier": "subnet-234567890abcdefghi",
+        "SubnetAvailabilityZone": {
+          "Name": "us-east-1c"
+        }
+      }
+    ],
+    "ARN": "arn:aws:elasticache:us-east-1:111111111111:subnetgroup:subnet-group-redis-cluster-mode-enabled"
+  }
+}
+```
+</details>
+
+
+
+
+
