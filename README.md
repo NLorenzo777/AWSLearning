@@ -11,6 +11,7 @@ purpose of this repository is to easily access learning progress for review.
 ## Quick Links:
 - [AWS CLI Cheatsheets](00_AWS-CLI-Cheatsheet.md)
 - [Architectures and Solutions](01_Architecture-Solutions.md)
+- [AWS Developer Associate - Questions](AWS-Cloud-Developer-Notes/AWS-Developer-Assoc-MCQs.md)
 
 ## Contents
 ### 1. AWS Cloud Practitioner Notes
@@ -34,7 +35,9 @@ purpose of this repository is to easily access learning progress for review.
 2. [Cloud Fundamentals - Storage & Content Delivery](AWS-Cloud-Developer-Notes/1_Cloud-Fundamentals-Review/2_Storage-and-CD.md)
 3. [Cloud Fundamentals - Security](AWS-Cloud-Developer-Notes/1_Cloud-Fundamentals-Review/3_Security.md)
 4. [Cloud Fundamentals - Networking & Elasticity](AWS-Cloud-Developer-Notes/1_Cloud-Fundamentals-Review/4_Networking-and-Elasticity.md)
-5. [Serverless Architecture - DynamoDB]()
+5. [Serverless Architecture - DynamoDB](AWS-Cloud-Developer-Notes/2_Serverless/1_Serverless-DynamoDB.md)
+6. [Serverless Architecture - Amazon API Gateway](AWS-Cloud-Developer-Notes/2_Serverless/2_Serverless-Amazon-API-Gateway.md)
+7. [Serverless Architecture - Event Driven Architecture](AWS-Cloud-Developer-Notes/2_Serverless/3_Serverless-Event-Driven-Architecture.md)
 
 ### 4. [AWS Accreditation : Blu Age L1 Notes (Mainframe Modernization)](AWS-Mainframe-Modernization)
    1. [Module 1: Approach to Mainframe Migration and Modernization](AWS-Mainframe-Modernization/Module-1.md#module-1-approach-to-mainframe-migration-and-modernization-conceptual-introduction-)
