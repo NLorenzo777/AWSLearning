@@ -39,6 +39,7 @@ purpose of this repository is to easily access learning progress for review.
 6. [Serverless Architecture - Amazon API Gateway](AWS-Cloud-Developer-Notes/2_Serverless/2_Serverless-Amazon-API-Gateway.md)
 7. [Serverless Architecture - Event Driven Architecture](AWS-Cloud-Developer-Notes/2_Serverless/3_Serverless-Event-Driven-Architecture.md)
 8. [Serverless Architecture - Scaling](AWS-Cloud-Developer-Notes/2_Serverless/4_Serverless-Scaling-Architectures.md)
+9. [Serverless ARchitecture - DevOps]()
 
 ### 4. [AWS Accreditation : Blu Age L1 Notes (Mainframe Modernization)](AWS-Mainframe-Modernization)
    1. [Module 1: Approach to Mainframe Migration and Modernization](AWS-Mainframe-Modernization/Module-1.md#module-1-approach-to-mainframe-migration-and-modernization-conceptual-introduction-)

@@ -97,3 +97,6 @@ Key considerations include the following:
 - Kinesis Data Streams can take up to 1MB of data or 1000 records per second, per shard from a producer.
 
 > If the stream need to take 4000 records or 4 MB of data per second, it will need 4 shards.
+
+-----
+#### `NEXT TOPIC:` [DevOps in AWS](5_Serverless-DevOps.md)
