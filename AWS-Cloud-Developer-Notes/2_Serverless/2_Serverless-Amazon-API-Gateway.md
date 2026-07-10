@@ -155,7 +155,6 @@ Determines how method request data is passed to the backend.
 
 ![img_3.png](img_3.png)
 
-
 ### Token Bucket Algorithm 
 Requests that come into a bucket are fulfilled at a steady rate. If the rate at which the bucket is being filled causes the bucket to fill up and exceed the burst value, a **429 - Too Many Requests** error will be returned.
 
