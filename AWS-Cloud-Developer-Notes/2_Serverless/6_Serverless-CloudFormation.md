@@ -67,7 +67,7 @@
 ## CloudFormation Architecture
 When a template is submitted, CloudFormation parses it, validates the syntax and resource configurations, then orchestrates the creation of resources by making API calls to the respective AWS services.
 
-![img_16.png](img_16.png)
+![img_16.png](resources/img_16.png)
 
 ## CloudFormation Integrations
 
@@ -164,3 +164,6 @@ Outputs:
 </details>
 </div>
 
+--------
+
+#### `NEXT TOPIC:` [Serverless Deployments](7_Serverless-App-Deployment.md)

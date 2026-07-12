@@ -14,7 +14,7 @@
 - Reduce latency and throttle traffic for API req/res by taking advantage of Amazon CloudFront.
 - Offers native OpenID Connect (OIDC) and OAuth2 support. For custom authorization requirements, **Lambda authorizer** from Lambda can be inoked.
 
-![img.png](img.png)
+![img.png](resources/img.png)
 
 ### Features
 - **Run multiple versions of API at the same time** - Host multiple versions for different user.
@@ -24,7 +24,7 @@
 
 ## API Gateway Architecture [^](#amazon-api-gateway-)
 
-![img_1.png](img_1.png)
+![img_1.png](resources/img_1.png)
 
 ## WebSocket API Designing [^](#amazon-api-gateway-)
 - WebSocket API allows the client and server to send message to each other any time.
@@ -124,7 +124,7 @@ Hourly rate for cache options
 
 ### Invoke URL Pattern
 
-![img_2.png](img_2.png)
+![img_2.png](resources/img_2.png)
 
 
 ### Customizing the Hostname
@@ -153,7 +153,7 @@ Determines how method request data is passed to the backend.
 - Use **Lambda Authorizer** to use to support bearer token authentication strategies such as OAuth or SAML.
 - Use **Amazon Cognito** with user pools
 
-![img_3.png](img_3.png)
+![img_3.png](resources/img_3.png)
 
 ### Token Bucket Algorithm 
 Requests that come into a bucket are fulfilled at a steady rate. If the rate at which the bucket is being filled causes the bucket to fill up and exceed the burst value, a **429 - Too Many Requests** error will be returned.

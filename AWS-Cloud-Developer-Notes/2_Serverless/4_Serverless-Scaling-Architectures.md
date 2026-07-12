@@ -56,7 +56,7 @@ Key considerations include the following:
 - SQS will continue to try a failed message up to the maximum receive count specified in the redrive policy. If a DLQ is configured, the failed message will be put into the DLQ and deleted from the SQS queue.
 - The best practice is to set the visibility timeout to six times the function timeout.
 
-![img_15.png](img_15.png)
+![img_15.png](resources/img_15.png)
 
 ### Lambda Scaling Considerations
 - **Lambda Power Tuning** helps understand the optimal memory to allocate to functions. Specify whether to optimize on cost, performance, or balance of the two.
