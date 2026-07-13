@@ -33,7 +33,7 @@ purpose of this repository is to easily access learning progress for review.
 ### 3. AWS Certified Developer Associate
 1. [Cloud Fundamentals - Compute Services](AWS-Cloud-Developer-Notes/1_Cloud-Fundamentals-Review/1_Compute-Services.md)
 2. [Cloud Fundamentals - Storage & Content Delivery](AWS-Cloud-Developer-Notes/1_Cloud-Fundamentals-Review/2_Storage-and-CD.md)
-3. [Cloud Fundamentals - Security](AWS-Cloud-Developer-Notes/1_Cloud-Fundamentals-Review/3_Security.md)
+3. [Cloud Fundamentals - Security Basics](AWS-Cloud-Developer-Notes/1_Cloud-Fundamentals-Review/3_Security.md)
 4. [Cloud Fundamentals - Networking & Elasticity](AWS-Cloud-Developer-Notes/1_Cloud-Fundamentals-Review/4_Networking-and-Elasticity.md)
 5. [Serverless Architecture - DynamoDB](AWS-Cloud-Developer-Notes/2_Serverless/1_Serverless-DynamoDB.md)
 6. [Serverless Architecture - Amazon API Gateway](AWS-Cloud-Developer-Notes/2_Serverless/2_Serverless-Amazon-API-Gateway.md)
@@ -41,7 +41,8 @@ purpose of this repository is to easily access learning progress for review.
 8. [Serverless Architecture - Scaling](AWS-Cloud-Developer-Notes/2_Serverless/4_Serverless-Scaling-Architectures.md)
 9. [Serverless Architecture - DevOps](AWS-Cloud-Developer-Notes/2_Serverless/5_Serverless-DevOps.md)
 10. [Serverless Architecture - CloudFormation](AWS-Cloud-Developer-Notes/2_Serverless/6_Serverless-CloudFormation.md)
-11. [Serverless Architecture - Deploying Applications]()
+11. [Serverless Architecture - Deploying Applications](AWS-Cloud-Developer-Notes/2_Serverless/7_Serverless-App-Deployment.md)
+12. [Security - Access Control Deep Dive](AWS-Cloud-Developer-Notes/3_Security/1_Security-Access-Control.md)
 
 ### 4. [AWS Accreditation : Blu Age L1 Notes (Mainframe Modernization)](AWS-Mainframe-Modernization)
    1. [Module 1: Approach to Mainframe Migration and Modernization](AWS-Mainframe-Modernization/Module-1.md#module-1-approach-to-mainframe-migration-and-modernization-conceptual-introduction-)

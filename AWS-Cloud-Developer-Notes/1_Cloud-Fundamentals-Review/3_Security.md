@@ -63,22 +63,30 @@
 
 ```json
 {
-    "Version": "2012-10-17",
-    "Statement": [
-        {
-            "Action": "ec2:*",
-            "Resource": "*",
-            "Effect": "Allow",
-            "Condition": {
-                "StringEquals": {
-                    "ec2:Region": "us-east-2"
-                }
-            }
+  "Version": "2012-10-17",
+  "Statement": [
+    {
+      "Action": "ec2:*",
+      "Resource": "*",
+      "Effect": "Allow",
+      "Condition": {
+        "StringEquals": {
+          "ec2:Region": "us-east-2"
         }
-    ]
+      }
+    },
+    {
+      "Sid": "AllObjectsActions",
+      "Effect": "Allow",
+      "Action": "s3:*Object",
+      "Resource": ["arn:aws:s3:::myBucket/*"]
+    }
+  ]
 }
 
 ```
+
+![img_1.png](img_1.png)
 
 ## Types of AWS Credentials
 
@@ -101,7 +109,113 @@
 <div>
 <details>
 
-<summary>3. IAM Identity Center</summary>
+<summary>3. IAM Policy Basics</summary>
+
+## IAM Request Context
+- There are three main pieces of logic that define what is in the policy and how policy actually works.
+- These makes up the request context that is authenticated by IAM and authorized accordingly.
+  - `Principal` - User, role, external user, or application that sent the request and the policies associated with it 
+  - `Action` - What the principal is attempting to do
+  - `Resource` - AWS resource object upon which the action or operation performed
+
+## Identity Based Policies
+
+### AWS Managed
+- AWS manages and creates these policies
+- Can be attached to multiple users, groups, and roles.
+
+### Customer managed
+- Policies created by the user and managed in the AWS account.
+- Provides more precise control than AWS managed policies.
+- Can also be attached to multiple users, groups, and roles.
+
+### Inline
+- Embedded directly into a single user, group, or role.
+- AWS does not recommend using inline policies in most cases.
+- Useful if wanted to maintain a strict one-to-one relationship between a policy and the principal entity
+  - For example, ensuring that the permissions in a policy are not inadvertently assigned to a principal entity other than the on they are intended for. 
+
+
+## Condition Elements
+- an optional element in the IAM policy that lets specify conditions for when a policy is in effect.
+
+```text
+"Condition" : { "<condition-operator>" : {"<condition-key>" : "<condition-value>"}}
+```
+
+```text
+"Condition" : { "StringEquals" : {"aws:username" : "JohnDoe" }}
+```
+
+```text
+"Condition" : { "IpAddress": {"aws:SourceIp": "203.0.113.0/24" }}
+```
+
+## Policy Types
+All of these policies are evaluated before a request is either allowed or denied
+
+![img_2.png](img_2.png)
+
+### 1. Identity-based
+- Also known as IAM policies
+- managed and inline policies attached to IAM identities (users, groups to which user belongs, or roles)
+
+### 2. Resource-based
+- Inline policies attached to AWS resources.
+- Grant permissions to the principal that is specified in the policy. Hence, the principal policy element is required.
+- The policy below is attached to an S3 bucket which only allows the specified IAM user.
+```json
+{
+  "Version": "2012-10-17",
+  "Statement": [ {
+    "Effect": "Allow",
+    "Action": "s3:*",
+    "Principal": {"AWS":  "arn:aws:iam:111122223333:user/johndoe"},
+    "Resource": "*"
+    }
+  ]
+}
+```
+
+### 3. Permission Boundaries
+- Sets the maximum permissions that an identity-based policy can grant to an IAM entity.
+- The entity can perform only the actions that are allowed by both its identity-based policies and its permissions boundaries.
+- Resource-based policies that specify the user or roles as the principal are not limited by the permission boundary
+
+### 4. AWS Organization SCPs
+Service Control Policies (SCPs) specify the maximum permissions for an account, or a group of accounts, called an Organizational Unit (OU).
+
+### 5. Access Control Lists (ACLs)
+- Control which principals in other accounts can access the resource to which the ACL is attached.
+- Supported by S3 buckets and objects.
+- Similar to resource-based policies and the only policy type that does not use JSON document structure.
+- Cross-account permissions policies that grant permissions to the specified principal.
+- Cannot grant permissions to entities within the same account.
+
+### 6. Session Policies
+- An inline permission policy that user pass in the session when they assume th role.
+- The permission for a session are the intersection of the identity-based policies for the IAM entity used to create the session and the session policies.
+
+## Explicit and Implicit Denies
+- A request results in an explicit deny if an applicable policy includes a Deny statement.
+- If the policies that apply to a request include both Allow/Deny statements, the Deny statement trumps the Allow statement.
+
+### Implicit Denial
+- Occurs when there is no applicable Deny statement but also no applicable Allow statement
+
+Below is a flow chart that provides details about how the decision is made as AWS authenticates the principal that makes the request. AWS evaluates the policy types in the following order:
+
+![img_3.png](img_3.png)
+
+
+
+</details>
+</div>
+
+<div>
+<details>
+
+<summary>4. IAM Identity Center</summary>
 
 ## IAM Identity Center
 - Provides a central place to create or connect workforce identities in AWS once and manage access centrally to multiple AWS account and applications.
@@ -118,7 +232,7 @@
 <div>
 <details>
 
-<summary>4. Amazon Cognito </summary>
+<summary>5. Amazon Cognito </summary>
 
 ## Amazon Cognito [^](#aws-security-services-)
 - Service that offers authentication and authorization features. Helps secure identity and access management for apps.
