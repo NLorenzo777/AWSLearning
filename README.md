@@ -43,6 +43,7 @@ purpose of this repository is to easily access learning progress for review.
 10. [Serverless Architecture - CloudFormation](AWS-Cloud-Developer-Notes/2_Serverless/6_Serverless-CloudFormation.md)
 11. [Serverless Architecture - Deploying Applications](AWS-Cloud-Developer-Notes/2_Serverless/7_Serverless-App-Deployment.md)
 12. [Security - Access Control Deep Dive](AWS-Cloud-Developer-Notes/3_Security/1_Security-Access-Control.md)
+13. [Security - Access Delegation Deep Dive](AWS-Cloud-Developer-Notes/3_Security/2_Security-Access-Delegation.md)
 
 ### 4. [AWS Accreditation : Blu Age L1 Notes (Mainframe Modernization)](AWS-Mainframe-Modernization)
    1. [Module 1: Approach to Mainframe Migration and Modernization](AWS-Mainframe-Modernization/Module-1.md#module-1-approach-to-mainframe-migration-and-modernization-conceptual-introduction-)

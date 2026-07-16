@@ -1,4 +1,6 @@
-# IAM - Access Control Deep Dive
+#### [Serverless Application Deployment](../2_Serverless/7_Serverless-App-Deployment.md)
+-----
+# IAM - Access Control Deep Dive [^](../../README.md#3-aws-certified-developer-associate)
 
 <div>
 <details>
@@ -295,7 +297,7 @@ For example, a user might create a service role that trusts Amazon CloudWatch to
 <details>
 <summary>5. Additional Global Condition Keys</summary>
 
-##  `aws:CurrentTime`
+## `aws:CurrentTime`
 Compares date/time of the request with the date/time in the policy 
 
 ```json
@@ -311,7 +313,7 @@ Compares date/time of the request with the date/time in the policy
 }
 ```
 
-##  `aws:EpochTime`
+## `aws:EpochTime`
 - Compares date/time of the request with the date/time in the policy. 
 - Epoch time is the Unix timestamp. Use this condition key if the programming language uses Unix Epoch time. 
 
@@ -328,7 +330,7 @@ Compares date/time of the request with the date/time in the policy
 }
 ```
 
-##  `aws:TokenIssueTime`
+## `aws:TokenIssueTime`
 Compares the date/time that temporary security credentials were issued with the date and time that is specified in the policy
 
 ```json
@@ -341,7 +343,7 @@ Compares the date/time that temporary security credentials were issued with the 
 }
 ```
 
-##  `aws:MultiFactorAuthAge`
+## `aws:MultiFactorAuthAge`
 Compares the number of seconds since the requesting principal was authorized using MFA.
 
 ```json
@@ -354,7 +356,7 @@ Compares the number of seconds since the requesting principal was authorized usi
 }
 ```
 
-##  `aws:MultiFactorAuthPresent`
+## `aws:MultiFactorAuthPresent`
 - Checks whether MFA was used to validate the temporary security credentials that made the request
 - If MFa is being used for authentication, this key enforces that permissions are granted only after a successful MFA authentication
 
@@ -368,7 +370,7 @@ Compares the number of seconds since the requesting principal was authorized usi
 }
 ```
 
-##  `aws:SecureTransport`
+## `aws:SecureTransport`
 Verifies whether the request was sent using SSL for encrypted data transmission
 
 ```json
@@ -381,7 +383,7 @@ Verifies whether the request was sent using SSL for encrypted data transmission
 }
 ```
 
-##  `aws:SourceAccount`
+## `aws:SourceAccount`
 Compares the account ID in the resource ARN with the account ID specified in the policy 
 
 ```json
@@ -394,32 +396,32 @@ Compares the account ID in the resource ARN with the account ID specified in the
 }
 ```
 
-##  `aws:Arn`
+## `aws:Arn`
 Restricts access to the requested resource based on the resource's ARN.
 
 ```json
 {
   "Condition": {
-    "StringEquals": {
-      "aws:Arn": "arn:aws:sns:us-east-2:444455556666:myTopic"
+    "ArnEquals": {
+      "aws:SourceArn": "arn:aws:sns:us-east-2:444455556666:myTopic"
     }
   }
 }
 ```
 
-##  `aws:SourceIp`
+## `aws:SourceIp`
 
 ```json
 {
   "Condition": {
-    "StringEquals": {
+    "IpAddress": {
       "aws:SourceIp": "123.45.167.89"
     }
   }
 }
 ```
 
-##  `aws:SourceVpc`
+## `aws:SourceVpc`
 Allow access to only a specific VPC specified in the policy
 
 ```json
@@ -432,7 +434,7 @@ Allow access to only a specific VPC specified in the policy
 }
 ```
 
-##  `aws:SourceVpce`
+## `aws:SourceVpce`
 Compares VPC endpoint identifier of the request with the one specified in the policy
 
 ```json
@@ -445,34 +447,185 @@ Compares VPC endpoint identifier of the request with the one specified in the po
 }
 ```
 
-##  `aws:VpcSourceIp`
+## `aws:VpcSourceIp`
 Compares the IP address from which a request was made using a VPC endpoint.
 
 ```json
 {
-  "Condition": {
-    "StringEquals": {
+  "Condition" : {
+    "IpAddress": {
       "aws:VpcSourceIp": "192.0.2.0/24"
     }
   }
 }
 ```
 
+## `aws:PrincipalAccount`
+Compares the account to which the requesting principal belongs with the account identifier specified in the policy
+
+```json
+{
+  "Condition": {
+    "StringEquals": {
+      "aws:PrincipalAccount": "444455556666"
+    }
+  }
+}
+```
+
+## `aws:PrincipalArn`
+- Compares the ARN of the principal that made the request with the ARN specified in the policy.
+- This key restricts access based on the principal's ARN.
+
+```json
+{
+  "Condition": {
+    "StringLike": {
+      "aws:PrincipalArn": "arn:aws:iam::111222333:role/AdminR"
+    }
+  }
+}
+```
+
+## `aws:PrincipalOrgId`
+Compares the identifier of the organization in AWS Organizations to which the requesting principal belongs.
+
+```json
+{
+  "Condition": {
+    "StringEquals": {
+      "aws:PrincipalOrgId": ["o-12345678901"]
+    }
+  }
+}
+```
+
+## `aws:PrincipalOrgPaths`
+- Compares the AWS Organizations path for the principal who is making the request to the path in the policy.
+- The principal can be an IAM user, IAM role, federated user, or AWS account root user.
+
+```json
+{
+  "Condition": {
+    "ForAnyValue:StringEquals": {
+      "aws:PrincipalOrgPaths": ["o-a1b2c3d4e5/f6example/ou-ghi0-awsc/ou-jkl0-awsd/"]
+    } 
+  }
+}
+```
+
+## `aws:PrincipalType`
+- Compares the type of principal making the request with the principal specified in the policy
+- The type depends on whether the request was made using the credentials of an AWS account, an IAM user, an IAM role, and so on.
+
+```json
+{
+  "Condition": {
+    "StringEquals": {
+      "aws:PrincipalType": "FederatedUser"
+    } 
+  }
+}
+```
+
+## `aws:PrincipalTag`
+Compares the tag attached to the principal making the request.
+
+```json
+{
+  "Condition": {
+    "StringEquals": {
+      "aws:PrincipalTag/<key>": "<value>"
+    } 
+  }
+}
+```
+
+## `aws:RequestTag/tag-key`
+- Compares the tag key-value pair that was passed in the request with the tag pair specified
+- Use to verify whether the request includes a certain tag key.
+
+```json
+{
+  "Condition": {
+    "StringEquals": {
+      "aws:RequestTag/environment": ["preprod", "production"]
+    } 
+  }
+}
+```
+
+## `aws:ResourceTag/tag-key`
+- Compares the tag key-value pair that is specified in the policy with the key-value pair that is attached to the resource.
+- Require access to a resource is allowed only if the resource has the attached tag key.
+
+```json
+{
+  "Condition": {
+    "StringEquals": {
+      "aws:ResourceTag/Owner": "${aws:username}"
+    } 
+  }
+}
+```
+
+## `aws:TagKeys`
+Compares the tag keys in a request with the keys specified
+
+```json
+{
+  "Condition": {
+    "ForAllValues:StringEquals": {
+      "aws:TagKeys": ["environment", "cost-center"]
+    } 
+  }
+}
+```
+</details>
+</div>
+
+<div>
+<details>
+<summary>6. Advanced Policy Elements</summary>
+
+## `NotPrincipal` element
+Specify an exception to a list of principals.
+
+> It is strongly recommended not to use the **NotPrincipal** in the same policy statement as `"Effect":"Allow`.
+> Doing this allows all principals except the one principal mentioned which might grant access to anonymous users.
+
+![img_8.png](img_8.png)
+
+## `NotAction` element
+- Explicitly matches everything except the specified list of actions.
+- Results in a shorter policy by listing only a few actions that should not match rather than including a long list of actions.
+
+> It is also strongly not recommended to use this with `"Effect":"Allow"` statement.
+> Doing this will allow all actions except the one named in the NotAction element.
+
+```json
+{
+  "Version": "2012-10-17",
+  "Statement": [{
+    "Sid": "DenyAllUsersNotUsingMFA",
+    "Effect": "Deny",
+    "NotAction": "iam:*",
+    "Resource": "*",
+    "Condition": {
+      "BoolIfExists": {"aws:MultiFactorAuthPresent": "false"}}
+  }]
+}  
+```
+
+## `NotResource` element
+Explicitly match every resource except those specified
+
+> Be careful when using with the `"Effect":"Allow"` statement which will allow all services except the ones mentioned.
+
+![img_9.png](img_9.png)
 
 </details>
 </div>
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+------
+#### `NEXT TOPIC:` [Security - Access Delegation](2_Security-Access-Delegation.md)
