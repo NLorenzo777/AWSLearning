@@ -198,6 +198,271 @@ For example, a user might create a service role that trusts Amazon CloudWatch to
 </div>
 
 
+<div>
+<details>
+<summary>4. Global Condition Keys</summary>
+
+## Global Condition Keys
+- Global Condition Keys start with the `aws:` prefix.
+- Not all AWS services support all the available global condition keys.
+
+
+## Who made what request?
+- When an IAM principal (user or role) makes a request to an AWS service, that service might use the principal's credentials to make subsequent requests to other services.
+- If there is no service role configured, the request context may contain the `aws:CalledVia` key.
+  - This condition key includes information in the form of an **ordered list** of each service in the chain that made requests on the principal's behalf.
+  - This information is available only if the AWS services involved support `awsCalledVia`
+
+#### Example
+
+![img_6.png](img_6.png)
+
+1. Principal requests made directly to a service are not recorded by the `aws:CalledVia` context key. (e.g. `cloudFormation:CreateStack`)
+2. CloudFormation uses the principal's credentials to create a table in Amazon DynamoDB. This is where CloudFormation is the first piece of information recorded by the `aws:CalledVia` context key.
+3. DynamoDB uses AWS KMS to encrypt data as it's been written to the new table, so a call is made by DynamoDB. DynamoDB is the second service recorded by the `aws:CalledVia`.
+
+```json
+{
+  "Version": "2012-10-17",
+  "Statement": [
+    {
+      "Sid": "KmsActionsIfCalledViaDynamodb",
+      "Effect": "Allow",
+      "Action": [
+        "kms:Encrypt",
+        "kms:Decrypt",
+        "kms:ReEncrypt*",
+        "kms:GenerateDataKey",
+        "kms:DescribeKey"
+      ],
+      "Resource": "arn:aws:kms:region:111122223333:key/my-example-key",
+      "Condition": {
+        "ForAnyValue:StringEquals": {
+          "aws:CalledVia": ["dynamodb.amazonaws.com"]
+        }
+      }
+    }
+  ]
+}
+```
+- The policy allows managing the AWS KMS key named `my-example-key` but only if DynamoDB is one of the services making the request.
+- If the principal makes the call to AWS KMS directly, the condition returns false and the request is not allowed by this policy.
+
+## Who called first, and who called last?
+- This is done when wanted to enforce which service makes the first or last call in the `aws:CalledVia` context key.
+- Accomplished using the `aws:CalledViaFirst` and `aws:CalledViaLast` keys.
+
+![img_7.png](img_7.png)
+
+1. no CalledVia context keys are present since this was a direct request.
+2. **CalledVia**: cloudformation, **CalledViaFirst**: cloudformation, **CalledViaLast**: cloudformation
+3. **CalledVia**: cloudformation, service X, **CalledViaFirst**: cloudformation, **CalledViaLast**: service X
+4. **CalledVia**: cloudformation, dynamodb, service X, **CalledViaFirst**: cloudformation, **CalledViaLast**: dynamodb
+
+```json
+{
+  "Version": "2012-10-17",
+  "Statement": [
+    {
+      "Sid": "KmsActionsIfCalledViaChain",
+      "Effect": "Allow",
+      "Action": [
+        "kms:Encrypt",
+        "kms:Decrypt",
+        "kms:ReEncrypt*",
+        "kms:GenerateDataKey",
+        "kms:DescribeKey"
+      ],
+      "Resource": "arn:aws:kms:region:111122223333:key/my-example-key",
+      "Condition": {
+        "StringEquals": {
+          "aws:CalledViaFirst": "cloudformation.amazonaws.com",
+          "aws:CalledViaLast": "dynamodb.amazonaws.com"
+        }
+      }
+    }
+  ]
+}
+```
+- The policy allows managing the AWS KSM key only if multiple requests were included in the chain.
+- The first request must be made via AWS CloudFormation and the last via DynamoDB.
+- If other services makes the requests in the middle of the chain, the operation is still allowed.
+
+</details>
+</div>
+
+<div>
+<details>
+<summary>5. Additional Global Condition Keys</summary>
+
+##  `aws:CurrentTime`
+Compares date/time of the request with the date/time in the policy 
+
+```json
+{
+  "Condition": {
+    "DateGreaterThan": {
+      "aws:CurrentTime": "2020-04-01T00:00:00Z"
+    },
+    "DateLessThan": {
+      "aws:CurrentTime": "2020-06-30T23:59:59Z"
+    }
+  }
+}
+```
+
+##  `aws:EpochTime`
+- Compares date/time of the request with the date/time in the policy. 
+- Epoch time is the Unix timestamp. Use this condition key if the programming language uses Unix Epoch time. 
+
+```json
+{
+  "Condition": {
+    "DateGreaterThan": {
+      "aws:EpochTime": "1284562853"
+    },
+    "DateLessThan": {
+      "aws:EpochTime": "1288920234"
+    }
+  }
+}
+```
+
+##  `aws:TokenIssueTime`
+Compares the date/time that temporary security credentials were issued with the date and time that is specified in the policy
+
+```json
+{
+  "Condition": {
+    "DateLessThan": {
+      "aws:TokenIssueTime": "2014-05-07T23:47:00Z"
+    }
+  }
+}
+```
+
+##  `aws:MultiFactorAuthAge`
+Compares the number of seconds since the requesting principal was authorized using MFA.
+
+```json
+{
+  "Condition": {
+    "NumericLessThan": {
+      "aws:MultiFactorAuthAge": "300"
+    }
+  }
+}
+```
+
+##  `aws:MultiFactorAuthPresent`
+- Checks whether MFA was used to validate the temporary security credentials that made the request
+- If MFa is being used for authentication, this key enforces that permissions are granted only after a successful MFA authentication
+
+```json
+{
+  "Condition": {
+    "Bool": {
+      "aws:MultiFactorAuthPresent": "true"
+    }
+  }
+}
+```
+
+##  `aws:SecureTransport`
+Verifies whether the request was sent using SSL for encrypted data transmission
+
+```json
+{
+  "Condition": {
+    "Bool": {
+      "aws:SecureTransport": "true"
+    }
+  }
+}
+```
+
+##  `aws:SourceAccount`
+Compares the account ID in the resource ARN with the account ID specified in the policy 
+
+```json
+{
+  "Condition": {
+    "StringEquals": {
+      "aws:SourceAccount": "444455556666"
+    }
+  }
+}
+```
+
+##  `aws:Arn`
+Restricts access to the requested resource based on the resource's ARN.
+
+```json
+{
+  "Condition": {
+    "StringEquals": {
+      "aws:Arn": "arn:aws:sns:us-east-2:444455556666:myTopic"
+    }
+  }
+}
+```
+
+##  `aws:SourceIp`
+
+```json
+{
+  "Condition": {
+    "StringEquals": {
+      "aws:SourceIp": "123.45.167.89"
+    }
+  }
+}
+```
+
+##  `aws:SourceVpc`
+Allow access to only a specific VPC specified in the policy
+
+```json
+{
+  "Condition": {
+    "StringEquals": {
+      "aws:SourceVpc": "vpc-111bbb22"
+    }
+  }
+}
+```
+
+##  `aws:SourceVpce`
+Compares VPC endpoint identifier of the request with the one specified in the policy
+
+```json
+{
+  "Condition": {
+    "StringEquals": {
+      "aws:SourceVpce": "vpce-1a2b3c4d"
+    }
+  }
+}
+```
+
+##  `aws:VpcSourceIp`
+Compares the IP address from which a request was made using a VPC endpoint.
+
+```json
+{
+  "Condition": {
+    "StringEquals": {
+      "aws:VpcSourceIp": "192.0.2.0/24"
+    }
+  }
+}
+```
+
+
+</details>
+</div>
+
+
 
 
 
