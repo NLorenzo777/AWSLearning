@@ -3,8 +3,8 @@
 # IAM - Access Delegation Deep Dive [^](../../README.md#3-aws-certified-developer-associate)
 
 <div>
-<summary>
-<details>1. AWS Security Token Service (AWS STS)</details>
+<details>
+<summary>1. AWS Security Token Service (AWS STS)</summary>
 
 ## AWS Security Token Service (AWS STS)
 - Create and provide trusted IAM users or authenticated users (federated users) with temporary security credentials that can control access to AWS resources.
@@ -36,12 +36,12 @@ The AssumeRole call returns a set of temporary security credentials for users wh
 ![img_11.png](img_11.png)
 
 
-</summary>
+</details>
 </div>
 
 <div>
-<summary>
-<details>2. Managing Role Sessions</details>
+<details>
+<summary>2. Managing Role Sessions</summary>
 
 ## Scoping Down Permissions
 - By default, all users assuming the same role get the same permissions for their role session.
@@ -162,12 +162,12 @@ In other cases, you provide the role session name when assuming the IAM role. Fo
 
 ```
 
-</summary>
+</details>
 </div>
 
 <div>
-<summary>
-<details>3. Session Tagging</details>
+<details>
+<summary>3. Session Tagging</summary>
 
 ## Session Tags
 - attributes passed in an IAM role session when assuming a role or federating a user using the AWS CLI or AWS API.
@@ -209,7 +209,7 @@ In other cases, you provide the role session name when assuming the IAM role. Fo
 - This tells AWS about the external identity provider (IdP)
 
 
-</summary>
+</details>
 </div>
 
 -----

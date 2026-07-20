@@ -1,4 +1,5 @@
 #### [Access Delegation](2_Security-Access-Delegation.md)
+
 ----
 # IAM - Access Federation Deep Dive [^](../../README.md#3-aws-certified-developer-associate)
 
@@ -62,6 +63,66 @@ AWS supports commonly used open identity standards, including Security Assertion
   - Includes the ARNs of the IAM managed policies that you want to use as managed session policies.
   - The policies must exist in the same account as the role.
   - Up to 10 managed policy ARNs.
+
+## The `AssumeRoleWithSAML` Response
+- The `AssumeRoleWithSAML` call returns a set of temporary security credentials for users who have been authenticated via a SAML authentication response.
+- This operation provides a mechanism for tying an enterprise identity store or directory to a role-based AWS access without user-specific credentials or configuration.
+
+![img_18.png](img_18.png)
+
+> `<Issuer></Issuer`: Refers to the entity ID of the IdP which is a URL that uniquely identifies the SAML identity provider. SAML Assertions sent to the service provider must match this value exactly in the attribute of the SAML assertion.
+
+> `<AssumedRoleUser></AssumedRoleUser>`: contains the ARN of the issued temporary credentials and the unique identity of the role ID and role session name.
+
+> `<Credentials></Credentials>`: Contains the temporary security credentials, which include an access key ID, a secret access key, a security (or session) token, and the session expiration time.
+
+> `<Audience></Audience>`: Specifies the specific audience of the SAML assertion that it is intended for. The audience is the service provider and is typically a URL.
+
+> `<SubjectType></SubjectType`: format of the name identifier of the subject field. An identifier intended to be used for a single session only is called a **transient identifier**.
+
+> `<PackedPolicySize></PackedPolicySize>`: A percentage value that indicates the packed size of the combined session policies and session tags that were passed in the request. The request fails if the packed size is greater than 100%, which means the policies and tags exceeded the allowed space
+
+> `<NameQualifier></NameQualifier>`: a hash value based on the concatenation of the user response value, the AWS account ID, and the name of the SAML provider in IAM. The combination of a NameQualifier and the Subject can be used to uniquely identify a federated user.
+
+### Using ABAC for identity federation
+
+An IdP is configured to include "CostCenter" as a session tag when users federate into AWS using an IAM role.
+All federated users assume the same role but are granted access only to AWS resources belonging to their cost center.
+
+![img_19.png](img_19.png)
+
+- The IAM role for this scenario would then grant access to project resources based on the CostCenter tag with the ec2:ResourceTag/CostCenter condition key.
+- whenever users federate into AWS using this role, they get access to only the resources belonging to their cost center based on the CostCenter tag included in the federated session
+
+</details>
+</div>
+
+<div>
+<details>
+<summary>4. Web-Based Federation</summary>
+
+## The `AssumeRoleWithWebIdentity` Request
+- An identity token from a supported IdP and an IAM role to be assumed must be available before the application can call the `AssumeRoleWithWebIdentity`.
+- Calling the `AssumeRoleWithWebIdentity` does not require the use of AWS security credentials. Therefore, it is possible to distribute an application (e.g. on mobile devices) that requests temporary security credentials without including long-term AWS credentials in the application.
+- There is no need to deploy server-based proxy services that use long-term AWS credentials.
+- The identity of the caller is validated by using a token from the web identity provider.
+
+![img_20.png](img_20.png)
+
+## The `AssumeRoleWithWebIdentity` Response
+- The temporary security credentials returned by the API consists of:
+  - **access Key ID**
+  - **secret access key**
+  - **security token**
+
+![img_21.png](img_21.png)
+
+## Amazon Cognito for Mobile Applications
+- Lets add user sign-up, sign-in, and access controls to web and mobile apps.
+- define roles and map users to different roles so that the app can access only the resources that are authorized for each user.
+- Support sign-in with social identity providers such as Apple, Facebook, Google, and Amazon, and enterprise identity providers via SAML 2.0.
+
+![img_22.png](img_22.png)
 
 </details>
 </div>
