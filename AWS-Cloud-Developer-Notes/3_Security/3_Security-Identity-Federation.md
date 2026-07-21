@@ -99,7 +99,7 @@ All federated users assume the same role but are granted access only to AWS reso
 
 <div>
 <details>
-<summary>4. Web-Based Federation</summary>
+<summary>3. Web-Based Federation</summary>
 
 ## The `AssumeRoleWithWebIdentity` Request
 - An identity token from a supported IdP and an IAM role to be assumed must be available before the application can call the `AssumeRoleWithWebIdentity`.
@@ -123,6 +123,24 @@ All federated users assume the same role but are granted access only to AWS reso
 - Support sign-in with social identity providers such as Apple, Facebook, Google, and Amazon, and enterprise identity providers via SAML 2.0.
 
 ![img_22.png](img_22.png)
+
+</details>
+</div>
+
+<div>
+<details>
+<summary>4. IAM Identity Center for User Federation</summary>
+
+## IAM Identity Center
+- Centrally manage federated access to multiple AWS accounts and business applications.
+- Provide users with SSO access to all assigned accounts and applications from one place.
+- Use identity center directory, existing Microsoft Active Directory, or external IdP.
+
+## AWS Access via Permission Sets
+- A **permission set** is a collection of administrator-defined policies that IAM Identity Center uses to determine a user's effective permissions to access a given AWS account.
+- Permission sets can contain either AWS-managed policies or custom policies.
+- Permission sets are provisioned o the AWS account as IAM roles and are presented to users as such.
+- Users who have multiple permission sets must choose one of the roles when they sign in to the AWS access portal
 
 </details>
 </div>
