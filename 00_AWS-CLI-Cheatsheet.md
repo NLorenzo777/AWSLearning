@@ -141,6 +141,21 @@ aws ec2 delete-volume --volume-id 'vol-xxxxxxxxxxxxxxxxx' --region us-east-1
 - **Deletion is irreversible, ensure that data are backed-up using snapshots**
 </details>
 
+<details>
+<summary>Create a Load Balancer</summary>
+
+```bash
+aws elbv2 create-load-balancer \
+--name MyLoadBalancer \
+--subnets subnet-12345 subnet-67890 \
+--security-groups sg-12345 \
+--scheme internet-facing \
+--type application #default type 
+
+--
+```
+</details>
+
 
 ----------------------------------------------------------------------
 ## IAM Commands [^](#aws-cli-cheatsheet)

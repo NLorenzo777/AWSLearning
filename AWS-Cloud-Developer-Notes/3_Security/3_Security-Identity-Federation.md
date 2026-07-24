@@ -42,7 +42,7 @@ AWS supports commonly used open identity standards, including Security Assertion
 - Additionally, IAM must be used to create a SAML provider entity in the AWS account that represents the identity provider.
 - an IAM role must be created that specified the SAML provider in the trust policy of the IAM policy that represents the IdP.
 
-![img_17.png](img_17.png)
+![img_17.png](resources/img_17.png)
 
 > `&RoleArn` - ARN of the role that the federated user is assuming
 
@@ -68,7 +68,7 @@ AWS supports commonly used open identity standards, including Security Assertion
 - The `AssumeRoleWithSAML` call returns a set of temporary security credentials for users who have been authenticated via a SAML authentication response.
 - This operation provides a mechanism for tying an enterprise identity store or directory to a role-based AWS access without user-specific credentials or configuration.
 
-![img_18.png](img_18.png)
+![img_18.png](resources/img_18.png)
 
 > `<Issuer></Issuer`: Refers to the entity ID of the IdP which is a URL that uniquely identifies the SAML identity provider. SAML Assertions sent to the service provider must match this value exactly in the attribute of the SAML assertion.
 
@@ -89,7 +89,7 @@ AWS supports commonly used open identity standards, including Security Assertion
 An IdP is configured to include "CostCenter" as a session tag when users federate into AWS using an IAM role.
 All federated users assume the same role but are granted access only to AWS resources belonging to their cost center.
 
-![img_19.png](img_19.png)
+![img_19.png](resources/img_19.png)
 
 - The IAM role for this scenario would then grant access to project resources based on the CostCenter tag with the ec2:ResourceTag/CostCenter condition key.
 - whenever users federate into AWS using this role, they get access to only the resources belonging to their cost center based on the CostCenter tag included in the federated session
@@ -107,7 +107,7 @@ All federated users assume the same role but are granted access only to AWS reso
 - There is no need to deploy server-based proxy services that use long-term AWS credentials.
 - The identity of the caller is validated by using a token from the web identity provider.
 
-![img_20.png](img_20.png)
+![img_20.png](resources/img_20.png)
 
 ## The `AssumeRoleWithWebIdentity` Response
 - The temporary security credentials returned by the API consists of:
@@ -115,14 +115,14 @@ All federated users assume the same role but are granted access only to AWS reso
   - **secret access key**
   - **security token**
 
-![img_21.png](img_21.png)
+![img_21.png](resources/img_21.png)
 
 ## Amazon Cognito for Mobile Applications
 - Lets add user sign-up, sign-in, and access controls to web and mobile apps.
 - define roles and map users to different roles so that the app can access only the resources that are authorized for each user.
 - Support sign-in with social identity providers such as Apple, Facebook, Google, and Amazon, and enterprise identity providers via SAML 2.0.
 
-![img_22.png](img_22.png)
+![img_22.png](resources/img_22.png)
 
 </details>
 </div>

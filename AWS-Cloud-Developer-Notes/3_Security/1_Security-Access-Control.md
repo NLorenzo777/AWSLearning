@@ -142,7 +142,7 @@ Delegate access to users, applications, or service that does not usually have ac
 To allow an IAM entity to create a specific service role, add the following policy to the IAM entity that needs to create the service role.
 This policy allows to create a service role for the specified service and with a specific name
 
-![img.png](img.png)
+![img.png](resources/img.png)
 
 
 ### `iam:OrganizationsPolicyId`
@@ -150,7 +150,7 @@ This policy allows to create a service role for the specified service and with a
 
 The example shown here is an IAM policy that allows viewing service last accessed information for SCP with the p-policy123 ID. This policy also allows the requester to retrieve the data for any Organizations entity in their organization.
 
-![img_1.png](img_1.png)
+![img_1.png](resources/img_1.png)
 
 ### `iam:PermissionsBoundary`
 Checks that the specified policy is attached as a permissions boundary on the IAM principal resource.
@@ -159,7 +159,7 @@ Checks that the specified policy is attached as a permissions boundary on the IA
 - checks the ARN of a managed policy in requests that involve the same managed policy.
 - For example, create a policy that allows users to attach only the IAMUserChangePassword AWS managed policy to a new IAM user, group, or role.
 
-![img_2.png](img_2.png)
+![img_2.png](resources/img_2.png)
 
 - In the policy above, the iam:PolicyARN condition ensures that permissions are allowed only when the policy being attached matches the AWS managed policy in the condition.
 - The user is allowed to attach policies to only the groups and roles that include the path /TEAM-A/
@@ -167,7 +167,7 @@ Checks that the specified policy is attached as a permissions boundary on the IA
 ### `iam:ResourceTag`
 - Checks that the tag attached to the identity resource, either a user or role, matches the specified key name and value provided.
 
-![img_3.png](img_3.png)
+![img_3.png](resources/img_3.png)
 A policy that shows how a policy that allows deleting users with only the status=terminated tag 
 
 ## Condition Keys for Passing roles
@@ -183,7 +183,7 @@ A policy that shows how a policy that allows deleting users with only the status
 "Condition": { "StringEquals": { "iam:PassedToService": "cloudwatch.amazonaws.com" } }
 ```
 
-![img_4.png](img_4.png)
+![img_4.png](resources/img_4.png)
 
 For example, a user might create a service role that trusts Amazon CloudWatch to write log data to an Amazon S3 bucket on their behalf. In this case, the trust policy must specify cloudwatch.amazonaws.com in the Principal element. If a user with the policy below attempts to create a service role for Amazon EC2, the operation will fail. The failure occurs because the user does not have permission to pass the role to Amazon EC2.
 
@@ -192,7 +192,7 @@ For example, a user might create a service role that trusts Amazon CloudWatch to
 - Specifies the ARN of the resource to which this roles will be associated at the destination service.
 - Use this condition key in a policy to allow an IAM entity to pass a role but only if that role is associated with the specified resource.
 
-![img_5.png](img_5.png)
+![img_5.png](resources/img_5.png)
 - The `iam:PassedToService` and `iam:AssociatedResourceArn` condition keys allows an IAM entity to pass any tole to the Amazon EC2 service to be used with instances in the us-east-1 or us-west-1 Region.
 - The IAM user or role would not be allowed to pass roles to other services, and it does not allow Amazon EC2 to use the rolw with instance in other regions.
 
@@ -217,7 +217,7 @@ For example, a user might create a service role that trusts Amazon CloudWatch to
 
 #### Example
 
-![img_6.png](img_6.png)
+![img_6.png](resources/img_6.png)
 
 1. Principal requests made directly to a service are not recorded by the `aws:CalledVia` context key. (e.g. `cloudFormation:CreateStack`)
 2. CloudFormation uses the principal's credentials to create a table in Amazon DynamoDB. This is where CloudFormation is the first piece of information recorded by the `aws:CalledVia` context key.
@@ -254,7 +254,7 @@ For example, a user might create a service role that trusts Amazon CloudWatch to
 - This is done when wanted to enforce which service makes the first or last call in the `aws:CalledVia` context key.
 - Accomplished using the `aws:CalledViaFirst` and `aws:CalledViaLast` keys.
 
-![img_7.png](img_7.png)
+![img_7.png](resources/img_7.png)
 
 1. no CalledVia context keys are present since this was a direct request.
 2. **CalledVia**: cloudformation, **CalledViaFirst**: cloudformation, **CalledViaLast**: cloudformation
@@ -594,7 +594,7 @@ Specify an exception to a list of principals.
 > It is strongly recommended not to use the **NotPrincipal** in the same policy statement as `"Effect":"Allow`.
 > Doing this allows all principals except the one principal mentioned which might grant access to anonymous users.
 
-![img_8.png](img_8.png)
+![img_8.png](resources/img_8.png)
 
 ## `NotAction` element
 - Explicitly matches everything except the specified list of actions.
@@ -622,7 +622,7 @@ Explicitly match every resource except those specified
 
 > Be careful when using with the `"Effect":"Allow"` statement which will allow all services except the ones mentioned.
 
-![img_9.png](img_9.png)
+![img_9.png](resources/img_9.png)
 
 </details>
 </div>

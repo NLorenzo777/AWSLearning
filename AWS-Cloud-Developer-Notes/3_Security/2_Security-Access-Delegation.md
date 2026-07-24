@@ -23,7 +23,7 @@
 ## The `AssumeRole` request
 Typically use for account or cross-account access.
 
-![img_10.png](img_10.png)
+![img_10.png](resources/img_10.png)
 - `DurationSeconds` - Last for 1 hour by default. However, this can be updated to specify the duration and further control the session. Value from **900 seconds (15 minutes) up to 12 hours**
 - `Policy` - includes the IAM policy wanted to be use as an inline session policy. The resulting session's permission are the intersection of the role's identity-based policy and the session policy.
 - `PolicyArns.member.N` - Includes the ARNs of the IAM managed policies that is wanted to be used as managed session policies. Provide up to **10 managed policy ARNs**.
@@ -33,7 +33,7 @@ Typically use for account or cross-account access.
 ## The `AssumeRole` response
 The AssumeRole call returns a set of temporary security credentials for users who have been authorized by AWS STS.
 
-![img_11.png](img_11.png)
+![img_11.png](resources/img_11.png)
 
 
 </details>
@@ -128,7 +128,7 @@ In other cases, you provide the role session name when assuming the IAM role. Fo
 
 ### Use Cases
 
-![img_12.png](img_12.png)
+![img_12.png](resources/img_12.png)
 - The principal will restrict who can access the IAM role.
 - Use the `sts:RoleSessionName"` condition to define the acceptable role session names.
 
@@ -174,7 +174,7 @@ In other cases, you provide the role session name when assuming the IAM role. Fo
 - Use for access control in IAM policies and for monitoring.
 - To be able to add session tags, the `sts:TagSession` action must be allowed in the IAM policy.
 
-![img_13.png](img_13.png)
+![img_13.png](resources/img_13.png)
 
 ### Considerations for Session Tags
 
@@ -196,15 +196,15 @@ In other cases, you provide the role session name when assuming the IAM role. Fo
 - By default, tags are not passed to subsequent role sessions. However, session tags can be set as transitive to ensure that those session tags pass to subsequent sessions in a role chain.
 
 ### Use Case
-![img_14.png](img_14.png)
+![img_14.png](resources/img_14.png)
 - This is the policy attached to an IAM Role
 - The policy allows specific actions related to EC2 to SystemsEngineer and RDG to DatabaseEngineer.
 
-![img_15.png](img_15.png)
+![img_15.png](resources/img_15.png)
 - This is the modified role trust policy which trusts a SAML IdP.
 - Notice the condition that requires the jobfunction and project attributes to be included as session tags when engineers assume this role.
 
-![img_16.png](img_16.png)
+![img_16.png](resources/img_16.png)
 - The SAML IdP configuration must be updated to include jobfunction and project attributes as session tags in the SAML.
 - This tells AWS about the external identity provider (IdP)
 

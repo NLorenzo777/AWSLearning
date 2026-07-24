@@ -184,10 +184,13 @@ across multiple resources, such as Amazon EC2 instances.
   - **Authenticates Users**
   - **Secures Traffic**
   - **Supports Sticky Sessions**
+- **Use Cases:**
+  - Use ALB to host different API endpoints of the application on different servers. The ALB then redirects the incoming HTTP traffic to the suitable server based on the rules specified in the configuration.
 
 #### 2. Network Load Balancer
 - Ideal for load balancing TCP and UDP traffic.
 - Functions at the Layer 4 of the OSI model, routing connections from a target in the target group based on IP protocol data.
+- Having an NLB becomes essential when your application requires handling millions of requests per second securely while maintaining ultra-low latencies.
 
 
 #### 3. Gateway Load Balancing
