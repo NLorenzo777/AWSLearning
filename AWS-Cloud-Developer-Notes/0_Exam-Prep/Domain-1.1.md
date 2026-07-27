@@ -1,4 +1,4 @@
-# AWS Developer Certification – Domain 1 Study Summary
+# AWS Developer Certification – Domain 1 Study Summary [^](../../README.md#3-aws-certified-developer-associate)
 ### Domain 1: Development with AWS Services — Task Statement 1: *Develop Code for Applications Hosted on AWS*
 
 *Summary notes from an exam-prep training transcript. Practice questions called out in the transcript appear as blockquotes throughout, with a quick-reference answer key at the end.*

@@ -1,4 +1,4 @@
-# AWS Developer Certification – Domain 1 Study Summary
+# AWS Developer Certification – Domain 1 Study Summary [^](../../README.md#3-aws-certified-developer-associate)
 ### Domain 1: Development with AWS Services — Task Statement 3: *Use Data Stores in Application Development*
 
 *Third in the Domain 1 series. Practice questions from the transcript appear as blockquotes, with a quick-reference answer key at the end.*

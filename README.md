@@ -53,6 +53,7 @@ purpose of this repository is to easily access learning progress for review.
 ### Domain 1
 - [Domain 1.1. : Develop Code for Applications Hosted in AWS](AWS-Cloud-Developer-Notes/0_Exam-Prep/Domain-1.1.md)
 - [Domain 1.2. : Develop Code for AWS Lambda](AWS-Cloud-Developer-Notes/0_Exam-Prep/Domain-1.2.md)
+- [Domain 1.3. : Use Data Stores in Application Development](AWS-Cloud-Developer-Notes/0_Exam-Prep/Domain-1.3.md)
 
 ## 5. [AWS Accreditation : Blu Age L1 Notes (Mainframe Modernization)](AWS-Mainframe-Modernization)
    1. [Module 1: Approach to Mainframe Migration and Modernization](AWS-Mainframe-Modernization/Module-1.md#module-1-approach-to-mainframe-migration-and-modernization-conceptual-introduction-)
