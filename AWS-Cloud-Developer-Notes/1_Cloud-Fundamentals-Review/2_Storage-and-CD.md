@@ -9,6 +9,9 @@
 - [Amazon Redshift](#amazon-redshift-)
 - [Amazon Database Migration Service](#amazon-database-migration-service-amazon-dms-)
 
+<div>
+<details>
+<summary>1. Amazon S3</summary>
 
 ## Amazon S3 Bucket [^](#storage-and-content-delivery-)
 - The bucket name must be unique worldwide, and must not contain spaces or uppercase letters.
@@ -32,7 +35,7 @@
 - Enables to write an access policy (in JSON format) to provide access to the objects stored in the bucket.
 
 #### Metrics
-View the metrics for usage, request, and data transfer activity within the bucket such as 
+View the metrics for usage, request, and data transfer activity within the bucket such as
 **total bucket size, total number of objects, and storage class analysis**.
 
 #### Management
@@ -42,7 +45,12 @@ View the metrics for usage, request, and data transfer activity within the bucke
 #### Access Points
 - Create access endpoints for sharing the bucket at scale.
 - Using an endpoint, you can perform all regular operations on the bucket.
+</details>
+</div>
 
+<div>
+<details>
+<summary>2. Database Services</summary>
 ## Database Services [^](../../README.md#3-aws-certified-developer-associate)
 
 ### Data Source Types
@@ -104,6 +112,12 @@ View the metrics for usage, request, and data transfer activity within the bucke
 - The service needs the source database endpoint and target database endpoint
 - An EC2 instance must be created manually. AWS DMS will automatically configure the replication software and use this instance for replication.
 
+</details>
+</div>
+
+<div>
+<details>
+<summary>3. Amazon ElastiCache</summary>
 
 ## Amazon ElastiCache [^](#storage-and-content-delivery-)
 - Provides high performance, resizable, and cost-effective in-memory cache.
@@ -147,6 +161,13 @@ View the metrics for usage, request, and data transfer activity within the bucke
 3. **Multithreaded Applications**
 4. **API Counters**
 
+</details>
+</div>
+
+<div>
+<details>
+<summary>4. Amazon CloudFront</summary>
+
 ## Amazon CloudFront [^](#storage-and-content-delivery-)
 - Amazon continuously add Edge Locations.
 - CloudFront ensures that end-user requests are served from the closes edge location.
@@ -157,6 +178,11 @@ View the metrics for usage, request, and data transfer activity within the bucke
 ### Important Notes - CloudFront
 - As soon as CloudFront distribution is deployed, it attaches to its origin (e.g. S3) and starts caching its private content.
 - Ones caching is complete, the CloudFront domain name URL will stop redirecting to the original URL.
+
+</details>
+</div>
+
+
 
 -------------------------
 `NEXT CONTENT:` [III. Security](3_Security.md)
