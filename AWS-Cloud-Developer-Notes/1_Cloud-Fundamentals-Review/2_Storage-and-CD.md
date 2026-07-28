@@ -1,19 +1,11 @@
 `PREVIOUS CONTENT:` [I. Compute Services](1_Compute-Services.md)
 -----------------------------
 # Storage and Content Delivery [^](../../README.md#3-aws-certified-developer-associate)
-
-- [Amazon S3](#amazon-s3-bucket-)
-- [Database Services](#database-services-)
-- [DynamoDB](#dynamodb--)
-- [Amazon RDS](#amazon-rds-)
-- [Amazon Redshift](#amazon-redshift-)
-- [Amazon Database Migration Service](#amazon-database-migration-service-amazon-dms-)
-
 <div>
 <details>
 <summary>1. Amazon S3</summary>
 
-## Amazon S3 Bucket [^](#storage-and-content-delivery-)
+## Amazon S3 Bucket
 - The bucket name must be unique worldwide, and must not contain spaces or uppercase letters.
 
 #### Bucket versioning and encryption
@@ -51,7 +43,8 @@ View the metrics for usage, request, and data transfer activity within the bucke
 <div>
 <details>
 <summary>2. Database Services</summary>
-## Database Services [^](../../README.md#3-aws-certified-developer-associate)
+
+## Database Services
 
 ### Data Source Types
 
@@ -119,7 +112,7 @@ View the metrics for usage, request, and data transfer activity within the bucke
 <details>
 <summary>3. Amazon ElastiCache</summary>
 
-## Amazon ElastiCache [^](#storage-and-content-delivery-)
+## Amazon ElastiCache
 - Provides high performance, resizable, and cost-effective in-memory cache.
 - Supports two open-source in-memory caching engines: **Redis** and **Memcached**
 - For real-time use cases that require ultrafast performance and high throughput.
@@ -168,7 +161,7 @@ View the metrics for usage, request, and data transfer activity within the bucke
 <details>
 <summary>4. Amazon CloudFront</summary>
 
-## Amazon CloudFront [^](#storage-and-content-delivery-)
+## Amazon CloudFront 
 - Amazon continuously add Edge Locations.
 - CloudFront ensures that end-user requests are served from the closes edge location.
 - CloudFront works with non-AWS origin sources.
