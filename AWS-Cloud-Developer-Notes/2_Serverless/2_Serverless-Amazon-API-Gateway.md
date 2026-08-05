@@ -1,11 +1,8 @@
 # Amazon API Gateway [^](../../README.md#3-aws-certified-developer-associate)
 
-- [1. Architecture](#api-gateway-architecture-)
-- [2. WebSocket APIs in API Gateway](#websocket-api-designing-)
-- [3. REST APIs in API Gateway](#rest-api-gateway-)
-- [4. Building/Deploying APIs](#buildingdeploying-apis-)
-- [5. API Gateway Integration Types](#api-gateway-integration-types-)
-- [6. Authorization for API Gateway](#authorization-for-api-gateway-)
+<div>
+<details>
+<summary>1. Architecture</summary>
 
 ## Basic information about Amazon API Gateway
 - API Gateway makes a great front door to your AWS Lambda functions and backend APIs
@@ -44,7 +41,15 @@ In addition to paying for the messages you send and receive, you are also charge
 #### Additional Charges
 You may also incur additional charges if you use API Gateway in conjunction with other AWS services or transfer data out of AWS.
 
-### WebSocket Routes
+
+</details>
+</div>
+
+<div>
+<details>
+<summary>2. WebSocket API</summary>
+
+## WebSocket Routes
 - JSON messages can be routed to invoke a specific backend service based on message content.
 - The request will be matched to the route with the corresponding route key in API gateway.
 - Three predefined routes ( + custom routes):
@@ -53,26 +58,33 @@ You may also incur additional charges if you use API Gateway in conjunction with
   - `$default`
 - After configuring the WebSocket API routes, whether predefined or custom, the next step is to attach integrations to each route.
 
-### WebSocket API Integrations
+## WebSocket API Integrations
 - A backend endpoint is also referred as **integration endpoint**. This can be a Lambda function, an HTTP endpoint, or an AWS service action.
 - The API integration has an **integration request** and **integration response** option.
 
 ### Connection Maintenance
 
 #### Connect
-The client apps connect to your WebSocket API by sending a WebSocket upgrade request. 
-If the request succeeds, the `$connect` route is invoked while the connection is being established. 
-Until the invocation of the integration you associated with the `$connect` route is completed, 
-the upgrade request is pending and the actual connection will not be established. 
+The client apps connect to your WebSocket API by sending a WebSocket upgrade request.
+If the request succeeds, the `$connect` route is invoked while the connection is being established.
+Until the invocation of the integration you associated with the `$connect` route is completed,
+the upgrade request is pending and the actual connection will not be established.
 If the $connect request fails, the connection will not be made.
 
 #### Established connection
-After the connection is established, your client's JSON messages can be routed to invoke a specific backend service based on message content. When a client sends a message over its WebSocket connection, this results in a route request to the WebSocket API. The request will be matched to the route with the corresponding route key in API Gateway. 
+After the connection is established, your client's JSON messages can be routed to invoke a specific backend service based on message content. When a client sends a message over its WebSocket connection, this results in a route request to the WebSocket API. The request will be matched to the route with the corresponding route key in API Gateway.
 
 #### Disconnect
 - The `$disconnect` route is invoked after the connection is closed. The connection can be closed by the server or by the client.
-- API Gateway will try its best to deliver the `$disconnect` event to your integration, but it cannot guarantee delivery. 
+- API Gateway will try its best to deliver the `$disconnect` event to your integration, but it cannot guarantee delivery.
 - The backend can initiate disconnection by using the `@connections` API.
+
+</details>
+</div>
+
+<div>
+<details>
+<summary>3. REST API Gateway</summary>
 
 ## REST API Gateway [^](#amazon-api-gateway-)
 
@@ -120,6 +132,13 @@ An additional cost to factor into your cost estimates is the data transfer out o
 #### Optional Cache
 Hourly rate for cache options
 
+</details>
+</div>
+
+<div>
+<details>
+<summary>4. Building and Deploying APIs</summary>
+
 ## Building/Deploying APIs [^](#amazon-api-gateway-)
 
 ### Invoke URL Pattern
@@ -140,6 +159,13 @@ Hourly rate for cache options
 In addition to the HTTP proxy. With the Lambda proxy integration, the client can call a single Lambda function in the backend.
 The function accesses many resources or features of other AWS services, including calling other Lambda functions.
 
+</details>
+</div>
+
+<div>
+<details>
+<summary>5. API Gateway Integration Types</summary>
+
 ## API Gateway Integration Types [^](#amazon-api-gateway-)
 Determines how method request data is passed to the backend.
 - **Lambda Function** - Requests being proxied to Lambda with request details available to function handler in the event parameter. IAM role setup is needed
@@ -148,6 +174,14 @@ Determines how method request data is passed to the backend.
 - **Mock** - For health checks. Returns a response without sending the request further to the backend
 - **VPC Link** - Connect to a Network LB to get something in a private VPC. E.g., accessing a private EC2 instance requires a NLB configured.
 
+</details>
+</div>
+
+
+<div>
+<details>
+<summary>6. Security</summary>
+
 ## Authorization for API Gateway [^](#amazon-api-gateway-)
 - Use **IAM** and **Signature Version 4 (Sig V4)** to authenticate and authorize entities to access APIs.
 - Use **Lambda Authorizer** to use to support bearer token authentication strategies such as OAuth or SAML.
@@ -155,15 +189,17 @@ Determines how method request data is passed to the backend.
 
 ![img_3.png](resources/img_3.png)
 
-### Token Bucket Algorithm 
+### Token Bucket Algorithm
 Requests that come into a bucket are fulfilled at a steady rate. If the rate at which the bucket is being filled causes the bucket to fill up and exceed the burst value, a **429 - Too Many Requests** error will be returned.
 
+</details>
+</div>
 
+<div>
+<details>
+<summary>7. Summary</summary>
 
+![img.png](img.png)
 
-
-
-
-
-
-
+</details>
+</div>
