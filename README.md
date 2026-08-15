@@ -13,6 +13,7 @@ purpose of this repository is to easily access learning progress for review.
 - [Architectures and Solutions](01_Architecture-Solutions.md)
 - [AWS Developer Associate - Questions](AWS-Cloud-Developer-Notes/AWS-Developer-Assoc-MCQs.md)
 - [Sample Lambda Codes](02_Sample-Lambda-Codes.md)
+- [DynamoDb Indexes Explained](Quick-Links/DynamoDB-Indexes.md)
 
 ## 1. AWS Cloud Practitioner Notes
    - [I. Introduction](AWS-Practitioner-Essentials/1_Introduction.md)

@@ -203,3 +203,57 @@ x-amz-server-side-encryption: AES256
 </details>
 
 ----
+
+#### A developer is creating an application that includes an Amazon API Gateway REST API in the us-east-2 Region. 
+#### The developer wants to use Amazon CloudFront and a custom domain name for the API. The developer has acquired an SSL/TLS certificate for the domain from a third-party provider.
+#### How should the developer configure the custom domain for the application?
+
+- A. Import the SSL/TLS certificate into AWS Certificate Manager (ACM) in the same Region as the API. Create a DNS A record for the custom domain.
+- B. Import the SSL/TLS certificate into CloudFront. Create a DNS CNAME record for the custom domain.
+- C. Import the SSL/TLS certificate into AWS Certificate Manager (ACM) in the same Region as the API. Create a DNS CNAME record for the custom domain.
+- D. Import the SSL/TLS certificate into AWS Certificate Manager (ACM) in the us-east-1 Region. Create a DNS CNAME record for the custom domain.
+
+
+<details>
+    <summary>Reveal Answer</summary>
+ <span><strong>D</strong></span>
+
+CloudFront is a global service, and CloudFront requires its ACM certificate to be provisioned/imported in `us-east-1 (N.Virginia)`
+
+</details>
+
+-----
+
+#### A development team maintains a web application by using a single AWS CloudFormation template. The template defines web servers and an Amazon RDS database. 
+#### The team uses the Cloud Formation template to deploy the Cloud Formation stack to different environments.
+#### During a recent application deployment, a developer caused the primary development database to be dropped and recreated. The result of this incident was a loss of data. The team needs to avoid accidental database deletion in the future.
+#### Which solutions will meet these requirements? (Choose two.)
+
+- A. Add a CloudFormation Deletion Policy attribute with the Retain value to the database resource.
+- B. Update the CloudFormation stack policy to prevent updates to the database.
+- C. Modify the database to use a Multi-AZ deployment.
+- D. Create a CloudFormation stack set for the web application and database deployments.
+- E. Add a Cloud Formation DeletionPolicy attribute with the Retain value to the stack.
+
+
+<details>
+    <summary>Reveal Answer</summary>
+ <span><strong>A and B</strong></span>
+
+</details>
+
+-----
+#### An application that is hosted on an Amazon EC2 instance needs access to files that are stored in an Amazon S3 bucket. The application lists the objects that are stored in the S3 bucket and displays a table to the user. During testing, a developer discovers that the application does not show any objects in the list.
+#### What is the MOST secure way to resolve this issue?
+
+- A. Update the IAM instance profile that is attached to the EC2 instance to include the S3:* permission for the S3 bucket.
+- B. Update the IAM instance profile that is attached to the EC2 instance to include the S3:ListBucket permission for the S3 bucket.
+- C. Update the developer's user permissions to include the S3:ListBucket permission for the S3 bucket.
+- D. Update the S3 bucket policy by including the S3:ListBucket permission and by setting the Principal element to specify the account number of the EC2 instance.
+
+
+<details>
+    <summary>Reveal Answer</summary>
+ <span><strong>B</strong></span>
+
+</details>
