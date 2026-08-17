@@ -257,3 +257,162 @@ CloudFront is a global service, and CloudFront requires its ACM certificate to b
  <span><strong>B</strong></span>
 
 </details>
+
+-------
+
+#### An application under development is required to store hundreds of video files. The data must be encrypted within the application prior to storage, with a unique key for each video file.
+#### How should the developer code the application?
+
+- A. Use the KMS Encrypt API to encrypt the data. Store the encrypted data key and data.
+- B. Use a cryptography library to generate an encryption key for the application. Use the encryption key to encrypt the data. Store the encrypted data.
+- C. Use the KMS GenerateDataKey API to get a data key. Encrypt the data with the data key. Store the encrypted data key and data.
+- D. Upload the data to an S3 bucket using server side-encryption with an AWS KMS key.
+
+<details>
+    <summary>Reveal Answer</summary>
+ <span><strong>C</strong></span>
+
+Use the KMS `GenerateDataKey` API to get a data key. Encrypt the data with the data key. Store the encrypted data key and data.
+
+</details>
+
+--------
+#### A company is planning to deploy an application on AWS behind an Elastic Load Balancer. The application uses an HTTP/HTTPS listener and must access the client IP addresses.
+#### Which load-balancing solution meets these requirements?
+
+- A. Use an Application Load Balancer and the X-Forwarded-For headers.
+- B. Use a Network Load Balancer (NLB). Enable proxy protocol support on the NLB and the target application.
+- C. Use an Application Load Balancer. Register the targets by the instance ID.
+- D. Use a Network Load Balancer and the X-Forwarded-For headers.
+
+<details>
+    <summary>Reveal Answer</summary>
+ <span><strong>A</strong></span>
+
+An Application Load Balancer (ALB) operates at **Layer 7 (HTTP/HTTPS)** and automatically adds the [X-Forwarded-For HTTP](../Quick-Links/X-Forwarded-For-Header.md) header.
+</details>
+
+-----
+#### A developer wants to debug an application by searching and filtering log data. The application logs are stored in Amazon CloudWatch Logs. The developer creates a new metric filter to count exceptions in the application logs. However, no results are returned from the logs.
+#### What is the reason that no filtered results are being returned?
+
+- A. A setup of the Amazon CloudWatch interface VPC endpoint is required for filtering the CloudWatch Logs in the VPC.
+- B. CloudWatch Logs only publishes metric data for events that happen after the filter is created.
+- C. The log group for CloudWatch Logs should be first streamed to Amazon OpenSearch Service before metric filtering returns the results.
+- D. Metric data points for logs groups can be filtered only after they are exported to an Amazon S3 bucket.
+
+<details>
+    <summary>Reveal Answer</summary>
+ <span><strong>B</strong></span>
+
+</details>
+
+------
+#### A company hosts a batch processing application on AWS Elastic Beanstalk with instances that run the most recent version of Amazon Linux. The application sorts and processes large datasets.
+#### In recent weeks, the application's performance has decreased significantly during a peak period for traffic. A developer suspects that the application issues are related to the memory usage. The developer checks the Elastic Beanstalk console and notices that memory usage is not being tracked.
+#### How should the developer gather more information about the application performance issues?
+
+- A. Configure the Amazon CloudWatch agent to push logs to Amazon CloudWatch Logs by using port 443.
+- B. Configure the Elastic Beanstalk .ebextensions directory to track the memory usage of the instances.
+- C. Configure the Amazon CloudWatch agent to track the memory usage of the instances.
+- D. Configure an Amazon CloudWatch dashboard to track the memory usage of the instances.
+
+<details>
+    <summary>Reveal Answer</summary>
+ <span><strong>C</strong></span>
+
+The **Amazon CloudWatch agent** can collect additional system-level metrics from the EC2 instances running your Elastic Beanstalk application, such as:
+
+- Memory utilization
+- Disk utilization
+- Swap utilization
+- Processes
+- Other OS-level metrics
+
+</details>
+
+------
+
+#### A developer is implementing an AWS Cloud Development Kit (AWS CDK) serverless application. The developer will provision several AWS Lambda functions and Amazon API Gateway APIs during AWS CloudFormation stack creation. The developer's workstation has the AWS Serverless Application Model (AWS SAM) and the AWS CDK installed locally.
+#### How can the developer test a specific Lambda function locally?
+
+- A. Run the sam package and sam deploy commands. Create a Lambda test event from the AWS Management Console. Test the Lambda function.
+- B. Run the cdk synth and cdk deploy commands. Create a Lambda test event from the AWS Management Console. Test the Lambda function.
+- C. Run the cdk synth and sam local invoke commands with the function construct identifier and the path to the synthesized CloudFormation template.
+- D. Run the cdk synth and sam local start-lambda commands with the function construct identifier and the path to the synthesized CloudFormation template.
+
+<details>
+    <summary>Reveal Answer</summary>
+ <span><strong>C</strong></span>
+
+</details>
+
+-----
+
+#### An e-commerce web application that shares session state on-premises is being migrated to AWS. The application must be fault tolerant, natively highly scalable, and any service interruption should not affect the user experience.
+#### What is the best option to store the session state?
+
+- A. Store the session state in Amazon ElastiCache.
+- B. Store the session state in Amazon CloudFront.
+- C. Store the session state in Amazon S3.
+- D. Enable session stickiness using elastic load balancers.
+
+<details>
+    <summary>Reveal Answer</summary>
+ <span><strong>A</strong></span>
+
+</details>
+
+------
+
+#### A developer has designed an application to store incoming data as JSON files in Amazon S3 objects. Custom business logic in an AWS Lambda function then transforms the objects, and the Lambda function loads the data into an Amazon DynamoDB table. Recently, the workload has experienced sudden and significant changes in traffic. The flow of data to the DynamoDB table is becoming throttled.
+#### The developer needs to implement a solution to eliminate the throttling and load the data into the DynamoDB table more consistently.
+#### Which solution will meet these requirements?
+
+- A. Refactor the Lambda function into two functions. Configure one function to transform the data and one function to load the data into the DynamoDB table. Create an Amazon Simple Queue Service (Amazon SQS) queue in between the functions to hold the items as messages and to invoke the second function.
+- B. Turn on auto scaling for the DynamoDB table. Use Amazon CloudWatch to monitor the table's read and write capacity metrics and to track consumed capacity.
+- C. Create an alias for the Lambda function. Configure provisioned concurrency for the application to use.
+- D. Refactor the Lambda function into two functions. Configure one function to store the data in the DynamoDB table. Configure the second function to process the data and update the items after the data is stored in DynamoDB. Create a DynamoDB stream to invoke the second function after the data is stored.
+
+<details>
+    <summary>Reveal Answer</summary>
+ <span><strong>A</strong></span>
+
+The problem is that Lambda can process many incoming events concurrently, potentially sending a large burst of writes to DynamoDB.
+
+DynamoDB can't necessarily absorb that burst at the same rate.
+
+</details>
+
+
+----
+
+#### A software company is launching a multimedia application. The application will allow guest users to access sample content before the users decide if they want to create an account to gain full access. The company wants to implement an authentication process that can identify users who have already created an account. The company also needs to keep track of the number of guest users who eventually create an account.
+#### Which combination of steps will meet these requirements? (Choose two.)
+
+- A. Create an Amazon Cognito user pool. Configure the user pool to allow unauthenticated users. Exchange user tokens for temporary credentials that allow authenticated users to assume a role.
+- B. Create an Amazon Cognito identity pool. Configure the identity pool to allow unauthenticated users. Exchange unique identity for temporary credentials that allow all users to assume a role.
+- C. Create an Amazon CloudFront distribution. Configure the distribution to allow unauthenticated users. Exchange user tokens for temporary credentials that allow all users to assume a role.
+- D. Create a role for authenticated users that allows access to all content. Create a role for unauthenticated users that allows access to only the sample content.
+- E. Allow all users to access the sample content by default. Create a role for authenticated users that allows access to the other content.
+
+<details>
+    <summary>Reveal Answer</summary>
+ <span><strong>B and D</strong></span>
+
+B - Cognito Identity Pools assign users a unique identity ID.
+That allows the application to distinguish users, including guests.
+
+D - More emphasis on Authenticated/Non-Authenticated roles
+
+</details>
+
+-----
+#### A company is providing read access to objects in an Amazon S3 bucket for different customers. The company uses IAM permissions to restrict access to the S3 bucket. The customers can access only their own files.
+#### Due to a regulation requirement, the company needs to enforce encryption in transit for interactions with Amazon S3.
+#### Which solution will meet these requirements?
+
+- A. Add a bucket policy to the S3 bucket to deny S3 actions when the aws:SecureTransport condition is equal to false.
+- B. Add a bucket policy to the S3 bucket to deny S3 actions when the s3:x-amz-acl condition is equal to public-read.
+- C. Add an IAM policy to the IAM users to enforce the usage of the AWS SDK.
+- D. Add an IAM policy to the IAM users that allows S3 actions when the s3:x-amz-acl condition is equal to bucket-owner-read.
