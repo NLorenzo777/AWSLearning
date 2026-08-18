@@ -416,3 +416,163 @@ D - More emphasis on Authenticated/Non-Authenticated roles
 - B. Add a bucket policy to the S3 bucket to deny S3 actions when the s3:x-amz-acl condition is equal to public-read.
 - C. Add an IAM policy to the IAM users to enforce the usage of the AWS SDK.
 - D. Add an IAM policy to the IAM users that allows S3 actions when the s3:x-amz-acl condition is equal to bucket-owner-read.
+
+
+<details>
+    <summary>Reveal Answer</summary>
+ <span><strong>A</strong></span>
+
+</details>
+
+----
+#### A team is developing an application that is deployed on Amazon EC2 instances. During testing, the team receives an error. The EC2 instances are unable to access an Amazon S3 bucket.
+#### Which steps should the team take to troubleshoot this issue? (Choose two.)
+
+- A. Check whether the policy that is assigned to the IAM role that is attached to the EC2 instances grants access to Amazon S3.
+- B. Check the S3 bucket policy to validate the access permissions for the S3 bucket.
+- C. Check whether the policy that is assigned to the IAM user that is attached to the EC2 instances grants access to Amazon S3.
+- D. Check the S3 Lifecycle policy to validate the permissions that are assigned to the S3 bucket.
+- E. Check the security groups that are assigned to the EC2 instances. Make sure that a rule is not blocking the access to Amazon S3.
+
+<details>
+    <summary>Reveal Answer</summary>
+ <span><strong>A and B</strong></span>
+
+</details>
+
+-----
+#### A company is creating an application that processes .csv files from Amazon S3. A developer has created an S3 bucket. The developer has also created an AWS Lambda function to process the .csv files from the S3 bucket.
+#### Which combination of steps will invoke the Lambda function when a .csv file is uploaded to Amazon S3? (Choose two.)
+
+- A. Create an Amazon EventBridge rule. Configure the rule with a pattern to match the S3 object created event.
+- B. Schedule an Amazon EventBridge rule to run a new Lambda function to scan the S3 bucket.
+- C. Add a trigger to the existing Lambda function. Set the trigger type to EventBridge. Select the Amazon EventBridge rule.
+- D. Create a new Lambda function to scan the S3 bucket for recently added S3 objects.
+- E. Add S3 Lifecycle rules to invoke the existing Lambda function.
+
+<details>
+    <summary>Reveal Answer</summary>
+ <span><strong>A and C</strong></span>
+
+S3 Lifecycle rules are for things like transitioning objects to different storage classes or deleting objects. They do not invoke Lambda functions.
+
+</details>
+
+-----
+#### A developer is writing an application for a company. The application will be deployed on Amazon EC2 and will use an Amazon RDS for Microsoft SQL Server database. The company's security team requires that database credentials are rotated at least weekly.
+#### How should the developer configure the database credentials for this application?
+
+- A. Create a database user. Store the user name and password in an AWS Systems Manager Parameter Store secure string parameter. Enable rotation of the AWS Key Management Service (AWS KMS) key that is used to encrypt the parameter.
+- B. Enable IAM authentication for the database. Create a database user for use with IAM authentication. Enable password rotation.
+- C. Create a database user. Store the user name and password in an AWS Secrets Manager secret that has daily rotation enabled.
+- D. Use the EC2 user data to create a database user. Provide the user name and password in environment variables to the application.
+
+
+<details>
+    <summary>Reveal Answer</summary>
+ <span><strong>C</strong></span>
+</details>
+
+----
+#### A developer is developing an application that uses signed requests (Signature Version 4) to call other AWS services. The developer has created a canonical request, has created the string to sign, and has calculated signing information.
+#### Which methods could the developer use to complete a signed request? (Choose two.)
+
+- A. Add the signature to an HTTP header that is named Authorization.
+- B. Add the signature to a session cookie.
+- C. Add the signature to an HTTP header that is named Authentication.
+- D. Add the signature to a query string parameter that is named X-Amz-Signature.
+- E. Add the signature to an HTTP header that is named WWW-Authenticate.
+
+<details>
+    <summary>Reveal Answer</summary>
+ <span><strong>A and D</strong></span>
+
+</details>
+
+-----
+
+#### A developer is integrating Amazon ElastiCache in an application. The cache will store data from a database. The cached data must populate real-time dashboards.
+#### Which caching strategy will meet these requirements?
+
+- A. A read-through cache
+- B. A write-behind cache
+- C. A lazy-loading cache
+- D. A write-through cache
+
+
+<details>
+    <summary>Reveal Answer</summary>
+ <span><strong>D</strong></span>
+
+| Strategy              | How it works                                                    | Why not?                                                                   |
+|-----------------------| --------------------------------------------------------------- | -------------------------------------------------------------------------- |
+| **A. Read-through**   | Application requests data → cache fetches from DB if missing    | Primarily optimized for **reads/cache population on demand**               |
+| **B. Write-behind**   | Application writes to cache → cache asynchronously writes to DB | Database update is **delayed**, which isn't ideal when consistency matters |
+| **C. Lazy-loading**   | Data is loaded into cache only when requested                   | Data may be **stale or absent** until someone requests it                  |
+| **D. Write-through**  | Data is written to cache **and database synchronously**         | Keeps cache populated with the latest data                                 |
+
+</details>
+
+------
+#### A company has a front-end application that runs on four Amazon EC2 instances behind an Elastic Load Balancer (ELB) in a production environment that is provisioned by AWS Elastic Beanstalk. A developer needs to deploy and test new application code while updating the Elastic Beanstalk platform from the current version to a newer version of Node.js. The solution must result in zero downtime for the application.
+#### Which solution meets these requirements?
+
+- A. Clone the production environment to a different platform version. Deploy the new application code, and test it. Swap the environment URLs upon verification.
+- B. Deploy the new application code in an all-at-once deployment to the existing EC2 instances. Test the code. Redeploy the previous code if verification fails.
+- C. Perform an immutable update to deploy the new application code to new EC2 instances. Serve traffic to the new instances after they pass health checks.
+- D. Use a rolling deployment for the new application code. Apply the code to a subset of EC2 instances until the tests pass. Redeploy the previous code if the tests fail.
+
+<details>
+    <summary>Reveal Answer</summary>
+ <span><strong>A</strong></span>
+
+</details>
+
+------
+#### A developer is creating an AWS Lambda function. The Lambda function will consume messages from an Amazon Simple Queue Service (Amazon SQS) queue. The developer wants to integrate unit testing as part of the function's continuous integration and continuous delivery (CI/CD) process.
+#### How can the developer unit test the function?
+
+- A. Create an AWS CloudFormation template that creates an SQS queue and deploys the Lambda function. Create a stack from the template during the CI/CD process. Invoke the deployed function. Verify the output.
+- B. Create an SQS event for tests. Use a test that consumes messages from the SQS queue during the function's Cl/CD process.
+- C. Create an SQS queue for tests. Use this SQS queue in the application's unit test. Run the unit tests during the CI/CD process.
+- D. Use the aws lambda invoke command with a test event during the CIICD process.
+
+
+<details>
+    <summary>Reveal Answer</summary>
+ <span><strong>A</strong></span>
+
+Unit testing should test the Lambda function's logic without requiring real AWS resources such as an SQS queue.
+
+</details>
+
+----
+#### A developer is working on a web application that uses Amazon DynamoDB as its data store. The application has two DynamoDB tables: one table that is named artists and one table that is named songs. The artists table has artistName as the partition key. The songs table has songName as the partition key and artistName as the sort key.
+#### The table usage patterns include the retrieval of multiple songs and artists in a single database operation from the webpage. The developer needs a way to retrieve this information with minimal network traffic and optimal application performance.
+#### Which solution will meet these requirements?
+
+- A. Perform a BatchGetltem operation that returns items from the two tables. Use the list of songName/artistName keys for the songs table and the list of artistName key for the artists table.
+- B. Create a local secondary index (LSI) on the songs table that uses artistName as the partition key. Perform a query operation for each artistName on the songs table that filters by the list of songName. Perform a query operation for each artistName on the artists table.
+- C. Perform a BatchGetitem operation on the songs table that uses the songName/artistName keys. Perform a BatchGetltem operation on the artists table that uses artistName as the key.
+- D. Perform a Scan operation on each table that filters by the list of songName/artistName for the songs table and the list of artistName in the artists table.
+
+
+<details>
+    <summary>Reveal Answer</summary>
+ <span><strong>A</strong></span>
+
+DynamoDB's `BatchGetItem` is designed exactly for this.
+
+A single `BatchGetItem` request can retrieve items from multiple DynamoDB tables.
+
+```text
+Application → GetItem → artists
+Application → GetItem → artists
+Application → GetItem → songs
+Application → GetItem → songs
+Application → GetItem → songs
+```
+
+One BatchGetItem request containing keys from both tables.
+
+</details>
