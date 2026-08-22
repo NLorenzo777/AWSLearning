@@ -148,7 +148,7 @@ A developer wants to expand an application to run in multiple AWS Regions. The d
 How can the developer expand the application to run in the destination Region while meeting the encryption requirement?
 </h4>
 
-- A. Create new AMIs, and specify encryption parameters. Copy the encrypted AMIs to the destination Region. Delete the unencrypted AMIs. Most Voted
+- A. Create new AMIs, and specify encryption parameters. Copy the encrypted AMIs to the destination Region. Delete the unencrypted AMIs.
 - B. Use AWS Key Management Service (AWS KMS) to enable encryption on the unencrypted AMIs. Copy the encrypted AMIs to the destination Region.
 - C. Use AWS Certificate Manager (ACM) to enable encryption on the unencrypted AMIs. Copy the encrypted AMIs to the destination Region.
 - D. Copy the unencrypted AMIs to the destination Region. Enable encryption by default in the destination Region.
