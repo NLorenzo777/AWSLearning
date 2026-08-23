@@ -52,15 +52,21 @@ purpose of this repository is to easily access learning progress for review.
 
 ## 4. AWS Exam Prep - Certified Cloud Developer
 
-### Domain 1
+### Domain 1 - AWS Services
 - [Domain 1.1. : Develop Code for Applications Hosted in AWS](AWS-Cloud-Developer-Notes/0_Exam-Prep/Domain-1.1.md)
 - [Domain 1.2. : Develop Code for AWS Lambda](AWS-Cloud-Developer-Notes/0_Exam-Prep/Domain-1.2.md)
 - [Domain 1.3. : Use Data Stores in Application Development](AWS-Cloud-Developer-Notes/0_Exam-Prep/Domain-1.3.md)
 
-### Domain 2
+### Domain 2 - Security
 - [Domain 2.1. : Implement authentication and/or authorization for applications and AWS services](AWS-Cloud-Developer-Notes/0_Exam-Prep/Domain-2.1.md)
 - [Domain 2.2. : Implement encryption using AWS services](AWS-Cloud-Developer-Notes/0_Exam-Prep/Domain-2.2.md)
-- [Domain 2.3. : Manage sensitive data in application code]()
+- [Domain 2.3. : Manage sensitive data in application code](AWS-Cloud-Developer-Notes/0_Exam-Prep/Domain-2.3.md)
+
+### Domain 3 - Deployment (20%, 13 questions)
+- [Domain 3.1 :  Prepare application artifacts to be deployed to AWS](AWS-Cloud-Developer-Notes/0_Exam-Prep/Domain-3.1.md)
+- [Domain 3.2 : Test applications in development environments]()
+- [Domain 3.3 : Automate deployment testing]()
+- [Domain 3.4 : Deploy code by using AWS CI/CD services]()
 
 ## 5. [AWS Accreditation : Blu Age L1 Notes (Mainframe Modernization)](AWS-Mainframe-Modernization)
    1. [Module 1: Approach to Mainframe Migration and Modernization](AWS-Mainframe-Modernization/Module-1.md#module-1-approach-to-mainframe-migration-and-modernization-conceptual-introduction-)

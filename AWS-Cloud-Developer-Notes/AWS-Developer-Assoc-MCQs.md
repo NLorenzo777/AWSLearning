@@ -576,3 +576,62 @@ Application → GetItem → songs
 One BatchGetItem request containing keys from both tables.
 
 </details>
+
+-----
+#### A developer builds an inventory application that runs on employee tablets. The tablet application serves as an activity worker for an AWS Step Functions state machine. The application must retrieve a scheduled task, periodically report on task progress, and report task completion or task failure.
+#### Which Step Functions API actions does the tablet application need to make?
+
+- A. CreateActivity, SendTaskHeartbeat, SendTaskFailure, SendTaskSuccess
+- B. CreateActivity, GetActivityTask, SendTaskHeartbeat, SendTaskFailure, SendTaskSuccess
+- C. StartExecution, GetActivityTask, SendTaskHeartbeat, StopExecution
+- D. CreateActivity, SendTaskHeartbeat, DeleteActivity
+
+<details>
+    <summary>Reveal Answer</summary>
+ <span><strong>B</strong></span>
+
+The activity worker must first call the CreateActivity API action to obtain the activity Amazon Resource Name (ARN). The GetActivityTask API action then retrieves a scheduled task. The SendTaskHeartbeat API action periodically reports on task progress. The SendTaskFailure or SendTaskSuccess API actions report success or failure.
+
+</details>
+
+-----
+#### A company is developing a Python application that submits data to an Amazon DynamoDB table. The company requires client-side encryption of specific data items and end-to-end protection for the encrypted data in transit and at rest.
+#### Which combination of steps will meet the requirement to encrypt specific data items?
+
+- A. Generate symmetric encryption keys with AWS KMS.
+- B. Use generated keys to configure DynamoDB table encryption with AWS managed KMS keys.
+- C. Use generated keys to configure DynamoDB table encryption with AWS owned KMS keys.
+- D. Generate asymmetric encryption keys with AWS KMS.
+- E. Use generated keys with the AWS Database Encryption SDK.
+
+<details>
+    <summary>Reveal Answer</summary>
+ <span><strong>A and E</strong></span>
+
+<div>When you configure the AWS Database Encryption SDK to use AWS KMS, the AWS Database Encryption SDK uses a KMS key that is always encrypted when the key is used outside of AWS KMS. This cryptographic materials provider returns a unique encryption key and a signing key for every table item. This method of encryption uses a symmetric KMS key.</div>
+
+<div>The AWS Database Encryption SDK provides end-to-end protection for your data in transit and at rest. You can encrypt selected items or attribute values in a table.</div>
+
+</details>
+
+-----
+
+#### A developer builds an application that uses the AWS SDK for Python (Boto3) to query an Amazon DynamoDB table. When the application is tested on an Amazon EC2 instance, the application returns this error message:
+#### "An error occurred (AccessDenied) when calling the operation"
+#### The EC2 instance is associated with an existing IAM role named myRole.
+#### Which set of actions would resolve this error?
+
+- A. Create a new IAM policy with the necessary Amazon DynamoDB permissions. Attach this policy to the myRole IAM role.
+- B. Run the aws sts assume-role command by using the myRole Amazon Resource Name (ARN). Obtain the access key ID and the secret access key from the output. Run the aws configure command to store these values on the EC2 instance.
+- C. Query http://169.254.169.254/latest/meta-data/iam/security-credentials/myRole to obtain the access key ID and the secret access key. Run the aws configure command to store these values on the EC2 instance.
+- . Create a new IAM role with the necessary Amazon DynamoDB permissions. Attach this IAM role as an additional role on the EC2 instance.
+
+<details>
+    <summary>Reveal Answer</summary>
+ <span><strong>A</strong></span>
+
+<div>"AccessDenied" indicates an authorization error related to permissions. Multiple policies can be attached to a single IAM role.</div>
+<div>"AccessDenied" indicates an authorization error related to permissions, not an authentication problem caused by credentials. The API call is already authenticated. Accessing or modifying the location of AWS credentials will have no effect. The EC2 instance profile has already performed the assume-role call because the role is already associated with the EC2 instance. </div>
+
+
+</details>
