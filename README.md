@@ -64,9 +64,9 @@ purpose of this repository is to easily access learning progress for review.
 
 ### Domain 3 - Deployment (20%, 13 questions)
 - [Domain 3.1 :  Prepare application artifacts to be deployed to AWS](AWS-Cloud-Developer-Notes/0_Exam-Prep/Domain-3.1.md)
-- [Domain 3.2 : Test applications in development environments]()
-- [Domain 3.3 : Automate deployment testing]()
-- [Domain 3.4 : Deploy code by using AWS CI/CD services]()
+- [Domain 3.2 : Test applications in development environments](AWS-Cloud-Developer-Notes/0_Exam-Prep/Domain-3.2.md)
+- [Domain 3.3 : Automate deployment testing](AWS-Cloud-Developer-Notes/0_Exam-Prep/Domain-3.3.md)
+- [Domain 3.4 : Deploy code by using AWS CI/CD services](AWS-Cloud-Developer-Notes/0_Exam-Prep/Domain-3.4.md)
 
 ## 5. [AWS Accreditation : Blu Age L1 Notes (Mainframe Modernization)](AWS-Mainframe-Modernization)
    1. [Module 1: Approach to Mainframe Migration and Modernization](AWS-Mainframe-Modernization/Module-1.md#module-1-approach-to-mainframe-migration-and-modernization-conceptual-introduction-)
